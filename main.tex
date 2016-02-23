@@ -1,0 +1,135 @@
+% Paper to publish our results from the IR SED fitting of the
+% BAT AGN.
+% Basic LaTex structure from MNRAS template on Overleaf
+\documentclass[fleqn,usenatbib]{mnras}
+\usepackage{newtxtext,newtxmath}
+% Depending on your LaTeX fonts installation, you might get better results with one of these:
+%\usepackage{mathptmx}
+%\usepackage{txfonts}
+
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+
+
+%%%%% AUTHORS - PLACE YOUR OWN PACKAGES HERE %%%%%
+
+% Only include extra packages if you really need them. Common packages are:
+\usepackage{graphicx}	% Including figure files
+\usepackage{amsmath}	% Advanced maths commands
+\usepackage{amssymb}	% Extra maths symbols
+\usepackage{amsfonts}
+\include{aas_macros}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
+
+% Please keep new commands to a minimum, and use \newcommand not \def to avoid
+% overwriting existing commands. Example:
+%\newcommand{\pcm}{\,cm$^{-2}$}	% per cm-squared
+\newcommand{\herschel}{\emph{Herschel}}
+\newcommand{\um}{$\mathrm{\mu}$m}
+\newcommand{\swift}{\textit{Swift}}
+\newcommand{\msun}{\,\mathrm{M}_\odot}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
+
+% Title of the paper, and the short title which is used in the headers.
+% Keep the title short and informative.
+\title[\emph{Herschel}-BAT Sample: AGN-SF Connection]{\emph{Herschel} far-infrared photometry of the Swift Burst Alert
+Telescope active galactic nuclei sample of the local universe--III. The connection between nuclear activity and global star formation\thanks{{\it Herschel} is an ESA space observatory with science instruments provided by European-led Principal Investigator consortia and with important participation from NASA.}}
+
+% The list of authors, and the short list which is used in the headers.
+% If you need two or more lines of authors, add an extra line using \newauthor
+\author[T. T. Shimizu]{T. Taro Shimizu$^{1}$\thanks{Email: tshimizu@astro.umd.edu}, Richard F. Mushotzky$^1$, Marcio Mel\'endez$^1$, Michael J. Koss$^{2}$, \newauthor Amy J. Barger$^{3,4,5}$, and Lennox L. Cowie$^{5}$\\
+$^{1}$Department of Astronomy, University of Maryland, College Park, MD 20742, USA\\
+$^{2}$Institute for Astronomy, Department of Physics, ETH Zurich, Wolfgang-Pauli-Strasse 27, CH-8093 Zurich, Switzerland\\
+$^{3}$Department of Astronomy, University of Wisconsin-Madison, 475 N. Charter Street, Madison, WI 53706, USA\\
+$^{4}$Department of Physics and Astronomy, University of Hawaii, 2505 Correa Road, Honolulu, HI 96822, USA\\
+$^{5}$Institute for Astronomy, University of Hawaii, 2680 Woodlawn Drive, Honolulu, HI 96822, USA}
+
+% These dates will be filled out by the publisher
+\date{Accepted XXX. Received YYY; in original form ZZZ}
+
+% Enter the current year, for the copyright statements etc.
+\pubyear{2016}
+
+% Don't change these lines
+\begin{document}
+\label{firstpage}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
+
+% Abstract of the paper
+\begin{abstract}
+\end{abstract}
+
+% Select between one and six entries from the list of approved keywords.
+% Don't make up new ones.
+\begin{keywords}
+galaxies: active -- galaxies: Seyfert -- infrared: galaxies -- galaxies: star formation -- galaxies: evolution 
+\end{keywords}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+\section{\herschel-BAT Sample}
+\subsection{Sample Selection}
+\subsection{\herschel{} Photometry}
+\subsection{WISE Photometry}
+\subsection{\emph{Spitzer} IRS spectra}
+
+\section{SED Model Fitting}
+\subsection{Single modified blackbody}
+\subsection{Casey 2012 model}
+\subsection{DecompIR}
+\subsection{Dale et al 2014 model}
+
+\section{Comparison Samples}
+\subsection{\herschel{} Reference Survey}
+\subsection{KINGFISH Sample}
+
+\section{Results}
+\subsection{Comparison between models}
+\subsection{AGN contribution to FIR emission}
+\subsection{The star-forming properties of local AGN}
+\subsection{Comparison between Type 1s and 2}
+
+\section{Discussion}
+\subsection{Comparison with previous studies}
+\subsection{Is there a connection between AGN activity and star formation?}
+
+\section{Conclusions}
+
+\section*{Acknowledgements}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
+
+% The best way to enter references is to use BibTeX:
+
+\bibliographystyle{mnras}
+\bibliography{my_bib} % if your bibtex file is called example.bib
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% APPENDICES %%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+\section{Some extra material}
+
+If you want to present additional material which would interrupt the flow of the main paper,
+it can be placed in an Appendix which appears after the list of references.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Don't change these lines
+\bsp	% typesetting comment
+\label{lastpage}
+\end{document}
