@@ -252,10 +252,10 @@ For the C12 model, we also measured $L_{\rm IR}$ by integrating the best fit tot
 
 We make this correction using the results of the C12 modeling for the HRS and KINGFISH samples. Since all of the galaxies in these samples have either no or low-luminosity AGN, the MIR emission is primarily the result of stochastically heated grains near star-forming regions and highly likely not associated with an AGN. In Figure~\ref{fig:lmbb_lpl_ratio}, we show the distribution of $L_{\rm MBB}/L_{\rm PL}$, the ratio of the MBB component luminosity to the MIR powerlaw component. The ratios for the HRS and KINGFISH samples are both narrowly distributed around a single value, indicating that for non-AGN galaxies the energy contained in the PL and MBB components are tightly connected. Combining both the HRS and KINGFISH samples, we find a median $\log(L_{\rm MBB}/L_{\rm PL})=0.48 \pm 0.11$, which transforms to $L_{\rm PL,SF} \approx \frac{1}{3}L_{\rm MBB}$ where we now indicate the contribution to the PL component from star formation as  $L_{\rm PL,SF}$. We can calculate the AGN contribution for the BAT AGN then by assuming the star-forming emission follows the same ratio.
 
-\begin{align}\label{eq:c12_lum}
-L_{\rm AGN,\,IR} &= L_{\rm PL} - L_{\rm PL, SF} = L_{\rm PL} - \frac{1}{3}L_{\rm MBB} \\
-f_{\rm AGN, C12} &= L_{\rm AGN, \, IR}/L_{\rm IR} \\
-L_{\rm SF, C12} &= L_{\rm MBB} + L_{\rm PL,SF} =  \frac{4}{3}L_{\rm MBB}
+\begin{align}
+L_{\rm AGN,\,IR} &= L_{\rm PL} - L_{\rm PL, SF} = L_{\rm PL} - \frac{1}{3}L_{\rm MBB} \label{eq:c12_lagnIR} \\
+f_{\rm AGN, C12} &= L_{\rm AGN, \, IR}/L_{\rm IR} \label{eq:c12_fagn} \\
+L_{\rm SF, C12} &= L_{\rm MBB} + L_{\rm PL,SF} =  \frac{4}{3}L_{\rm MBB} \label{eq:c12_lsf}
 \end{align}
 
 By using these relatively simple corrections we can accurately compare luminosities and AGN fractions from the three different models.
@@ -319,7 +319,7 @@ Name & $\log\,M_{\rm dust}$ &$T_{\rm dust}$ & $\log\,N_{\rm PL}$ & $\alpha$ & $\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
-\item Notes -- \textit{Column 1:} Name of the source. \textit{Column 2:} Log of the dust mass in solar units. \textit{Column 3:} Dust temperature for the MBB component. \textit{Column 4:} Log of the powerlaw component normalization. \textit{Column 5:} Slope of the powerlaw component. \textit{Column 6:} Turnover wavelength. \textit{Column 7:} Log of the total infrared luminosity from 8--1000 \um{} in solar units. \textit{Column 8:} Log of the MBB component luminosity in solar units. \textit{Column 9:} Log of the powerlaw component luminosity in solar units. \textit{Column 10:} Fractional contribution of the AGN to the total infrared luminosity calculated using Equation~\ref{eq:c12_lum}. The full version of this table is available in the online publication.
+\item Notes -- \textit{Column 1:} Name of the source. \textit{Column 2:} Log of the dust mass in solar units. \textit{Column 3:} Dust temperature for the MBB component. \textit{Column 4:} Log of the powerlaw component normalization. \textit{Column 5:} Slope of the powerlaw component. \textit{Column 6:} Turnover wavelength. \textit{Column 7:} Log of the total infrared luminosity from 8--1000 \um{} in solar units. \textit{Column 8:} Log of the MBB component luminosity in solar units. \textit{Column 9:} Log of the powerlaw component luminosity in solar units. \textit{Column 10:} Fractional contribution of the AGN to the total infrared luminosity calculated using Equations~\ref{eq:c12_lagnIR}~and~\ref{eq:c12_fagn}. The full version of this table is available in the online publication.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
