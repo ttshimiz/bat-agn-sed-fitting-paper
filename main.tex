@@ -246,7 +246,7 @@ The \herschel-BAT and HRS samples were fit using all of the models and methods d
 \subsection{Luminosities and AGN Fractions}
 In addition to the parameters associated for each model, we also calculated luminosities and AGN fractions. For the this work, we define three luminosities: 1) $L_{\rm IR}$ will represent the total infrared luminosity determined by integrating the SED from 8--1000 \um. 2) $L_{\rm SF}$ will represent the 8--1000 \um{} luminosity due to star formation in the host galaxy. 3) $L_{\rm AGN, IR}$ will represent the 8--1000 \um luminosity due to the AGN-heated dust. 
 
-For the DecompIR template set, $L_{\rm IR}$, $L_{\rm SF}$, and $L_{\rm AGN, IR}$ were simply calculated from the best fit total, host galaxy, and AGN SEDs. For the D14 model set, $L_{IR}$ was measured from the best fitting template and $L_{\rm SF}$ and $L_{\rm AGN, IR}$ were calculated based on the best fit $f_{\rm AGN}$.\footnote{\citet{Dale:2014yq} only provides $f_{\rm AGN}$ calculated between 5--15 \um, however D. Dale graciously provided the authors with $f_{\rm AGN}$ calculated between 8--1000 \um{} through private communication in August 2015.} Uncertainties on all of these luminosities were determined using the same Monte Carlo method used to determine the uncertainties on the best fitting parameters.
+For the DecompIR template set, $L_{\rm IR}$, $L_{\rm SF}$, and $L_{\rm AGN, IR}$ were simply calculated from the best fit total, host galaxy, and AGN SEDs. For the D14 model set, $L_{\rm IR}$ was measured from the best fitting template and $L_{\rm SF}$ and $L_{\rm AGN, IR}$ were calculated based on the best fit $f_{\rm AGN}$.\footnote{\citet{Dale:2014yq} only provides $f_{\rm AGN}$ calculated between 5--15 \um, however D. Dale graciously provided the authors with $f_{\rm AGN}$ calculated between 8--1000 \um{} through private communication in August 2015.} Uncertainties on all of these luminosities were determined using the same Monte Carlo method used to determine the uncertainties on the best fitting parameters.
 
 For the C12 model, we also measured $L_{\rm IR}$ by integrating the best fit total SED from 8--1000 \um. However, we have decomposed the SED into two components: the powerlaw (PL) and MBB component. Naively, if we assumed the MIR powerlaw component is completely dominated by the AGN for all sources then we could just take the ratio as we did for the template models. This is not the case though as some sources have much of their MIR emission originating in the host galaxy. Therefore we must correct for host galaxy MIR emission associated with star formation.
 
@@ -265,6 +265,20 @@ By using these relatively simple corrections we can accurately compare luminosit
 \end{figure}
 
 \subsection{Comparison between models}
+The measured property that should be most model independent is the total infrared luminosity, $L_{\rm IR}$. Assuming each model was able to fit well the broadband SEDs and reproduce the observed photometry, $L_{\rm IR}$ is simply the total integrated energy underneath the SED, irregardless of how the SED is decomposed. In Figure~\ref{fig:lir_total_comp}, we plot the correlations between each of the $L_{\rm IR}$ in the off-diagonal subplots as well as the single distributions for each one. 
+
+The median $\log\,L_{\rm IR}$ for the C12, DecompIR, and D14 models are 10.43, 10.44, and 10.63 \lsun respectively and each model showing a spread of 0.5 dex. Based on the medians as well as Figure~\ref{fig:lir_total_comp}, the C12 and DecompIR models best agree. The average logarithmic difference between them is only -0.02 dex while the average difference between the D14 and C12 and DecompIR models is 0.2 dex, indicating a factor of 1.6 increase in $L_{\rm IR}$ between D14 and the other two models. This is due to the shape of the template SEDs for D14. D14's AGN template is flatter at shorter wavelengths causing the increased luminosity. 
+
+The strict set of templates available in the D14 model also likely causes the increased scatter between D14 and the two others. Whereas DecompIR is composed of two templates that can freely float to match the observed SED and the C12 model is analytical allowing for large flexibility, the D14 model just contains a fixed set of templates which might not be able to match the observed SED as well as the other two models.
+
+Despite these differences, overall there is great agreement, as expected, between the measurement of $L_{\rm IR}$ three models. Given the 0.2 dex difference between D14 and the C12 and DecompIR models, we can conservatively assign this value as the total uncertainty on all $L_{\rm IR}$. This uncertainty overwhelms the individual statistical uncertainties which 
+are $\sim0.03$ dex.
+
+\begin{figure*}\label{fig:lir_total_comp}
+\includegraphics[width=\textwidth]{figures/lir_total-comparison}
+\caption{Correlations and KDEs of $L_{\rm IR}$ from the three SED models.  A color version of this figure is available in the online publication.}
+\end{figure*}
+
 \subsection{AGN contribution to FIR emission}
 \subsection{The star-forming properties of local AGN}
 \subsection{Comparison between Type 1s and 2}
