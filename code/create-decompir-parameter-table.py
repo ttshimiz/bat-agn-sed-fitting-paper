@@ -37,7 +37,7 @@ for n in names_sorted:
     
     if (np.isfinite(d['lir_sf']) & (n != 'Mrk3')):
         if (d['agn_frac_2_5'] < 10**(-5)):
-            if (d['agn_frac'] >= 0.01):
+            if (d['agn_frac_95'] >= 0.01):
                 d['agn_frac_tex'] = '$<{0:0.2f}$'.format(d['agn_frac_95'])
                 d['lir_agn_tex'] = '$<{0:0.2f}$'.format(d['lir_agn_95'])
             else:
