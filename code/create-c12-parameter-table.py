@@ -45,7 +45,7 @@ for n in names_sorted:
                 d[p+'_tex'] = '$<{0:0.2f}$'.format(num)
             elif (pd.isnull(eup) & (p == 'agn_frac')):
                 d[p+'_tex'] = '$>{0:0.2f}$'.format(num)
-            elif ((p == 'agn_frac') & (d['agn_frac_2_5'] < 0)):
+            elif ((p == 'agn_frac') & (d['agn_frac_16'] < 0)):
                 num = d['agn_frac_95']
                 d[p+'_tex'] = '$<{0:0.2f}$'.format(num)
             else:
