@@ -122,9 +122,9 @@ The HRS galaxies were imaged using both PACS and SPIRE, however the 100 \um{} fi
 
 The only issue in comparing the HRS galaxies to the \herschel-BAT AGN concerns the stellar mass (\mstar) distribution. Because the near-infrared is most strongly effected by the mass of the older stellar population, the HRS K-band selection produces a \mstar{} distribution that is representative of the naturally occurring \mstar{} distribution. However, many recent studies have shown that AGN prefer high \mstar{} galaxies, a feature that is also found in the BAT AGN \citep{Koss:2011vn}. Figure~\ref{fig:mstar_dist} displays the \mstar{} distributions for the \herschel-BAT and comparison samples. The \herschel-BAT galaxies have an average \mstar{} of 10.6 \msun, whereas the average \mstar{} for HRS is 9.8 \msun, nearly a ten-fold difference. This will be important to account for in interpreting results from a comparison between the two samples.
 
-\begin{figure}\label{fig:mstar_dist}
+\begin{figure}
 \includegraphics[width=\columnwidth]{figures/stellar_mass_comp}
-\caption{Histograms and Kernel Density Estimates (KDE) of the \mstar{} distribution for the BAT AGN (blue), HRS (green), and KINGFISH (red) samples. The BAT AGN probe a higher \mstar{} galaxy population than non-AGN samples. A color version is available in the online publication.}
+\caption{Histograms and Kernel Density Estimates (KDE) of the \mstar{} distribution for the BAT AGN (blue), HRS (green), and KINGFISH (red) samples. The BAT AGN probe a higher \mstar{} galaxy population than non-AGN samples. A color version is available in the online publication. \label{fig:mstar_dist}}
 \end{figure}
 
 \subsection{KINGFISH Sample}
@@ -201,12 +201,10 @@ P(F_i|M) = \frac{1}{\sqrt{2\pi\sigma_{i}^{2}}}\mathrm{exp}\left(\frac{-(F_i - M)
 
 Equation~\ref{eq:detected_prob} only defines the probability for detected fluxes. To use the information contained in the undetected photometry, $U_i$, we define a different probability under the assumption that all of the upper limits are 5$\sigma$. 
 
-%\begin{equation}
 \begin{align}\label{eq:undetected_prob}
 P(U_i|M) &= \int_{-\infty}^{U_i}\frac{1}{\sqrt{2\pi\sigma_{i}^{2}}}\mathrm{exp}\left(\frac{-(x - M)^2}{2\sigma_i^2}\right)dx \notag\\
 &= \frac{1}{2}\left(1 + \mathrm{erf}\left[\frac{U_i - M}{\sigma_i\sqrt{2}}\right]\right) 
 \end{align}
-%\end{equation}
 
 \noindent where $\sigma_i = \frac{U_i}{5}$ and erf is the standard error function. For numerical accuracy and simplicity, it is customary to minimize the negative log-likelihood. Supposing we have $N$ total SED points with $D$ detections and $D-N$ non-detections then the total negative log-likelihood combining Equations~\ref{eq:likelihood},~\ref{eq:detected_prob},~and~\ref{eq:undetected_prob} is:
 
@@ -259,9 +257,9 @@ L_{\rm SF, C12} &= L_{\rm MBB} + L_{\rm PL,SF} =  \frac{4}{3}L_{\rm MBB} \label{
 \end{align}
 
 By using these relatively simple corrections we can accurately compare luminosities and AGN fractions from the three different models.
-\begin{figure}\label{fig:lmbb_lpl_ratio}
+\begin{figure}
 \includegraphics[width=\columnwidth]{figures/lmbb-lpl-ratio}
-\caption{Histograms and Kernel Density Estimates (KDE) of the $L_{\rm MBB}/L_{\rm PL}$, distribution for the BAT AGN (blue), HRS (green), and KINGFISH (red) samples. The non-AGN samples have a narrowly distributed ratio whereas the BAT AGN span a wide range due to the AGN contribution. A color version of this figure is available in the online publication.}
+\caption{Histograms and Kernel Density Estimates (KDE) of the $L_{\rm MBB}/L_{\rm PL}$, distribution for the BAT AGN (blue), HRS (green), and KINGFISH (red) samples. The non-AGN samples have a narrowly distributed ratio whereas the BAT AGN span a wide range due to the AGN contribution. A color version of this figure is available in the online publication. \label{fig:lmbb_lpl_ratio}}
 \end{figure}
 
 \subsection{Comparison between models}
@@ -271,14 +269,28 @@ The median $\log\,L_{\rm IR}$ for the C12, DecompIR, and D14 models are 10.43, 1
 
 The strict set of templates available in the D14 model also likely causes the increased scatter between D14 and the two others. Whereas DecompIR is composed of two templates that can freely float to match the observed SED and the C12 model is analytical allowing for large flexibility, the D14 model just contains a fixed set of templates which might not be able to match the observed SED as well as the other two models.
 
-Despite these differences, overall there is great agreement, as expected, between the measurement of $L_{\rm IR}$ three models. Given the 0.2 dex difference between D14 and the C12 and DecompIR models, we can conservatively assign this value as the total uncertainty on all $L_{\rm IR}$. This uncertainty overwhelms the individual statistical uncertainties which 
-are $\sim0.03$ dex.
+Despite these differences, overall there is great agreement, as expected, between the measurement of $L_{\rm IR}$ for the three models. Given the 0.2 dex difference between D14 and the C12 and DecompIR models, we can conservatively assign this value as the total uncertainty on all $L_{\rm IR}$. This uncertainty overwhelms the individual statistical uncertainties which are $\sim0.03$ dex.
 
-\begin{figure*}\label{fig:lir_total_comp}
+%%%%%%%%%%%%%%%%%%%%%%%% FIGURE: LIR COMPARISON %%%%%%%%%%%
+\begin{figure*}
 \includegraphics[width=\textwidth]{figures/lir_total-comparison}
-\caption{Correlations and KDEs of $L_{\rm IR}$ from the three SED models.  A color version of this figure is available in the online publication.}
+\caption{Correlations and KDEs of $L_{\rm IR}$ from the three SED models.  A color version of this figure is available in the online publication. \label{fig:lir_total_comp}}
 \end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Where the models begin to disagree more, is in the actual decomposition of the SED. In particular, we compare $f_{\rm AGN}$, the fraction of the 8--1000 \um{} luminosity due to AGN-heated dust. In the previous section we outlined how this value was calculated for each model. For the template-based models (DecompIR and D14), this was simply the ratio of the luminosity from the AGN component template to the $L_{\rm IR}$ while for the C12 model, we needed to make a correction to account for MIR emission due to the host galaxy. 
+
+Figure~\ref{fig:agn_frac_comp} displays the relationship between each model's $f_{\rm AGN}$ in the off-diagonal plots as well as the distribution of $f_{\rm AGN}$ in the diagonal plots. All three models are in rough agreement of $f_{\rm AGN}$. The three off-diagonal plots show a strong correlation between the models, albeit with large scatter. We find Pearson correlation coefficients of 0.81, 0.83, and 0.92 for C12 vs. DecompIR, C12 vs. D14, and DecompIR vs. D14 respectively. The two template based models agree the best between each other. This is likely due to the fixed shape of the AGN component SED for these models and the correction factor we had to use to calculate the C12 based $f_{\rm AGN}$. 
+
+Overall all three models agree on $f_{\rm AGN}$ within a scatter of 0.15. The scatter around a 1--1 correlation between each model is 0.15, 0.13, and 0.10 for C12 vs. DecompIR, C12 vs. D14, and DecompIR vs. D14 respectively. Because this is comparable to the statistical uncertainty we determined through the individual model-fitting, we add this in quadrature to the uncertainties in Tables~\ref{tab:c12_params},~\ref{tab:decompir_params},~and~\ref{tab:d14_params}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% FIGURE: AGN FRACTION COMPARISON %%%%%%%%%%%
+\begin{figure*}
+\includegraphics[width=\textwidth]{figures/agn_frac-comparison}
+\caption{Correlations and histograms of $f_{\rm AGN}$ from the three SED models.  A color version of this figure is available in the online publication. \label{fig:agn_frac_comp}}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{AGN contribution to FIR emission}
 \subsection{The star-forming properties of local AGN}
 \subsection{Comparison between Type 1s and 2}
@@ -314,10 +326,10 @@ This publication makes use of data products from the Wide-field Infrared Survey 
 \centering
 \begin{threeparttable}
 \captionsetup{font=small,labelfont=bf,labelsep=period}
-\caption{Best Fit C12 Model Parameters, Luminosities, and AGN Fractions}
+\caption{Best Fit C12 Model Parameters, Luminosities, and AGN Fractions \label{tab:c12_params}}
 \begin{tabular}{lccccccccc}
 \toprule 
-Name & $\log\,M_{\rm dust}$ &$T_{\rm dust}$ & $\log\,N_{\rm PL}$ & $\alpha$ & $\lambda_{\rm c}$ & $\log\,L_{\rm IR}$ & $\log\,L_{\rm MBB}$ & $\log\,L_{\rm PL}$ &$f_{\rm AGN,C12}$ \\
+Name & $\log\,M_{\rm dust}$ &$T_{\rm dust}$ & $\log\,N_{\rm PL}$ & $\alpha$ & $\lambda_{\rm c}$ & $\log\,L_{\rm IR}$ & $\log\,L_{\rm MBB}$ & $\log\,L_{\rm PL}$ &$f_{\rm AGN}$ \\
  & \msun & K &  &  & \um & \lsun & \lsun & \lsun & \\
 \midrule
 1RXS J044154.5-082639 & $6.80_{-0.14}^{+0.21}$ & $27.98_{-4.21}^{+2.45}$ & $-0.61_{-0.19}^{+0.18}$ & $1.70_{-0.34}^{+0.46}$ &$47.71_{-13.96}^{+18.85}$ & $10.37_{-0.04}^{+0.03}$ & $9.88_{-0.25}^{+0.10}$ & $10.20_{-0.10}^{+0.10}$ & $0.57_{-0.14}^{+0.19}$ \\
@@ -337,6 +349,53 @@ Name & $\log\,M_{\rm dust}$ &$T_{\rm dust}$ & $\log\,N_{\rm PL}$ & $\alpha$ & $\
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
+
+\begin{table}
+\centering
+\begin{threeparttable}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
+\caption{Best Fit DecompIR Model Parameters, Luminosities, and AGN Fractions \label{tab:decompir_params}}
+\begin{tabular}{lccccc}
+\toprule 
+Name & Host Galaxy & $\log\,L_{\rm IR}$ & $\log\,L_{\rm SF}$ & $\log\,L_{\rm AGN, IR}$ & $f_{\rm AGN}$ \\
+ & Template & \lsun & \lsun & \lsun & \\
+\midrule
+1RXSJ044154.5-082639 & SB2 & $10.39_{-0.02}^{+0.03}$ & $10.05_{-0.04}^{+0.08}$ & $10.12_{-0.08}^{+0.06}$ &$0.54_{-0.09}^{+0.05}$ \\
+1RXSJ045205.0+493248 & SB1 & $10.50_{-0.02}^{+0.02}$ & $10.10_{-0.04}^{+0.03}$ & $10.28_{-0.05}^{+0.05}$ &$0.60_{-0.04}^{+0.04}$ \\
+2E1739.1-1210 & SB1 & $10.89_{-0.03}^{+0.02}$ & $10.43_{-0.05}^{+0.04}$ & $10.71_{-0.06}^{+0.04}$ &$0.65_{-0.04}^{+0.04}$ \\
+2MASSJ07594181-3843560 & ... & ... & ... & ... &... \\
+2MASSJ17485512-3254521 & SB1 & $9.47_{-0.18}^{+0.03}$ & $9.15_{-1.25}^{+0.07}$ & $9.19_{-0.06}^{+0.07}$ &$0.52_{-0.05}^{+0.43}$ \\
+2MASXJ00253292+6821442 & SB1 & $9.68_{-0.02}^{+0.02}$ & $9.01_{-0.04}^{+0.04}$ & $9.58_{-0.04}^{+0.03}$ &$0.79_{-0.03}^{+0.02}$ \\
+2MASXJ01064523+0638015 & SB3 & $10.48_{-0.03}^{+0.04}$ & $9.69_{-0.34}^{+0.07}$ & $10.40_{-0.04}^{+0.08}$ &$0.84_{-0.04}^{+0.09}$ \\
+2MASXJ01073963-1139117 & SB5 & $10.90_{-0.02}^{+0.02}$ & $10.70_{-0.02}^{+0.02}$ & $10.47_{-0.09}^{+0.05}$ &$0.37_{-0.05}^{+0.03}$ \\
+2MASXJ03305218+0538253 & SB1 & $10.81_{-0.03}^{+0.02}$ & $9.70_{-0.08}^{+0.18}$ & $10.78_{-0.05}^{+0.03}$ &$0.92_{-0.04}^{+0.01}$ \\
+2MASXJ03342453-1513402 & SB5 & $10.65_{-0.02}^{+0.02}$ & $10.53_{-0.01}^{+0.02}$ & $10.04_{-0.11}^{+0.07}$ &$0.24_{-0.05}^{+0.03}$ \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item Notes -- \textit{Column 1:} Name of the source. \textit{Column 2:} Best fit host galaxy template \textit{Column 3:} Log of the total infrared luminosity from 8--1000 \um{} in solar units. \textit{Column 4:} Log of the MBB component luminosity in solar units. \textit{Column 5:} Log of the powerlaw component luminosity in solar units. \textit{Column 6:} Fractional contribution of the AGN to the total infrared luminosity. The full version of this table is available in the online publication.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{table}
+\centering
+\begin{threeparttable}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
+\caption{Best Fit D14 Model Parameters, Luminosities, and AGN Fractions \label{tab:d14_params}}
+\begin{tabular}{lcccccc}
+\toprule 
+Name & $\alpha$ & $f_{\rm AGN, MIR}$ & $\log\,L_{\rm IR}$ & $\log\,L_{\rm SF}$ & $\log\,L_{\rm AGN, IR}$ & $f_{\rm AGN}$ \\
+ &  &  & \lsun & \lsun & \lsun & \\
+\midrule
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item blah blah blah
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
 \end{landscape}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
