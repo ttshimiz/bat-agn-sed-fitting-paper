@@ -4,8 +4,8 @@ import seaborn as sn
 
 # Set some plotting parameters
 sn.set(context='paper', color_codes=True, style='ticks')
-mpl.rcParams['xtick.labelsize'] = 10
-mpl.rcParams['ytick.labelsize'] = 10
+mpl.rcParams['xtick.labelsize'] = 8
+mpl.rcParams['ytick.labelsize'] = 8
 mpl.rcParams['axes.labelsize'] = 10
 mpl.rcParams['legend.fontsize'] = 8
 mpl.rcParams['text.usetex'] = True
