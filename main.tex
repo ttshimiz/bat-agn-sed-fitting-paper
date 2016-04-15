@@ -36,6 +36,8 @@
 \newcommand{\msun}{M$_{\odot}$}
 \newcommand{\mstar}{$M_{\mathrm{star}}$}
 \newcommand{\lsun}{L$_{\odot}$}
+\newcommand{\mdust}{$M_{\rm dust}$}
+\newcommand{\tdust}{$T_{\rm dust}$}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
@@ -298,12 +300,45 @@ For our AGN population, we find almost a uniform distribution of $f_{\rm AGN}$ i
 \subsection{$M_{\rm dust}$, $T_{\rm dust}$, and SFR of local AGN host galaxies}
 Given the results of the previous section, for the rest of the paper we will focus on properties determined using the C12 model since the model provides a wealth of information regarding not just the SFR but also the dust mass ($M_{\rm dust}$), dust temperature ($T_{\rm dust}$), MIR powerlaw slope, and turnover wavelength. We note that any results pertaining to the infrared luminosity of either the AGN or the host galaxy are broadly repeated using either of the other two models with only small changes in the statistics.
 
-%%%%%%%%%%%%%%%%%%%%%%%% FIGURE: AGN FRACTION COMPARISON %%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%% FIGURE: Mdust, Tdust, SFR COMPARISON %%%%%%%%%%%
 \begin{figure*}
 \includegraphics[width=\textwidth]{figures/mdust_tdust_sfr_comparison}
 \caption{ Comparison of $M_{\rm dust}$, $T_{\rm dust}$, and SFR between the \herschel-BAT AGN (blue), HRS (green), and KINGFISH (red) samples. The top row compares the absolute values of these properties while the bottom row compares the properties normalized by $M_{\rm star}$. A color version of this figure is available in the online publication. \label{fig:mdust_tdust_sfr_comp}}
 \end{figure*}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%% TABLE: Mdust, Tdust, SFR Comparison %%%%%%%%%%%%%
+\begin{table*}
+\centering
+\begin{threeparttable}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
+\caption{Mean \mdust, \tdust, and SFR \label{tab:mean_mdust_tdust_sfr}}
+\begin{tabular}{lccccccccc}
+\toprule 
+Sample & $\log$ \mdust & \tdust & $\log$ SFR & $\log$ \mdust/\mstar & \tdust/$\log$ \mstar & $\log$ SFR/\mstar \\
+ & [\msun]  & [K]  &  [\msun{} yr$^{-1}$] &    &   & [yr$^{-1}$]\\
+\midrule
+\herschel-BAT & 7.20$\pm$0.05 & 23.5$\pm$0.3 & 0.11$\pm$0.04 & -3.22$\pm$0.05 & 2.21$\pm$0.03 & -10.35$\pm$0.06 \\ 
+HRS & 6.70$\pm$0.04 & 21.5$\pm$0.2 & -0.58$\pm$0.04 & -3.14$\pm$0.07 & 2.21$\pm$0.02 & -10.40$\pm$0.05 \\
+KINGFISH & 6.80$\pm$0.10 & 21.7$\pm$0.5 & -0.40$\pm$0.10 & -2.60$\pm$0.10 & 2.25$\pm$0.05 & -9.90$\pm$0.10 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item blah blah blah
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Figure~\ref{fig:mdust_tdust_sfr_comp} compares the distribution of \mdust, \tdust, and SFR for our three samples of galaxies. Table~\ref{tab:mean_mdust_tdust_sfr} displays the mean and standard error on the mean for these three properties and each sample. While we sources with only upper limits are shown in Figure~\ref{fig:mdust_tdust_sfr_comp}, we incorporate them into our calculation of the mean. To do this, we use the ASURV \citep{Feigelson:1985lr} package which applies the principles of survival analysis to astronomical data. Information contained in the upper limits can then included in measurement of statistical properties of samples without biasing results towards brighter sources that are more likely to be detected. Throughout this Paper, we will use survival analysis to include upper and lower limits in our calculations unless otherwise stated. 
+
+From just a comparison of \mdust, \tdust, and SFR, we find that the \herschel-BAT AGN have higher dust masses than the HRS sample, slightly higher dust temperatures than both non-AGN samples, and higher SFRs especially compared to HRS. Their dust mass seems to be the same as the KINGFISH sample. However, as we show in Figure~\ref{fig:mstar_dist}, each sample has differing \mstar{} distributions which could cause wrong interpretations when comparing properties that are correlated with \mstar. All three of \mdust, \tdust, and SFR are strongly correlated with \mstar, so we must normalize the three properties to account trends with it.
+
+In the lower row of Figure~\ref{fig:mdust_tdust_sfr_comp} and last three columns of Table~\ref{tab:mean_mdust_tdust_sfr} we show the distribution and mean values of \mdust, \tdust, and SFR after normalization to \mstar. The results change significantly after accounting for the high \mstar{} distribution of the \herschel-BAT AGN. Whereas before the \herschel-BAT AGN seemed to have higher \mdust, \tdust, and SFR compared to the HRS and KINGFISH samples, normalized to \mstar, they now are either equal to or lower than the non-AGN samples. All three samples now show nearly the same \tdust{} distribution, indicating the increased dust temperatures were simply a result of the increased stellar masses. There is no evidence for the AGN heating large scale dust in the galaxy to higher temperatures. 
+
+Particulary interesting is the significant difference between the KINGFISH and \herschel-BAT AGN. The HRS sample was mass selected so it includes both star-forming and quiescent galaxies while the KINGFISH sample was mainly selected as a star-forming sample. Compared to star-forming galaxies, the AGN host galaxies have on average a 0.6 dex (factor of 4) decrease in their dust-to-stellar mass ratio and a 0.45 dex (factor of 3) decrease in their specific SFR (sSFR = SFR/\mstar). In \citet{Shimizu:2015xo}, we extensively examined the whether our AGN sample showed decreased specific SFR compared to the so-called ``Main Sequence'' of star formation. We concluded using a multitude of comparison samples that AGN host galaxies do indeed exhibit reduced levels of star formation for their given stellar mass, a possible indication that AGN feedback has occurred in these galaxies. 
+ 
+In this Paper, we find that not only is the specific SFR decreased in AGN host galaxies, but \mdust{} is also decreased. Assuming a constant dust-to-gas ratio, this would indicate that AGN host galaxies on average are gas deficient compared to star-forming galaxies. This would explain the reduced star formation since neutral gas provides the material for molecular gas from which stars form. There are two ways the AGN could have played a role in reducing the gas fraction of the galaxy. One is through physically blowing the gas out with AGN-driven winds. The other is by heating the halo and shutting off accretion from the intergalactic medium. Discerning between the two processes however is beyond the scope of this paper.
 
 \subsection{Comparison between Type 1s and 2}
 
@@ -342,7 +377,7 @@ This publication makes use of data products from the Wide-field Infrared Survey 
 \begin{tabular}{lccccccccc}
 \toprule 
 Name & $\log\,M_{\rm dust}$ &$T_{\rm dust}$ & $\log\,N_{\rm PL}$ & $\alpha$ & $\lambda_{\rm c}$ & $\log\,L_{\rm IR}$ & $\log\,L_{\rm MBB}$ & $\log\,L_{\rm PL}$ &$f_{\rm AGN}$ \\
- & \msun & K &  &  & \um & \lsun & \lsun & \lsun & \\
+ & [\msun] & [K] &  &  & [\um] & [\lsun] & [\lsun] & [\lsun] & \\
 \midrule
 1RXS J044154.5-082639 & $6.80_{-0.14}^{+0.21}$ & $27.98_{-4.21}^{+2.45}$ & $-0.61_{-0.19}^{+0.18}$ & $1.70_{-0.34}^{+0.46}$ &$47.71_{-13.96}^{+18.85}$ & $10.37_{-0.04}^{+0.03}$ & $9.88_{-0.25}^{+0.10}$ & $10.20_{-0.10}^{+0.10}$ & $0.57_{-0.14}^{+0.19}$ \\
 1RXS J045205.0+493248 & $7.47_{-0.10}^{+0.12}$ & $23.27_{-1.61}^{+0.99}$ & $-0.31_{-0.13}^{+0.13}$ & $1.44_{-0.46}^{+0.59}$ &$39.95_{-13.09}^{+14.82}$ & $10.47_{-0.03}^{+0.04}$ & $10.07_{-0.09}^{+0.03}$ & $10.25_{-0.05}^{+0.09}$ & $0.47_{-0.06}^{+0.12}$ \\
