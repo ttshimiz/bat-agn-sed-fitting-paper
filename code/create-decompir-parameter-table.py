@@ -9,6 +9,8 @@ data_dir = gh_dir + 'bat-data/'
 
 bat_decompir = pd.read_csv(decomp_dir+'final_fit_results_decompir_sb_and_arp220_mle.csv',
                            index_col=0)
+bat_decompir_undetected = pd.read_csv(decomp_dir+'final_fit_results_decompir_sb_and_arp220_undetected.csv',
+                                      index_col=0)
 bat_decompir_uncertain = pd.read_csv(decomp_dir+'final_fit_results_decompir_sb_and_arp220_uncertainties_v2.csv',
                                      index_col=0)
 
@@ -23,8 +25,8 @@ params = ['lir_total', 'lir_sf', 'lir_agn', 'agn_frac']
 
 for p in params:
 
-    bat_decompir[p+'_err_up'] = np.round(bat_decompir[p+'_84'] - bat_decompir[p], 2)
-    bat_decompir[p+'_err_down'] = np.round(bat_decompir[p] - bat_decompir[p+'_16'], 2)
+    bat_decompir[p+'_err_up'] = bat_decompir[p+'_84'] - bat_decompir[p]
+    bat_decompir[p+'_err_down'] = bat_decompir[p] - bat_decompir[p+'_16']
     
 # Print out the table in LaTeX
 table_file = open('../tables/bat-agn-decompir-parameters.txt', 'w')
@@ -35,21 +37,50 @@ for n in names_sorted:
 
     d = bat_decompir.loc[n]
     
-    if (np.isfinite(d['lir_sf']) & (n != 'Mrk3')):
-        if (d['agn_frac_2_5'] < 10**(-5)):
-            if (d['agn_frac_95'] >= 0.01):
+    if (n != 'Mrk3'):
+
+        if np.any(n == bat_decompir_undetected.index.values):
+
+            d['lir_total_tex'] = '$<{0:0.2f}$'.format(d['lir_total_95'])
+
+            if (d['agn_frac_05'] < 0.95):
+
+                d['lir_sf_tex'] = '$<{0:0.2f}$'.format(d['lir_sf_95'])
+                d['lir_agn_tex'] = '$>{0:0.2f}$'.format(d['lir_agn_05'])
+                d['agn_frac_tex'] = '$>{0:0.2f}$'.format(d['agn_frac_05'])
+
+            else:
+
+                d['lir_sf_tex'] = '$<{0:0.2f}$'.format(d['lir_total_95'] + np.log10(0.05))
+                d['lir_agn_tex'] = '$>{0:0.2f}$'.format(d['lir_total_95'] + np.log10(0.95))
+                d['agn_frac_tex'] = '$>{0:0.2f}$'.format(0.95)
+
+        elif ((d['agn_frac_2_5'] < 10**(-5)) | (d['agn_frac'] < 0.05)):
+
+            d['lir_total_tex'] = '${0:0.2f}_{{-{1:0.2f}}}^{{+{2:0.2f}}}$'.format(d['lir_total'], d['lir_total_err_down'], d['lir_total_err_up'])
+
+            if (d['agn_frac_95'] >= 0.05):
                 d['agn_frac_tex'] = '$<{0:0.2f}$'.format(d['agn_frac_95'])
                 d['lir_agn_tex'] = '$<{0:0.2f}$'.format(d['lir_agn_95'])
+                d['lir_sf_tex'] = '$>{0:0.2f}$'.format(d['lir_sf_05'])
             else:
-                d['agn_frac_tex'] = '$<{0:0.2f}$'.format(0.01)
-                d['lir_agn_tex'] = '$<{0:0.2f}$'.format(d['lir_total'] - 2.)
+                d['agn_frac_tex'] = '$<{0:0.2f}$'.format(0.05)
+                d['lir_agn_tex'] = '$<{0:0.2f}$'.format(d['lir_total'] + np.log10(0.05))
+                d['lir_sf_tex'] = '$>{0:0.2f}$'.format(d['lir_total'] + np.log10(0.95))
+                
+        elif (d['agn_frac'] > 0.95):
+
+            d['lir_total_tex'] = '${0:0.2f}_{{-{1:0.2f}}}^{{+{2:0.2f}}}$'.format(d['lir_total'], d['lir_total_err_down'], d['lir_total_err_up'])
+            d['lir_sf_tex'] = '$<{0:0.2f}$'.format(d['lir_sf_95'])
+            d['agn_frac_tex'] = '$>{0:0.2f}$'.format(d['agn_frac_05'])
+            d['lir_agn_tex'] = '$>{0:0.2f}$'.format(d['lir_agn_05'])
 
         else:
+
             d['agn_frac_tex'] = '${0:0.2f}_{{-{1:0.2f}}}^{{+{2:0.2f}}}$'.format(d['agn_frac'], d['agn_frac_err_down'], d['agn_frac_err_up'])
             d['lir_agn_tex'] = '${0:0.2f}_{{-{1:0.2f}}}^{{+{2:0.2f}}}$'.format(d['lir_agn'], d['lir_agn_err_down'], d['lir_agn_err_up'])
-        
-        d['lir_total_tex'] = '${0:0.2f}_{{-{1:0.2f}}}^{{+{2:0.2f}}}$'.format(d['lir_total'], d['lir_total_err_down'], d['lir_total_err_up'])
-        d['lir_sf_tex'] = '${0:0.2f}_{{-{1:0.2f}}}^{{+{2:0.2f}}}$'.format(d['lir_sf'], d['lir_sf_err_down'], d['lir_sf_err_up'])
+            d['lir_total_tex'] = '${0:0.2f}_{{-{1:0.2f}}}^{{+{2:0.2f}}}$'.format(d['lir_total'], d['lir_total_err_down'], d['lir_total_err_up'])
+            d['lir_sf_tex'] = '${0:0.2f}_{{-{1:0.2f}}}^{{+{2:0.2f}}}$'.format(d['lir_sf'], d['lir_sf_err_down'], d['lir_sf_err_up'])
     else:
         d['lir_total_tex'] = '...'
         d['lir_agn_tex'] = '...'
