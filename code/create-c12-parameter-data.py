@@ -52,7 +52,7 @@ for n in names_sorted:
             c12_params.loc[n, 'lir_total'] = d['lir_total_95']
             c12_params.loc[n, 'lir_total_flag'] = -1
             
-            if (d['agn_frac_05'] < 0.95):
+            if (d['agn_frac_05'] < 0.99):
 
                 c12_params.loc[n, 'lir_sf'] = d['lir_sf_95']
                 c12_params.loc[n, 'lir_sf_flag'] = -1
@@ -63,11 +63,11 @@ for n in names_sorted:
 
             else:
 
-                c12_params.loc[n, 'lir_sf'] = d['lir_total_95'] + np.log10(0.05)
+                c12_params.loc[n, 'lir_sf'] = d['lir_total_95'] + np.log10(0.01)
                 c12_params.loc[n, 'lir_sf_flag'] = -1
-                c12_params.loc[n, 'lir_agn'] = d['lir_total_95'] + np.log10(0.95)
+                c12_params.loc[n, 'lir_agn'] = d['lir_total_95'] + np.log10(0.99)
                 c12_params.loc[n, 'lir_agn_flag'] = 1
-                c12_params.loc[n, 'agn_frac'] = 0.95
+                c12_params.loc[n, 'agn_frac'] = 0.99
                 c12_params.loc[n, 'agn_frac_flag'] = 1
         
         elif ((d['agn_frac_16'] < 0) | (d['agn_frac'] < 0.05)):
@@ -85,12 +85,14 @@ for n in names_sorted:
             c12_params.loc[n, 'tdust_err_high'] = d['tdust_err_up']
             c12_params.loc[n, 'tdust_flag'] = 0
             
-            if (d['agn_frac_95'] > 0.05):
+            if (d['agn_frac_95'] > 0.01):
                 
                 c12_params.loc[n, 'agn_frac'] = d['agn_frac_95']
                 c12_params.loc[n, 'agn_frac_flag'] = -1
-                c12_params.loc[n, 'lir_sf'] = d['lir_sf_05']
-                c12_params.loc[n, 'lir_sf_flag'] = 1
+                c12_params.loc[n, 'lir_sf'] = d['lir_sf']
+                c12_params.loc[n, 'lir_sf_err_low'] = d['lir_sf_err_down']
+                c12_params.loc[n, 'lir_sf_err_high'] = d['lir_sf_err_up']
+                c12_params.loc[n, 'lir_sf_flag'] = 0
                                 
                 if np.isfinite(d['lir_agn_95']):
                     
@@ -104,11 +106,13 @@ for n in names_sorted:
 
             else:
                 
-                c12_params.loc[n, 'agn_frac'] = 0.05
+                c12_params.loc[n, 'agn_frac'] = 0.01
                 c12_params.loc[n, 'agn_frac_flag'] = -1
-                c12_params.loc[n, 'lir_sf'] = d['lir_total'] + np.log10(0.95)
-                c12_params.loc[n, 'lir_sf_flag'] = 1
-                c12_params.loc[n, 'lir_agn'] = d['lir_total'] + np.log10(0.05)
+                c12_params.loc[n, 'lir_sf'] = d['lir_sf']
+                c12_params.loc[n, 'lir_sf_err_low'] = d['lir_sf_err_down']
+                c12_params.loc[n, 'lir_sf_err_high'] = d['lir_sf_err_up']
+                c12_params.loc[n, 'lir_sf_flag'] = 0
+                c12_params.loc[n, 'lir_agn'] = d['lir_total'] + np.log10(0.01)
                 c12_params.loc[n, 'lir_agn_flag'] = -1
                 
         elif (d['agn_frac'] > 0.95):

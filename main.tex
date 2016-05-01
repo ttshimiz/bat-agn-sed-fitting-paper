@@ -352,8 +352,16 @@ A probability of 0.20 between the sSFR distributions of the HRS and \herschel-BA
 
 Our survival analysis two-sample tests confirm what our previous visual and basic statistical analysis suggested. The \mdust/\mstar{} and sSFR distributions of AGN host galaxies are significantly different than those of normal star-forming galaxies while the \tdust{} distributions are identical after accounting for \mstar. 
 
+\subsection{IR Colors as a Predictor of $f_{\rm AGN}$}
+
+\begin{figure*}
+\includegraphics{figures/agnfrac_vs_flux_ratio}
+\caption{\label{fig:agnfrac_vs_flux_ratio}}
+\end{figure*}
+
 \subsection{Comparison between Type 1s and 2}
 
+%%%%%%%%%%%%%%%%%% FIGURES COMPARING TYPE 1s and TYPE 2s %%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
 \includegraphics[width=\textwidth]{figures/agn_type_comparison}
 \caption{Comparison of $M_{\rm dust}$, $T_{\rm dust}$, SFR, MIR powerlaw slope ($\alpha$), turnover wavelength ($\lambda_{\rm c}$), and $L_{\rm AGN,IR}$ between the \herschel-BAT AGN Type 1 (blue) and Type 2 (red) samples. Type 1 and Type 2 AGN have identical distributions in all properties and parameters except for $\alpha$ and $L_{\rm AGN,IR}$. A color version of this figure is available in the online publication. \label{fig:agn_type_comp}}
@@ -364,14 +372,106 @@ Our survival analysis two-sample tests confirm what our previous visual and basi
 \caption{\label{fig:frac_agn_seyferts}}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%% TABLE: Comparison of Types 1 and Types 2%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table*}
+\centering
+\begin{threeparttable}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
+\caption{Comparison of Star-Forming and SED Properties of Type 1 and Type 2 AGN \label{tab:agn_type_comp}}
+\begin{tabular}{lccccccccc}
+\toprule 
+ & $\log$ \mdust & \tdust & $\log$ SFR & $\alpha$ & $\lambda_{\rm c}$ & $\log\,L_{\rm AGN,IR}$ \\
+ & [\msun]  & [K]  &  [\msun{} yr$^{-1}$] &    &  \micron & [ergs s${^-1}$]\\
+\midrule
+Type 1 & 7.08$\pm$0.08 & 23.2$\pm$0.4 & -0.01$\pm$0.07 & 1.46$\pm$0.04 & 48.7$\pm$0.8 & 10.00$\pm$0.06 \\ 
+Type 2 & 7.33$\pm$0.05 & 23.5$\pm$0.4 & 0.21$\pm$0.04 & 1.73$\pm$0.04 & 49.4$\pm$0.7 & 9.71$\pm$0.07 \\
+Peto-Prentice Probability & 0.04 & 0.73 & 0.02 & $2.6\times10^{-5}$ & 0.73 & 0.003 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item blah blah blah
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this Section, we compare the properties of unabsorbed (Type 1) vs absorbed (Type 2) AGN. According to the unified model \citep{Antonucci:1993os,Urry:1995il}, Type 1 and Type 2 AGN are two manifestations of the same object. The only difference between the two is the viewing angle towards the central AGN. Due to a dusty structure, lines of sight at low angle are obscured causing the broad line region to be hidden while high angle lines of sight allow an unobstructed view of both the accretion disk and broad line region. Type 1 AGN therefore exhibit broad emission lines and low hydrogen absorption while the opposite is true of Type 2 AGN. 
+
+Because the differences in AGN types is related to the central obscuring structure, global star-forming properties of Type 1 and Type 2 AGN should be the same. In the top row of Figure~\ref{fig:agn_type_comp}, we compare the distribution of \mdust, \tdust, and SFR between Type 1s and Type 2s. Visually the distributions look identical. However, after including sources with upper limits on \mdust{} and SFR, we find differences between Type 1s and Type 2s. In Table~\ref{tab:agn_type_comp}, we show the average of these properties as well as the Peto-Prentice probability that Type 1s and Type 2s are drawn from the same distribution. The only property with a probability greater than 0.05 is \tdust, meaning that the cold dust temperature associated with star formation is the same in Type 1s and Type 2s. 
+
+Surprisingly, however, are the results of the Peto-Prentice test for \mdust{} and SFR. While Figure~\ref{agn_type_comp} shows Type 1s and Type 2s having identical distributions, survival analysis indicates that Type 1s are skewed more strongly towards galaxies with lower \mdust{} and SFR. Type 1s have 0.25 dex lower average \mdust and 0.22 dex lower average SFR. This difference is caused by the population of sources with only upper limits on both \mdust{} and SFR. 25/35 of the AGN with upper limits are classified as Type 1. Further, the actual values of the upper limits for the Type 1 AGN compared to Type 2 AGN. Of the 25 Type 1 AGN with upper limits, 5 have $\log\,$\mdust $< 6.0$ and $\log\,$SFR $<-1.0$ compared to none of the Type 2 AGN. 
+
+These Type 1 AGN with little to no dust and no recent star formation seem to form a separate sample away from the main population of AGN host galaxies. If we restrict the samples to only those sources with $\log\,$\mdust $> 6.0$ and $\log\,$SFR $>-1.0$, the Peto-Prentice probability changes to 0.25 for \mdust{} and 0.09 for the SFR. The new probabilities are both above the standard threshold of 0.05, indicating they originate from the same parent population. These anomalous Type 1 AGN could be an interesting subsample for future study, but our main result is that for the bulk of Type 1 and Type 2 AGN, their host galaxies display the same star-forming properties in agreement with the unified model.
+
+Regarding the AGN related properties of the IR SED, we see differences between Type 1 and Type 2 AGN even before including sources with upper limits. Both the Type 1 $\alpha$ and $L_{\rm AGN,IR}$ distributions are visually different from Type 2 AGN with Type 2 AGN having higher $\alpha$ and lower $L_{\rm AGN,IR}$. Survival analysis and calculation of their means confirm the visual differences as shown in Table~\ref{tab:agn_type_comp}. Type 1 AGN have an average $\alpha$ of 1.46 compared to 1.73 for Type AGN and an average $\log\,L_{\rm AGN,IR}$ of 10.00 compared to 9.71. 
+
+Steeper power-law slopes for Type 2 AGN has been observed previously in studies of AGN using low resolution \textit{Spitzer}/IRS spectra. Both \citet{Buchanan:2006cq} and \citet{Wu:2009pt} reported flatter MIR spectral indices for Type 1 AGN. Explanations for the differences included a greater contribution of a starburst component for Type 2 AGN which show red MIR spectra \citet{Brandl:2006kx}. The difference in slopes can also be explained by a changing opacity from shorter to longer wavelengths. If the optical depth increases with wavelength and shorter wavelength emission originates near the inner edge of the ``torus'', then Type 2 AGN would also show steeper MIR slopes. At the present time we cannot make strong conclusions as to which is the correct explanation. We plan to analyze this more closely in a future publication which will combine the \herschel{} photometry with \textit{Spitzer}/IRS spectra to better constrain the starburst component of MIR spectra. 
+
+The difference in $\log\,L_{\rm AGN,IR}$ between Type 1 and Type 2 AGN can be explained by the different X-ray luminosity distribution of Type 1 and Type 2 \herschel-BAT AGN. It's been well documented  \citep[e.g.][]{Burlon:2011pi, Melendez:2014yu} that within the \swift/BAT AGN sample, Type 2 AGN are more prevalent at lower luminosities compared to Type 1 AGN. Given the strong correlation between the X-ray and IR luminosity of AGN, Type 2s should exhibit lower $\log\,L_{\rm AGN,IR}$.
+
+The combination of lower $L_{\rm AGN,IR}$ and relatively similar SFR distributions produces a strong difference in the $f_{\rm AGN}$ distribution for Type 2s and Type 1s as shown in Figure~\ref{fig:frac_agn_seyferts}. Type 2s have much lower $f_{\rm AGN}$ compared to Type 1 AGN which agrees with \citet{Melendez:2008pd} who found that Type 2s have colder 25/60 \micron{} colors. Our main finding, though, is that the lower $f_{\rm AGN}$ is not indicative of larger SFRs in Type 2 AGN but rather lower AGN luminosities. 
+
+\subsection{The correlation between nuclear activity and star formation}
+Our main goal in this Paper is to assess the observational evidence for a connection between AGN and star formation in their host galaxy. To accomplish this, we analyze the relationship between the AGN strength and SFR. We assume the 14--195 keV luminosity ($L_{\rm 14--195 keV}$) linearly probes the bolometric AGN luminosity as shown by \citet{Winter:2012yq}. The 8--1000 \micron{} luminosity, after subtracting the contribution from AGN heated dust, measures the SFR using Equation~\ref{eq:sfr_ir}.
+
+Figure~\ref{fig:sfr_lbat_correlation} plots the correlation between the SFR and $L_{\rm 14-195 keV}$ for the \herschel-BAT AGN. As before, blue colors indicate Type 1 AGN and red colors indicate Type 2 AGN. To test for a correlation, we used a \textsc{python} implementation of \textsc{linmix\_err}\footnote{\url{https://github.com/jmeyers314/linmix}} \citep{Kelly:2007lr}, a Bayesian method for linear regression that incorporates errors in both independent and dependent variables as well as non-detections. \citet{Kelly:2007lr} showed through simulations that \textsc{linmix\_err} outperforms other popular linear regression methods such as ordinary least squares and \textsc{fit\_exy}. \textsc{linmix\_err} outputs posterior probability distributions for the slope, intercept, and intrinsic scatter between the two variables as well as the correlation coefficient. The explicit model we assume is 
+
+\begin{equation}
+\log {\rm SFR} = m\log L_{\rm 14-195\,keV} + b + \epsilon_{\rm int}
+\end{equation}
+
+\noindent where $m$ is slope, $b$ is the intercept and $\epsilon_{\rm int}$ represents an intrinsic scatter between the two variables and is assumed to be a Gaussian random variable with mean 0 and standard deviation of $\sigma_{\rm int}$. 
+
+%%%%%%%%%%%%%%%%%%%%%%% FIGURE: Correlation Between LBAT and SFR %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
 \includegraphics{figures/sfr_lbat_correlation}
-\caption{\label{fig:sfr_lbat_correlation}}
+\caption{Correlation between AGN luminosity as probed by $L_{\rm 14-195\,keV}$ and SFR. Error bars on $L_{\rm14-195\,keV}$ correspond to the 90 percentile confidence interval from the 58 month BAT catalog. Error bars on SFR correspond to the 68 percentile confidence interval from our SED fitting. Downward pointing triangles plot 95 percent confidence upper limits on the SFR. Blue colors represent Type 1 AGN while red colors represent Type 2 AGN. The solid lines with shading plot the best fit lines and 95 percentile confidence interval from \textsc{linmix\_err}. No strong relationship exists between the AGN strength and global star formation. A color version of this figure is available in the online publication.\label{fig:sfr_lbat_correlation}}
 \end{figure*}
+
+\begin{figure*}
+\includegraphics{figures/sfr_lbat_correlation_split_main_seqeunce}
+\caption{\label{fig:sfr_lbat_correlation_ms}}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+To see if there are differences in the relationship between Type 1s and Type 2s, we tested the correlation using the whole \herschel-BAT sample, only Type 1s, and only Type 2s. The black line and shaded region represents the best-fit line and 95 percent confidence interval for the whole sample while the blue and red lines and shaded regions represent the relationship for Type 1s and Type 2s respectively. In Table~\ref{tab:lbat_sfr_correlation}, we outline the best fit slope, intrinsic scatter, and correlation coefficient and their uncertainties, determined by calculating the median and standard deviation of the posterior probability distributions. 
+
+None of the three samples show a strong correlation between the SFR and 14--195 keV luminosity. With slopes and correlation coefficients between 0.25 and 0.35, even though both are inconsistent with a slope and correlation coefficient of 0, the evidence for a connection between the strength of the AGN and global star formation is quite weak. 
+
+Type 1 AGN do show a slightly stronger correlation than the whole sample and Type 2 AGN which is consistent with our findings in \citet{Melendez:2014yu} and \citet{Shimizu:2016qy} using the monochromatic \herschel{} luminosities. However, the significance of the differences are not more than 2$\sigma$ therefore we must conclude that Type 1 AGN show the same relationship between SFR and 14--195 keV luminosity.
+
+%%%%%%%%%%%%%%%%%%%%%%% TABLE: AGN-SFR Connection%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}
+\begin{threeparttable}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
+\caption{Linear Regression Between $L_{\rm14-195\,keV}$ and SFR \label{tab:lbat_sfr_correlation}}
+\begin{tabular}{lcccc}
+\toprule 
+ Sample & $m$ & $b$  & $\sigma_{\rm int}$ & $\rho$  \\
+\midrule
+All        & $0.25\pm0.05$ & $-10.7\pm2.3$ & $0.25\pm0.02$ & $0.28\pm0.06$ \\
+Type 1 &  $0.34\pm0.09$ & $-14.7\pm3.9$ & $0.24\pm0.04$ & $0.35\pm0.09$ \\ 
+Type 2 &  $0.25\pm0.07$ & $-10.4\pm3.1$ & $0.26\pm0.03$ & $0.27\pm0.08$ \\
+NMS      & $0.27\pm0.09$ & $-11.3\pm3.8$ & $0.16\pm0.03$ & $0.38\pm0.12$\\
+BMS   & $0.43\pm0.11$ & $-18.9\pm5.0$ & $0.19\pm0.05$ & $0.52\pm0.13$ \\
+\bottomrule
+\end{tabular}
+\end{threeparttable}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+As shown in \citet{Shimizu:2015xo}, the \herschel-BAT AGN span a large range in $\Delta\log$(SFR) which we defined as the logarithmic difference between the observed SFR and the SFR expected if the source lived on the star-forming main sequence with its stellar mass. Since AGN don't exclusively live either on the main sequence or off of it, its possible the large scatter we observe in Figure~\ref{fig:sfr_lbat_correlation} is due to the correlation changing as a function $\Delta\log$(SFR). 
+
+To investigate this possibility, we split the sample up into galaxies ``Near the Main Sequence'' (NMS) and ``Below the Main Sequence'' (BMS). NMS sources correspond to $|\Delta\log$(SFR)$|< 0.64$ dex. These are galaxies that are within 2$\sigma$ of our measured main sequence in \citet{Shimizu:2015xo}. BMS galaxies have $\Delta\log$(SFR)$< -0.64$ dex and are more than 2$\sigma$ below the main sequence. 
+
+In Figure~\ref{fig:sfr_lbat_correlation_ms} we plot the split sample with NMS galaxies in blue and BMS galaxies in red. The total number of galaxies in both samples is significantly reduced (119 compared to 313 for the entire sample) because only a subsample of the whole \herschel-BAT AGN sample have reliable stellar masses. Using the same method as before, we calculated a best fit linear relation for both the NMS and BMS subsamples. The parameters are listed in Table~\ref{tab:lbat_sfr_correlation} and we plot the best fit line with a 95 percent confidence interval as blue and red lines with shading in Figure~\ref{fig:sfr_lbat_correlation_ms}. For reference, we also plot the relationship measured using the whole sample as a black line with grey shading. 
+
+The NMS sample doesn't show much change compared to the relationship measured using the entire sample with only a 0.02 change in the slope and 0.1 change in the correlation coefficient. There is a slight increase in the normalization as expected since we are using the upper half of the sample. For the BMS sample however, the slope has increased significantly by 0.18 and the correlation coefficient increased by 0.24. This is a possible indication that the strength of the relationship between AGN activity and star formation increases as galaxies become more quenched. Confirming this intriguing possibility will require more AGN at both low and high luminosity with reliable masses which we are lacking in our sample. At the very least it seems plausible that the large scatter in the overall SFR-$L_{14-195\,keV}$ can be explained by the differing locations in comparison to the star forming main sequence.
 
 \section{Discussion}
 \subsection{Comparison with previous studies}
-\subsection{Is there a connection between AGN activity and star formation?}
 
 \section{Conclusions}
 
