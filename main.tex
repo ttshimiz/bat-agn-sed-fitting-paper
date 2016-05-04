@@ -400,8 +400,22 @@ $F_{1}/F_{2}$ & $m$ & $b$  & $\sigma_{\rm int}$ & $\rho$  \\
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsection{The AGN contribution to the 70 and 160 \micron emission}
+Many studies examining the relationship between nuclear activity and star formation rely on single monochromatic luminosities as an indicator of star formation \cite[e.g.][]{Netzer:2007ve, Netzer:2009lr, Rosario:2012fr, Zakamska:2016lr}. The most widely used indicator has been the 60 \micron{} luminosity given its availability from the all-sky \textit{IRAS} survey. 
 
-We fit a linear relationship between the different flux ratios and $f_{\rm AGN}$ using all sources with $f_{\rm AGN} > 0.20$. 
+With our \herschel-BAT sample and SED modeling we can test how often and at what level AGN emission contributes to different wavelength bands. We test the AGN contribution to the 70 \micron{} emission. Based on visual inspection of all of the SED fits, we found this waveband is the only \herschel{} band with a noticeable AGN contribution. All other longer wavelength bands were dominated by the MBB component. Further this band is very close to the \textit{IRAS} 60 \micron{} band that is used often as an indicator of star-formation in AGN host galaxies.
+
+To determine the AGN contribution to the 70 \micron{} emission, we first estimated the PL component associated with star formation. We assumed the shape of the star-forming PL component followed the average power law slope ($\alpha=0.0$ and turnover wavelength ($\lambda_{\rm c} = 50$ \micron) from the HRS sample. We then adjusted the normalization such that the integrated luminosity would equal $1/3L_{\rm MBB}$. We combined the estimated star forming PL component with the measured MBB component to form each source's total star-forming component. The 70 \micron{} AGN contribution was then calculated as the excess 70 \micron{} emission leftover after subtracting the star-forming contribution from the total 70 \micron{} emission from the best-fit SED. We denote the fraction contributed by the AGN as $f_{\rm AGN, 70}$.
+
+Figure~\ref{fig:70um_agn_contribution}, \textit{left} shows the distribution of $f_{\rm AGN, 70}$. We find that for 45 per cent of the sample,  $f_{\rm AGN, 70} < 0.2$ but for 30 per cent of the sample $f_{\rm AGN, 70} < 0.5$. Using the 70 \micron{} luminosity as a single SFR indicator would overestimate values by at least a factor of 2 for almost one-third of an AGN sample. 
+
+In the right panel of Figure~\ref{fig:70um_agn_contribution} we show $f_{\rm AGN, 70}$ as a function of the 14--195 keV luminosity. The grey points indicate the individual points while the blue points with error bars are binned averages with a 68 per cent confidence interval. At low AGN luminosity, it is clear we suffer from incompleteness indicated by the low number of grey points and large uncertainties on the binned points. At high AGN luminosity ($\log\,L_{\rm 14-195\,keV} > 43.0$), $f_{\rm AGN, 70}$ increases monotonically as expected. As the X-ray luminosity increases, the AGN IR component should increase such that more of the 70 \micron{} emission is due to the AGN. However, there is an incredible amount of scatter especially at high AGN luminosity where $f_{\rm AGN, 70}$ ranges almost uniformly between 0 and 1. $f_{\rm AGN, 70}$ is a function of not only the AGN IR component but also the star-forming component and while at high AGN luminosity it is more likely to find galaxies with high $f_{\rm AGN, 70}$, its still just as likely to find a galaxy with enough star formation to overwhelm any AGN contribution.
+
+Our main conclusion from this section, though, is to be careful when using monochromatic luminosities as an indicator of the SFR, especially near 70 \micron. At longer wavelengths, we find single luminosities are quite reliable in regards to the AGN contribution.
+
+\begin{figure*}
+\includegraphics{figures/pacs_AGN_contribution}
+\caption{\label{fig:70um_agn_contribution}}
 \end{figure*}
 
 
