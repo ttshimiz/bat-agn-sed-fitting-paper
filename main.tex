@@ -358,20 +358,51 @@ A probability of 0.20 between the sSFR distributions of the HRS and \herschel-BA
 
 Our survival analysis two-sample tests confirm what our previous visual and basic statistical analysis suggested. The \mdust/\mstar{} and sSFR distributions of AGN host galaxies are significantly different than those of normal star-forming galaxies while the \tdust{} distributions are identical after accounting for \mstar. 
 
-\subsection{IR Colors as a Predictor of $f_{\rm AGN}$}
+\subsection{IR colors as a predictor of $f_{\rm AGN}$}
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figures/agnfrac_vs_flux_ratio}
 \caption{\label{fig:agnfrac_vs_flux_ratio}}
 \end{figure*}
 
-We utilize our broad coverage of the IR SED for AGN host galaxies to test the viability of different IR colors for predicting the AGN IR luminosity fraction (i.e. $f_{\rm AGN}$). For large surveys and/or high redshift studies, coverage from 12--500 \micron{} might not be possible especially given the lack of a FIR telescope in the near future as of this writing. 
+We utilize our broad coverage of the IR SED for AGN host galaxies to test the viability of different IR colors for predicting the AGN IR luminosity fraction (i.e. $f_{\rm AGN}$). For large surveys and/or high redshift studies, coverage from 12--500 \micron{} might not be available or possible.
 
-In Figure~\ref{fig:agnfrac_vs_flux_ratio}, we plot six MIR/FIR flux ratios (12/70, 12/160, 12/250, 22/70, 22/160, 22/250) against the measured $f_{\rm AGN}$ for the \herschel-BAT AGN (blue). For comparison, we also plot the KINGFISH and HRS galaxies (red). The $f_{\rm AGN}$ for the non-AGN galaxies are calculated the same way as for the \herschel-BAT AGN even though the KINGFISH and HRS samples contain few sources with known AGN. This provides limits on how well these methods can measure the AGN fraction and will provide estimates on contamination by non-AGN galaxies when using different cutoffs. We remove from the HRS sample four sources (NGC 3227, NGC 4388, NGC 4941, and NGC 5273) that are known AGN and are already included in the \herschel-BAT AGN sample. Because the HRS sample were not measured at 70 \micron, we only plot the KINGFISH galaxies. Further, the KINGFISH galaxies do not contain measurements specifically at 12 and 22 \micron, but rather at 8 and 24. However, we do not expect large differences given the wide bandwidths for the filters. 
+In Figure~\ref{fig:agnfrac_vs_flux_ratio}, we plot six MIR/FIR flux ratios (12/70, 12/160, 12/250, 22/70, 22/160, 22/250) against the measured $f_{\rm AGN}$ for the \herschel-BAT AGN. The flux ratios are all in log units to better visualize the relationships and sources with upper or lower limits on $f_{\rm AGN}$ are not shown for clarity. We fit a linear model between each flux ratio and $f_{\rm AGN}$ with the following form
 
-Immediately clear from Figure~\ref{fig:agnfrac_vs_flux_ratio} is the limitation on our measurement of $f_{\rm AGN}$. Even though the HRS and KINGFISH galaxies do not have AGN, our method still can measure an $f_{\rm AGN}$ up to 0.20.  The uncertainty on the correction factor we have used to convert the component luminosities ($L_{\rm MBB}$ and $L_{\rm PL}$) into $L_{\rm AGN,\,IR}$ causes the spread in $f_{\rm AGN}$ and allows it to reach as high as 0.20 and as low as -0.20. This dispersion puts a firm lower limit on our ability to measure $f_{\rm AGN}$. For the rest of this work we assume all \herschel-BAT AGN with $f_{\rm AGN} < 0.20$ to be upper limits. The uncertainty of 0.20 is also comparable to the uncertainty we measured when comparing the values attained from the different models.
+\begin{equation}
+f_{\rm AGN} = m\log(F_{1}/F_{2}) + b + \epsilon_{\rm int}
+\end{equation}
+
+\noindent where $F_{1}/F_{2}$ represents each flux ratio. To calculate the best fitting parameters, we used a \textsc{python} implementation of \textsc{linmix\_err}\footnote{\url{https://github.com/jmeyers314/linmix}} \citep{Kelly:2007lr}, a Bayesian method for linear regression that incorporates errors in both independent and dependent variables as well as non-detections. \citet{Kelly:2007lr} showed through simulations that \textsc{linmix\_err} outperforms other popular linear regression methods such as ordinary least squares and \textsc{fit\_exy}. \textsc{linmix\_err} outputs marginalized posterior probability distributions for the slope, intercept, and intrinsic scatter between the two variables as well as the correlation coefficient. Our reported best fit parameters will be the median of the marginalized posterior probability distribution with an uncertainty equal to the standard deviation.
+
+Table~\ref{tab:flux_ratio_fagn_linreg} outlines the best fit parameters for each relationship. While each flux ratio is highly correlated with $f_{\rm AGN}$ (all $\rho > 0.75$), the best predictor of $f_{\rm AGN}$ is the 22/160 ratio with, $\rho = 0.97$. However, both flux ratios involving the 160 \micron{} flux seem to perform equally well with similar slopes, small intrinsic scatter and high $\rho$. The worst predictors are the flux ratios involving the 250 \micron{} flux with $\rho$ only equal to 0.75. 
+
+The ratios involving the 160 \micron{} flux work better as a predictor because the AGN component of the IR SED rarely contributes any emission to the total flux of the galaxy compared to the star-forming component. While this is also true of the 250 \micron{} flux, the 160 \micron{} flux is nearer to the peak of the MBB component, thus, more closely related to the total luminosity. The 250 \micron{} flux is located on the Rayleigh Jeans side of the blackbody and varies much more strongly as a function of the dust temperature due to the rapidly declining shape of the SED long-ward of the peak. Even though the total 70 \micron{} emission can have a large fraction of its emission contributed by the AGN (see next section), it still remains a decent predictor of $f_{\rm AGN}$ with $\rho = 0.82$ and $\rho=0.89$ for the 12/70 and 22/70 \micron{} ratios. 
+
+%%%%%%%%%%%%%%%%%% TABLE OF LINEAR REGRESSION B/W FLUX RATIOS AND FAGN %%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}
+\begin{threeparttable}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
+\caption{Linear Regression Between Flux Ratios and $f_{\rm AGN}$\label{tab:flux_ratio_fagn_linreg}}
+\begin{tabular}{lcccc}
+\toprule 
+$F_{1}/F_{2}$ & $m$ & $b$  & $\sigma_{\rm int}$ & $\rho$  \\
+\midrule
+12/70      & $0.51\pm0.03$ & $0.96\pm0.03$ & $0.017\pm0.002$ & $0.82\pm0.03$ \\
+12/160    & $0.46\pm0.02$ & $0.97\pm0.02$ & $0.004\pm0.002$ & $0.95\pm0.02$ \\
+12/250    & $0.33\pm0.03$ & $0.77\pm0.02$ & $0.017\pm0.003$ & $0.75\pm0.04$ \\
+22/70      & $0.64\pm0.03$ & $0.82\pm0.02$ & $0.011\pm0.002$ & $0.89\pm0.02$ \\
+22/160    & $0.46\pm0.02$ & $0.80\pm0.02$ & $0.002\pm0.001$ & $0.97\pm0.02$ \\
+22/250    & $0.32\pm0.03$ & $0.64\pm0.02$ & $0.017\pm0.003$ & $0.75\pm0.05$ \\
+\bottomrule
+\end{tabular}
+\end{threeparttable}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 We fit a linear relationship between the different flux ratios and $f_{\rm AGN}$ using all sources with $f_{\rm AGN} > 0.20$. 
+\end{figure*}
 
 
 \subsection{Comparison between Type 1s and 2}
@@ -431,7 +462,7 @@ The combination of lower $L_{\rm AGN,IR}$ and relatively similar SFR distributio
 \subsection{The correlation between nuclear activity and star formation}
 Our main goal in this Paper is to assess the observational evidence for a connection between AGN and star formation in their host galaxy. To accomplish this, we analyze the relationship between the AGN strength and SFR. We assume the 14--195 keV luminosity ($L_{\rm 14--195 keV}$) linearly probes the bolometric AGN luminosity as shown by \citet{Winter:2012yq}. The 8--1000 \micron{} luminosity, after subtracting the contribution from AGN heated dust, measures the SFR using Equation~\ref{eq:sfr_ir}.
 
-Figure~\ref{fig:sfr_lbat_correlation} plots the correlation between the SFR and $L_{\rm 14-195 keV}$ for the \herschel-BAT AGN. As before, blue colors indicate Type 1 AGN and red colors indicate Type 2 AGN. To test for a correlation, we used a \textsc{python} implementation of \textsc{linmix\_err}\footnote{\url{https://github.com/jmeyers314/linmix}} \citep{Kelly:2007lr}, a Bayesian method for linear regression that incorporates errors in both independent and dependent variables as well as non-detections. \citet{Kelly:2007lr} showed through simulations that \textsc{linmix\_err} outperforms other popular linear regression methods such as ordinary least squares and \textsc{fit\_exy}. \textsc{linmix\_err} outputs posterior probability distributions for the slope, intercept, and intrinsic scatter between the two variables as well as the correlation coefficient. The explicit model we assume is 
+Figure~\ref{fig:sfr_lbat_correlation} plots the correlation between the SFR and $L_{\rm 14-195 keV}$ for the \herschel-BAT AGN. As before, blue colors indicate Type 1 AGN and red colors indicate Type 2 AGN.  The explicit model we assume is 
 
 \begin{equation}
 \log {\rm SFR} = m\log L_{\rm 14-195\,keV} + b + \epsilon_{\rm int}
