@@ -1,0 +1,53 @@
+These files provide access to output for the simple model connection
+star formation, AGN activity, and AGN variability described in Hickox
+et al. (2014); (http://arxiv.org/abs/1306.3218)
+
+
+--------------------
+R. Hickox, 18 December 2013
+With questions please contact me at ryan.c.hickox@dartmouth.edu
+
+The output files are for different model accretion rate distributions: 
+
+fiducial: the fiducial Schechter function model in the paper (red curve in Fig. 2)
+schechter: the "observed" Schechter function (power law with exponential cutoff) curve (orange dashed curve)
+novak: the Novak et al. (2011) model output (blue dotted curve)
+lognormal: a lognormal distribution with width 0.4 dex (dark green dot-dashed curve)
+lightbulb: a lognormal distribution with width 0.3 dex and duty cyle 0.01 (light green dot-dashed curve)
+
+For each of these distributions, we have a .sav file with the model output (h14_sfagn_*model*.sav)
+
+
+
+------------------------
+
+We have included two IDL programs to parse this output
+
+**h14_distribution.pro: for an input range of redshifts and
+luminosities, either L_AGN (input_type=0) or L_IR (input_type = 1)
+this outputs the distribution in the other luminosity. The output is
+in volume density (Mpc^-3 dex^1), although the normalization of this should be treated with caution.
+
+
+EXAMPLE: 
+
+To obtain and plot the distribution in L_IR for AGN with 10^45 < L_AGN < 10^46 [erg/s] and in the redshift range 0.5 to 1 for the fiducial model and to print to standard output
+
+h14_distribution,[0.5,1],[45.,46.],loglum_out,dens_out,input_type=0,model="fiducial",/print
+
+plot,loglum_out,dens_out
+
+
+**h14_lir_average.pro: this outputs the average IR luminosity as a function
+of AGN luminosity, for a specified range in redshift (as in Figure 3b)
+
+To obtain and plot the average L_IR as a function of L_AGN in the redshift range 1. to 1.25  for the "schechter" model and do not print to standard output
+
+EXAMPLE:
+
+h14_lir_average,[1.,1.25],model='schechter',loglagn_out,loglir_ave_out
+
+plot,loglagn_out,loglir_ave_out
+
+
+
