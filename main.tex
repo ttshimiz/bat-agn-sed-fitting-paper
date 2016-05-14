@@ -155,11 +155,32 @@ Various miscellaneous properties about each KINGFISH galaxy, including \mstar, w
 
 %An advantage of the KINGFISH sample is the availability of \textit{Spitzer}/IRS low-resolution spectra which were analyzed by \citet{Smith:2007lr}. The MIR emission feature measurements will be important for comparing their fluxes and luminosities to the FIR SED measured properties and assessing the effect of the AGN. 
 
+\section{The IR SEDs of $z=0$ AGN}
+Before comparing and fitting, we begin with a qualitative look at the SEDs of the 313 AGN. Figure~\ref{fig:seds} shows the 3--500 \micron{} SED for every source in the \herschel-BAT sample. We display the W1 and W2 photometry for completeness even though these are not used in the SED fitting. Immediately noticeable is the varied SED shapes. Some of the SEDs (e.g. 2MASX J07595347+2323241, Cen A, ESO 005-G004, NGC 4051, NGC 4138, NGC 6814) feature a very prominent FIR bump that is recognizable in nearly all star-forming galaxies and is indicative of thermally heated dust from recently formed massive stars as well as cirrus emission heated by an older population. The general shape is usually well fit by a blackbody modified by a frequency dependent optical depth \citep[e.g.][]{Calzetti:2000fk, Smith:2012fj, Bianchi:2013jk, Symeonidis:2013fe, Cortese:2014qq}.
 
+These star formation dominated objects represent one extreme end of the shapes we observe. The other extreme are SEDs whose shapes seem to peak short-ward of 70 \micron{} and display rapidly falling emission with increasing wavelength. Examples include 2MASX J06561197-4919499, 2MASX J210990996-0940147, ESO 103-035, IC 4329A, MCG -05-23-016, and Mrk 335. Emission in the MIR dominates these SEDs and is likely associated with hotter dust heated by the AGN. MIR colors are commonly used to select AGN samples because they display strong red colors compared to non-AGN galaxies \citep{Lacy:2004uq, Donley:2012qy, Stern:2012mz} due to the dust in the obscuring torus heated by the optical and UV emission form the accretion disk. Monochromatic MIR luminosities, especially for sources dominated by an unresolved central component, show near linear correlations with the X-ray luminosity \citep[e.g][]{Lutz:2004fj, Gandhi:2009kx, Asmus:2012qy} providing more evidence that much of the MIR in AGN host galaxies is associated with the AGN. 
 
-\section{Results}
-We fit the \herschel-BAT sample using all three models. Best fit parameters for the C12, DecompIR, and D14 models are provided in Tables~\ref{tab:c12_params}, \ref{tab:decompir_params}, and \ref{tab:d14_params}. We also fit the HRS and KINGFISH samples using the C12 model to compare the dust and star-forming properties of non-AGN and AGN host galaxies. 
+The remaining \herschel-BAT AGN display SEDs somewhere in between MIR-dominated and FIR-dominated as a result of competing contributions between the AGN and star formation. The varied shapes of the SED emphasizes the need for SED decomposition to accurately determine the IR luminosity associated with either star formation or the AGN. 
 
+If star formation suppression occurs at high AGN luminosity then we expect the IR SEDs for the most X-ray luminous sources to resemble the MIR-dominated SEDs just as \citet{Barger:2015ly} observed. To test this, we binned the SEDs by logarithmic 14--195 keV luminosity. Five bins ( $\log\,L_{\rm 14-195\,keV} > 42.5$, $\log\,L_{\rm 14-195\,keV} = 42.5-43.0$, $43.0-43.5$, $43.5-44.0$, and $\log\,L_{\rm 14-195\,keV} > 44.0$) were chosen with 0.5 dex widths to ensure enough sources occupied each one. The number of sources in each bin is 23, 39, 94, 116, and 34. 
+
+We then calculated the median normalized flux within each luminosity bin where we have normalized the SED using either the 12 \micron{} or 160 \micron{} flux. We used the ASURV \citep{Feigelson:1985lr} package which applies the principles of survival analysis to astronomical data. Information contained in the upper limits can be then included in the measurement of statistical properties of samples without biasing results towards brighter sources that are more likely to be detected. Specifically, ASURV calculates the non-parametric Kaplan-Meier product-limit (KMPL) estimator for a sample distribution. The KMPL estimator is an estimate of the survival function which is simply 1-CDF (cumulative distribution function). Using the KMPL, we calculate for each waveband the median normalized flux ratio and estimate the uncertainty using the 16th and 84th percentiles. 
+
+Figure~\ref{fig:avg_sed} shows the average IR SED for sources in each X-ray luminosity bin. The SEDs in the left panel are normalized to the 12 \micron{} flux and the SEDs in the right panel are normalized to the 160 \micron{} flux. The reason for doing this process twice is to look at the change in the SED with $L_{\rm 14-195\,keV}$ when it is normalized to a waveband that is highly correlated with $L_{\rm 14-195\,keV}$ and a waveband that is more correlated with the SFR.
+
+For 12 \micron{} flux normalized SEDs, the FIR wavebands change the most compared to the MIR ones. There is more and more relative emission in the MIR with increasing AGN luminosity, as expected. Because we have normalized by 12 \micron{}, which closely follows $L_{\rm 14-195\,keV}$, it is not surprising that for the wavebands more closely related to star formation, the SED decreases. As the AGN luminosity increases, 12 \micron{} will increase along with it, reducing the ratios in the bands not related to the AGN. So while the left panel seems to indicate that at higher AGN luminosities, star formation is being suppressed, it is really the normalization we have used that is causing this effect.
+
+Instead in the right panel, we have normalized the SEDs with the 160 \micron{} flux, which tracks closest to star formation. Now we see as AGN luminosity is increased, there is no longer any change in the FIR wavebands, but large increases in the MIR portion of the SED, indicating the AGN component is becoming more dominant. The effect can also be seen at the very shortest wavelengths, where for the lowest three X-ray luminosity bins, the 3.4/4.6 color is blue similar to non-AGN galaxies, whereas at the highest bins, the 3.4/4.6 color is red indicative of an AGN-dominated SED \citep{Stern:2012mz}. 
+
+Just by inspecting the average SED as a function of X-ray luminosity, it seems the shape is being driven more by an increasing MIR hot dust component. There does not seem to be any indication that star formation is being suppressed at the highest luminosities. However, to definitively test this we need to decompose the SED into star-forming and AGN components to calculate accurate SFRs.
+
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{figures/avg_sed_binned_lx}
+\caption{Average IR SEDs for the \herschel-BAT AGN binned by $L_{\rm 14-195\,keV}$. In the left panel we normalized the SEDs by their 12 \micron{} flux while in the right panel we normalized by 160 \micron{} flux. \label{fig:avg_sed}}
+\end{figure*}
+
+\section{SED Fitting}
 
 %%%%%%%%%%%%%%%%%%%%% TABLE OF C12 PARAMETERS %%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{landscape}
@@ -192,15 +213,68 @@ Name & $\log\,M_{\rm dust}$ &$T_{\rm dust}$ & $\alpha$ & $\lambda_{\rm c}$ & $\l
 %\end{landscape}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Many models and templates exist in the literature to fit the broadband SEDs of galaxies. We chose a model that allowed us to both decompose the SED into star-forming and AGN components as well as provide estimates on the dust temperature and dust mass.
 
-%\begin{figure*}
-%\centering
-%\includegraphics[width=\textwidth]{figures/lsf-vs-lpah}
-%\caption{A color version of this figure is available in the online publication. \label{fig:lsf_vs_lpah}}
-%\end{figure*}
+\subsection{Casey 2012 Model}
+One of the most widely used models for fitting the FIR SED of galaxies is a single modified blackbody (MBB). The simple model consists of a normal, single temperature blackbody that represents isotropic dust emission combined with a frequency dependent opacity given that dust is not a perfect blackbody.In the optically thin limit, the opacity can be approximated as a powerlaw, $\tau_{\nu}=(\nu/\nu_{0})^{\beta}$. The form of the single modified blackbody for the flux density at each frequency is then
 
+\begin{equation}
+S(\nu) \propto \nu^{\beta}B_{\nu}(T_{\mathrm{d}})
+\end{equation}
+
+\noindent where $\beta$ is the spectral emissivity index and $B_{\nu}(T_{\mathrm{d}})$ is the standard Planck blackbody function for an object with temperature $T_{\mathrm{d}}$. This simple model has been shown to fit well the prominent FIR bumps for large samples of star-forming galaxies  and provides estimates of the dust temperature, dust mass, and SFR \cite[e.g.][]{Calzetti:2000fk, Bianchi:2013jk, Cortese:2014qq}.
+
+To calculate the dust mass, we must assume a particular dust absorption coefficient, $\kappa_{0}$ at a particular frequency, $\nu_{0}$. For this work, we assume $\kappa_{0}=0.192\,\mathrm{m^{2}\,kg^{-1}}$ and $\nu_{0}=857\,\mathrm{GHz}$ (i.e. 350 \micron) from \citet{Draine:2003gd}. However, as \citet{Bianchi:2013jk} shows, by assuming a specific $\kappa_{0}$, we must also fix the spectral emissivity index to the value used to measure $\kappa_{0}$. In this work, we fix $\beta=2.0$ to match the spectral emissivity index used by \citet{Draine:2003gd}. The final full form of the single MBB model is then
+
+\begin{equation}\label{eq:greybody}
+S_{\mathrm{MBB}}(\nu) = \frac{M_{\mathrm{d}}\kappa_{0}}{D_{\mathrm{L}}^2}\left(\frac{\nu}{\nu_{0}}\right)^{\beta}\frac{2h\nu^{3}}{c^{2}}\frac{1}{e^{{h\nu/kT_{\mathrm{d}}}}-1}
+\end{equation}
+
+\noindent where $M_{\mathrm{d}}$ is the dust mass, $D_{\mathrm{L}}$ is the luminosity distance, $c$ is the speed of light, $h$ is the Planck constant, and $k$ is the Boltzmann constant. The two free parameters then are $M_{\mathrm{d}}$ and $T_{\mathrm{d}}$, the dust mass and dust temperature respectively.
+
+The simple assumption that dust emission in the IR can be modeled with a single temperature blackbody works well for ``normal'' star-forming galaxies. However for galaxies with large amounts of hot dust either due to a compact starburst or central AGN, this assumption can quickly break down. To account for this hot dust we also fit our sample using the model described in \citet[][hereafter C12]{Casey:2012jl} which is the combination of a single MBB and an exponentially cutoff powerlaw. The C12 model takes the form
+
+\begin{equation}\label{eq:casey}
+S_{\mathrm{C12}}(\nu) = N_{\mathrm{pl}}\left(\frac{\nu}{\nu_{\mathrm{c}}}\right)^{-\alpha}e^{-\nu_{\mathrm{c}}/\nu}S_{\mathrm{MBB}}(\nu)
+\end{equation}
+
+\noindent where $\nu_{\mathrm{c}}$ represents the turnover frequency and $N_{\mathrm{PL}}$ is a normalization constant. C12 illustrated using the \textit{Great Origins All-Sky LIRG Survey} (GOALS) sample that this model provides better estimates of the cold dust temperature, dust mass, and IR luminosity compared to both a single temperature modified blackbody and template libraries.
+
+The C12 model introduces three more free parameters ($N_{\mathrm{PL}}$, $\alpha$, and $\nu_{\mathrm{c}}$), however, within the implementation used by C12, $N_{\mathrm{PL}}$ and $\nu_{\mathrm{c}}$ are tied to the normalization of the modified blackbody component and dust temperature to produce a smoothly varying SED and reduce the number of free parameters from five to three. 
+
+But, after early tests using this initial setup, we found that fixing $N_{\mathrm{PL}}$ and $\nu_{\mathrm{c}}$ as a function of the other parameters produced unreliable fits. This is because AGN SEDs from the MIR to FIR are not as smooth as those seen in (U)LIRGS, likely due to the disconnect between star-formation and AGN heating. Within starbursting galaxies both the hot and cold dust are related through the same heating process, i.e. star formation, while the much of the MIR emission in AGN host galaxies originates from dust around the AGN with no strong connection to global star formation in the galaxy. Therefore, we chose to leave both $N_{\mathrm{PL}}$ and $\nu_{\mathrm{c}}$ as free parameters resulting in a total of five for the entire model.
+
+We describe in detail within Appendix~\ref{sec:sed_bayes} the exact fitting method used to estimate each parameter. In short we use a Bayesian framework with a Monte Carlo Markov Chain (MCMC) to probe the posterior probability distribution function (PDF). We marginalize the resulting posterior PDF for each parameter and use the median as our best-fit value and the 16th and 84th percentiles to define our lower and upper uncertainties, respectively. 
+
+We fit all 313 of the \herschel-BAT AGN using the C12 model and report the best fitting parameters in Table~\ref{tab:c12_params}. We also fit the both the HRS and KINGFISH galaxies using the exact same model so we can accurately compare the star-forming properties between non-AGN and AGN host galaxies. 
+
+\subsection{Luminosities and AGN Fractions}
+In addition to the parameters associated with the model, we also calculated several luminosities and an AGN fractions. For the this work, we define three luminosities: 1) $L_{\rm IR}$ will represent the total infrared luminosity determined by integrating the full SED from 8--1000 \micron. 2) $L_{\rm SF}$ will represent the 8--1000 \micron{} luminosity due to star formation in the host galaxy. 3) $L_{\rm AGN, IR}$ will represent the 8--1000 \micron luminosity due to the AGN-heated dust. 
+
+For the C12 model, we also measured $L_{\rm IR}$ by integrating the best fit total SED from 8--1000 \micron. However, we have decomposed the SED into two components: the powerlaw (PL) and MBB component. If we assumed the MIR powerlaw component is completely dominated by the AGN for all sources then we could just take the ratio of the luminosities. This is not the case though as some sources have much of their MIR emission originating in the host galaxy. Therefore we must correct for host galaxy MIR emission associated with star formation.
+
+We make this correction using the results of the C12 modeling for the HRS and KINGFISH samples. Since all of the galaxies in these samples have either no or low-luminosity AGN, the MIR emission is primarily the result of stochastically heated grains near star-forming regions. In Figure~\ref{fig:lmbb_lpl_ratio}, we show the distribution of $L_{\rm MBB}/L_{\rm PL}$, the ratio of the MBB component luminosity to the MIR powerlaw component. The ratios for the HRS and KINGFISH samples are both narrowly distributed around a single value, indicating that for non-AGN galaxies the energy contained in the PL and MBB components are tightly connected. Combining both the HRS and KINGFISH samples, we find a median $\log(L_{\rm MBB}/L_{\rm PL})=0.48 \pm 0.11$, which transforms to $L_{\rm PL,SF} \approx \frac{1}{3}L_{\rm MBB}$ where we now indicate the contribution to the PL component from star formation as  $L_{\rm PL,SF}$. We can calculate the AGN contribution for the \herschel-BAT AGN then by assuming the star-forming emission follows the same ratio.
+
+\begin{align}
+L_{\rm AGN,\,IR} &= L_{\rm PL} - L_{\rm PL, SF} = L_{\rm PL} - \frac{1}{3}L_{\rm MBB} \label{eq:c12_lagnIR} \\
+f_{\rm AGN} &= L_{\rm AGN, \, IR}/L_{\rm IR} \label{eq:c12_fagn} \\
+L_{\rm SF} &= L_{\rm MBB} + L_{\rm PL,SF} =  \frac{4}{3}L_{\rm MBB} \label{eq:c12_lsf}
+\end{align}
+
+ The uncertainty on the correction factor leads to an uncertainty on $f_{\rm AGN}$ using this method which we estimate by measuring $f_{\rm AGN}$ for the combined HRS and KINGFISH sample. Figure~\ref{fig:fagn_nonAGN} shows the distribution of $f_{\rm AGN}$ for our non-AGN sample. As expected the distribution is centered around 0. We estimate the spread of the distribution by calculating the standard deviation, finding an uncertainty of 0.1. We apply 0.1 as the minimum error on $f_{\rm AGN}$  as well as the minimum $f_{\rm AGN}$ we can measure. Any $f_{\rm AGN}$ below 0.1 are converted to upper limits with a value of 0.1. Further we also assume that 0.9 is the maximum $f_{\rm AGN}$ able to be detected so any measured $f_{\rm AGN}$ above 0.9 are converted to lower limits. 
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{figures/lmbb-lpl-ratio}
+\caption{Histograms and Kernel Density Estimates (KDE) of the $L_{\rm MBB}/L_{\rm PL}$, distribution for the BAT AGN (blue), HRS (green), and KINGFISH (red) samples. The non-AGN samples have a narrowly distributed ratio whereas the BAT AGN span a wide range due to the AGN contribution. A color version of this figure is available in the online publication. \label{fig:lmbb_lpl_ratio}}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{figures/fagn_nonAGN}
+\caption{$f_{\rm AGN}$ distribution for the HRS and KINGFISH galaxies. The standard deviation of this distribution quantifies the uncertainty on $f_{\rm AGN}$ associated with the correction factor used to calculate $f_{\rm AGN}$. A color version of this figure is available in the online publication. \label{fig:fagn_nonAGN}}
+\end{figure}
+
+\section{Results and Discussion}
 \subsection{$M_{\rm dust}$, $T_{\rm dust}$, and SFR of local AGN host galaxies}
-Given the results of the previous section, for the rest of the paper we will focus on properties determined using the C12 model since the model provides a wealth of information regarding not just the SFR but also the dust mass ($M_{\rm dust}$), dust temperature ($T_{\rm dust}$), MIR powerlaw slope, and turnover wavelength. We note that any results pertaining to the infrared luminosity of either the AGN or the host galaxy are broadly repeated using either of the other two models with only small changes in the statistics.
 
 %%%%%%%%%%%%%%%%%%%%%%%% FIGURE: Mdust, Tdust, SFR COMPARISON %%%%%%%%%%%
 \begin{figure*}
@@ -238,7 +312,7 @@ Figure~\ref{fig:mdust_tdust_sfr_comp} compares the distribution of \mdust, \tdus
 \rm{SFR} = \frac{L_{\rm SF}}{2.57\times10^{43}}
 \end{equation}
 
-While sources with only upper limits are not shown in Figure~\ref{fig:mdust_tdust_sfr_comp}, we incorporate them into our calculation of the mean. To do this, we use the ASURV \citep{Feigelson:1985lr} package which applies the principles of survival analysis to astronomical data. Information contained in the upper limits can then included in measurement of statistical properties of samples without biasing results towards brighter sources that are more likely to be detected. Throughout this Paper, we will use survival analysis to include upper and lower limits in our calculations unless otherwise stated. 
+While sources with only upper limits are not shown in Figure~\ref{fig:mdust_tdust_sfr_comp}, we incorporate them into our calculation of the mean. 
 
 From just a comparison of \mdust, \tdust, and SFR, we find that the \herschel-BAT AGN have higher dust masses than the HRS sample, slightly higher dust temperatures than both non-AGN samples, and higher SFRs especially compared to HRS. Their dust mass seems to be the same as the KINGFISH sample. However, as we show in Figure~\ref{fig:mstar_dist}, each sample has differing \mstar{} distributions which could cause wrong interpretations when comparing properties that are correlated with \mstar. All three of \mdust, \tdust, and SFR are strongly correlated with \mstar, so we must normalize the three properties to account trends with it.
 
@@ -248,7 +322,7 @@ Particularly interesting is the significant difference between the KINGFISH and 
  
 In this Paper, we find that not only is the specific SFR decreased in AGN host galaxies, but \mdust{} is also decreased. Assuming a constant dust-to-gas ratio, a reduced \mdust{} would indicate AGN host galaxies on average are gas deficient compared to star-forming galaxies. This would explain the reduced star formation since neutral gas provides the material for molecular gas from which stars form. There are two ways the AGN could have played a role in reducing the gas fraction of the galaxy. One is through physically blowing the gas out with AGN-driven winds. The other is by heating the halo and shutting off accretion from the intergalactic medium. Discerning between the two processes however is beyond the scope of this paper.
 
-To determine whether the \herschel-BAT AGN properties are similar to the HRS and KINGFISH galaxies, we run the Peto-Prentice two-sample test. The Peto-Prentice (P-P) two sample test is comparable to the Kolmogorov-Smirnov (K-S) test which calculates the probability that two separate samples were drawn from the same parent population.  The P-P test, however, allows for the inclusion of censored data. 
+To determine whether the \herschel-BAT AGN properties are similar to the HRS and KINGFISH galaxies, we run the Peto-Prentice two-sample test. The Peto-Prentice (P-P) two sample test is comparable to the Kolmogorov-Smirnov (K-S) test which calculates the probability that two separate samples were drawn from the same parent population. The P-P test, however, allows for the inclusion of censored data. 
 
 We input \mstar{} normalized properties for the \herschel-BAT AGN and run tests to compare the distribution with both the HRS and KINGFISH galaxies. For \mdust/\mstar{}, we find probabilities $<<0.01$ of the \herschel-BAT AGN being drawn from the same distribution as the HRS and KINGFISH galaxies. In contrast, we find probabilities of 0.99 and 0.66 that the \herschel-BAT AGN \tdust/\mstar{} distribution is the same as the one for the HRS and KINGFISH samples, respectively. Finally, we find probabilities of 0.20 and $<<0.01$ comparing the sSFR distributions between the \herschel-BAT AGN and HRS and KINGFISH samples. The standard cutoff probability to declare two samples being drawn from the same parent distribution is 0.05. 
 
@@ -428,11 +502,11 @@ In Figure~\ref{fig:sfr_lbat_correlation_ms} we plot the split sample with NMS ga
 
 The NMS sample doesn't show much change compared to the relationship measured using the entire sample with only a 0.02 change in the slope and 0.1 change in the correlation coefficient. There is a slight increase in the normalization as expected since we are using the upper half of the sample. For the BMS sample however, the slope has increased significantly by 0.18 and the correlation coefficient increased by 0.24. This is a possible indication that the strength of the relationship between AGN activity and star formation increases as galaxies become more quenched. Confirming this intriguing possibility will require more AGN at both low and high luminosity with reliable masses which we are lacking in our sample. At the very least it seems plausible that the large scatter in the overall SFR-$L_{14-195\,keV}$ can be explained by the differing locations in comparison to the star forming main sequence.
 
-\section{Discussion}
-\subsection{Comparison with previous studies}
 Our measured AGN-SFR relationship agrees mainly with the previous studies that found a flat or weak relationship \citep{Diamond-Stanic:2012rw, Mullaney:2012gf, Azadi:2015ve, Stanley:2015qy}. The scatter in the relationship is high covering nearly 2 orders of magnitude in SFR for a given AGN luminosity. Two different but not mutually exclusive explanations have been proposed to explain the lack of relationship seen between the strength of the AGN and SFR.0 \citet{Diamond-Stanic:2012rw} suggest that the AGN only influences star formation in the nuclear regions of galaxies and find that when restricting their measurements to only the inner 1kpc, a stronger relationship appears. \citet{Esquej:2014vl}, probing even smaller scales ($r < 100$ pc) using MIR interferometry, also find a nearly linear relationship between the nuclear SFR and SMBH accretion rate. This is  in agreement with numerical simulations \citep{Hopkins:2010kx} that predict an increasingly linear relationship as the star formation size scale decreases. Given our SFRs are measured globally over the whole galaxy, the size scale difference can easily explain our sub-linear relationship. It could also explain the small differences we see when splitting the sample up by the location on the main sequence. If the BMS AGN have reduced star formation only on large scales, while the NMS have larger amounts of extended star formation, then our measurements would naturally be exploring different sizes. The reduced sizes in the BMS AGN would imply a stronger relationship, exactly what we observe in Figure~\ref{fig:sfr_lbat_correlation_ms}. Measurement of the FIR sizes and morphologies will be the subject of a future publication and we will explore the hypothesis that the star-forming region size is dependent on location with respect to the main sequence.
 
 The second explanation involves the varying timescales associated with star formation and accretion onto the SMBH. Measuring the SFR with from the IR luminosity results in an average SFR over nearly 100 Myr \citep{Kennicutt:2012it} while the X-ray luminosity is more aligned with the instantaneous AGN luminosity especially given the observations that the X-ray emission likely originates very near to the SMBH \citep[e.g][]{Chen:2011lr}. Therefore, if the AGN luminosity can vary over 100 Myr, while the SFR is relatively stable, this will cause any intrinsic relationship between the two to disappear. \citet{Hickox:2014yq} explored this using a simple model for the Eddington ratio distribution for an AGN and a linear relationship between the AGN luminosity and SFR, finding that a powerlaw Schechter function matches the observed weak AGN-SFR relationship, rather than a lognormal distribution which produces too strong of a relationship. 
+
+
 \section{Conclusions}
 
 \section*{Acknowledgements}
@@ -451,63 +525,19 @@ This publication makes use of data products from the Wide-field Infrared Survey 
 %%%%%%%%%%%%%%%%% APPENDICES %%%%%%%%%%%%%%%%%%%%%
 
 \appendix
-\section{SED Fitting Methods and Models}
-Many models and templates exist in the literature to fit the broadband SEDs of galaxies. In this work we particularly focus on three methods that range from analytic representations to empirical templates based on previous studies. The \herschel-BAT sample can uniquely test the viability of the various methods, particularly in the presence of an AGN. 
 
-\subsection{Casey 2012 Model}
-One of the most widely used models for fitting the FIR SED of galaxies is a single modified blackbody (MBB). The simple model consists of a normal, single temperature blackbody that represents isotropic dust emission combined with a frequency dependent opacity given that dust is not a perfect blackbody.In the optically thin limit, the opacity can be approximated as a powerlaw, $\tau_{\nu}=(\nu/\nu_{0})^{\beta}$. The form of the single modified blackbody for the flux density at each frequency is then
+\section{SED Parameter Estimation}\label{sec:sed_bayes}
+%We used two different fitting methods to fit the SEDs of the galaxies: 1) a Bayesian framework including Monte Carlo Markov Chain (MCMC) analysis for parameter estimation and 2) maximum likelihood optimization. For the C12 model, we chose the Bayesian framework, and for the template based models (DecompIR and D14) we chose maximum likelihood optimization. The main reason for using two different methods to determine the best fit model SED is that the Bayesian framework does not work well with a set of discrete model templates, especially when the number of templates is low. Further, the only parameter in the template fitting that needs to be optimized is the normalization of the template to fit the observed SED. With a uniform prior on the one parameter, Bayesian methods essentially are reduced to maximum likelihood optimization.
+To find the best fitting parameters in our SED modeling, instead of standard least squares analysis, we used a Bayesian framework along with Monte Carlo Markov Chains to probe the posterior probability distribution functions for each parameter. The Bayesian framework allows for robust estimates of the uncertainty and for explicit statements about prior knowledge of the parameters. It also makes it relatively easy to include information contained in the undetected photometry of the SED.
 
-\begin{equation}
-S(\nu) \propto \nu^{\beta}B_{\nu}(T_{\mathrm{d}})
-\end{equation}
-
-\noindent where $\beta$ is the spectral emissivity index and $B_{\nu}(T_{\mathrm{d}})$ is the standard Planck blackbody function for an object with temperature $T_{\mathrm{d}}$. This simple model has been shown to fit well the prominent FIR bumps for large samples of star-forming galaxies  and provides estimates of the dust temperature, dust mass, and SFR \cite[e.g.][]{Calzetti:2000fk, Bianchi:2013jk, Cortese:2014qq}.
-
-To calculate the dust mass, we must assume a particular dust absorption coefficient, $\kappa_{0}$ at a particular frequency, $\nu_{0}$. For this work, we assume $\kappa_{0}=0.192\,\mathrm{m^{2}\,kg^{-1}}$ and $\nu_{0}=857\,\mathrm{GHz}$ (i.e. 350 \micron) from \citet{Draine:2003gd}. However, as \citet{Bianchi:2013jk} shows, by assuming a specific $\kappa_{0}$, we must also fix the spectral emissivity index to the value used to measure $\kappa_{0}$. In this work, we fix $\beta=2.0$ to match spectral emissivity index used by \citet{Draine:2003gd}. The final full form of the single MBB model is then
-
-\begin{equation}\label{eq:greybody}
-S_{\mathrm{MBB}}(\nu) = \frac{M_{\mathrm{d}}\kappa_{0}}{D_{\mathrm{L}}^2}\left(\frac{\nu}{\nu_{0}}\right)^{\beta}\frac{2h\nu^{3}}{c^{2}}\frac{1}{e^{{h\nu/kT_{\mathrm{d}}}}-1}
-\end{equation}
-
-\noindent where $M_{\mathrm{d}}$ is the dust mass, $D_{\mathrm{L}}$ is the luminosity distance, $c$ is the speed of light, $h$ is the Planck constant, and $k$ is the Boltzmann constant. The two free parameters then are $M_{\mathrm{d}}$ and $T_{\mathrm{d}}$, the dust mass and dust temperature respectively.
-
-The simple assumption that dust emission in the IR can be modeled with a single temperature blackbody works well for ``normal'' star-forming galaxies. However for galaxies with large amounts of hot dust either due to a compact starburst or central AGN, this assumption can quickly break down. To account for this hot dust we also fit our sample using the model described in \citet[][hereafter C12]{Casey:2012jl} which is the combination of a single MBB and an exponentially cutoff powerlaw. The C12 model takes the form
-
-\begin{equation}\label{eq:casey}
-S_{\mathrm{C12}}(\nu) = N_{\mathrm{pl}}\left(\frac{\nu}{\nu_{\mathrm{c}}}\right)^{-\alpha}e^{-\nu_{\mathrm{c}}/\nu}S_{\mathrm{MBB}}(\nu)
-\end{equation}
-
-\noindent where $\nu_{\mathrm{c}}$ represents the turnover frequency and $N_{\mathrm{PL}}$ is a normalization constant. C12 illustrated using the \textit{Great Origins All-Sky LIRG Survey} (GOALS) sample that this model provides better estimates of the cold dust temperature, dust mass, and IR luminosity compared to both a single temperature modified blackbody and template libraries.
-
-The C12 model introduces three more free parameters ($N_{\mathrm{PL}}$, $\alpha$, and $\nu_{\mathrm{c}}$) however within the implementation used by C12, $N_{\mathrm{PL}}$ and $\nu_{\mathrm{c}}$ are tied to the normalization of the modified blackbody component and dust temperature to produce a smoothly varying SED and reduce the number of free parameters from five to three. 
-
-However, after early tests using this initial setup, we found that fixing $N_{\mathrm{PL}}$ and $\nu_{\mathrm{c}}$ as a function of the other parameters produced unreliable fits. This is because AGN SEDs from the MIR to FIR are not as smooth as those seen in (U)LIRGS, likely due to the disconnect between star-formation and AGN heating. Within starbursting galaxies both the hot and cold dust are related through the same heating process, i.e. star formation, while the much of the MIR emission in AGN host galaxies originates from dust around the AGN with no strong connection to global star formation in the galaxy. Therefore, we chose to leave both $N_{\mathrm{PL}}$ and $\nu_{\mathrm{c}}$ as free parameters resulting in a total of five for the entire model.
-
-\subsection{DecompIR model}
-Besides analytic models, another popular method is the use of template SEDs. Templates are constructed based on well-sampled SEDs of large samples of galaxies and usually parameterized according to a known property such as infrared luminosity.
-
-For galaxies known to host an AGN, recent studies have turned to the \textsc{DecompIR} \citep{Mullaney:2011yq} templates. \textsc{DecompIR} consists of five host galaxy templates that span the IR color and luminosity range of the original \citet{Brandl:2006kx} starburst galaxy templates. \citet{Mullaney:2011yq} constructed the AGN templates based on a subsample of the \swift/BAT AGN which had AGN dominated \textit{Spitzer}/IRS spectra determined by the EqW of the 11.3 \micron{} feature being $<0.03$ \micron. The \textit{Spitzer}/IRS spectra were combined with \textit{IRAS} photometry at 60 and 100 \micron to define the ``intrinsic'' AGN SED from 6--100 \micron. 
-
-\citet{Mullaney:2011yq} created three different AGN templates: one based only on high AGN luminosity objects, low AGN luminosity objects, and a median of the entire sample. For this work, we only consider the median AGN template given our SEDs only contain two points in the MIR where AGN-related emission is expected to dominate. 
-
-\subsection{Dale et al 2014 model}
-The third model we chose to test on our sample is the semi-empirical templates from \citet[][hereafter D14]{Dale:2014yq}. These templates also contain two components, one for dust emission in the host galaxy and one for the AGN. The host galaxy components were built from an updated version of the \citet{Dale:2002ty} model. Each component represents an SED produced using a different value of $\alpha_{\mathrm SF}$, which is the powerlaw slope of the intensity distribution for the interstellar radiation field that is heating the dust. These SEDs contain a mixture of emission from PAHs, small stochastically heated grains, and thermally radiating large grains.
-
-For the AGN component, D14 chose the median SED of the Palomar-Green quasars from \citet{Shi:2013vn} citing the care with which any star-forming component was removed and the prominence of several AGN related MIR features such as the [OIV] fine structure line and the broad 10 and 18 \micron{} silicate emission bumps. At long wavelengths the AGN template falls as a blackbody.
-
-Instead of two separate templates for the AGN and host galaxy, D14 provided a single set of templates based on different combinations of $\alpha_{\mathrm SF}$ and $f_{\mathrm AGN}$, the fractional contribution of the AGN to the 5--20 \micron{} emission. In total there are 1365 templates that range in $\alpha_{\mathrm SF}=0.0625-4.0$ in 0.0625 intervals and $f_{\mathrm AGN} = 0-1$ in 0.05 intervals.
-
-\subsection{SED Fitting Methods}
-We used two different fitting methods to fit the SEDs of the galaxies: 1) a Bayesian framework including Monte Carlo Markov Chain (MCMC) analysis for parameter estimation and 2) maximum likelihood optimization. For the analytic models (single modified blackbody and C12), we chose the Bayesian framework, and for the template based models (DecompIR and D14) we chose maximum likelihood optimization. The main reason for using two different methods to determine the best fit model SED is that the Bayesian framework does not work well with a set of discrete model templates, especially when the number of templates is low. Further, the only parameter in the template fitting that needs to be optimized is the normalization of the template to fit the observed SED. With a uniform prior on the one parameter, Bayesian methods essentially are reduced to maximum likelihood optimization.
-
-\subsubsection{Maximum Likelihood Optimization}
-We begin the maximum likelihood method because the main component underlying both methods is the definition of the likelihood. The likelihood defines the probability of a set of data given a specific model. In SED fitting, this translates to the combined probability of measuring all the photometric data points in the observed SED given a model for the SED (whether based on templates or analytic models). The total likelihood can then be expressed as the product of the probabilities of observing each single photometric point:
+\subsection{Likelihood Representation}
+The likelihood defines the probability of observing a set of data given a specific model. In SED fitting, this translates to the combined probability of measuring all the photometric data points in the observed SED given a model for the SED (whether based on templates or analytic models). The total likelihood can then be expressed as the product of the probabilities of observing each single photometric point:
 
 \begin{equation}\label{eq:likelihood}
 \mathcal{L}(F|M) = \prod_{i}P(F_i|M)
 \end{equation}
 
-\noindent where $F$ is the set of photometric fluxes, $F_i$ and $M$ is the model. For our analysis, we assume the probability of our observations follow a Gaussian distribution with mean equal to $M$ and standard deviations equal to the measurement errors, $\sigma_{i}$.
+\noindent where $F$ is the set of photometric fluxes, $F_i$ and $M$ is the model. For our analysis, we assume the probability of our observations follows a Gaussian distribution with mean equal to $M$ and standard deviations equal to the measurement errors, $\sigma_{i}$.
 
 \begin{equation}\label{eq:detected_prob}
 P(F_i|M) = \frac{1}{\sqrt{2\pi\sigma_{i}^{2}}}\mathrm{exp}\left(\frac{-(F_i - M)^2}{2\sigma_i^2}\right)
@@ -529,11 +559,7 @@ P(U_i|M) &= \int_{-\infty}^{U_i}\frac{1}{\sqrt{2\pi\sigma_{i}^{2}}}\mathrm{exp}\
 
 It is important to recognize here how $M$ is calculated, no matter whether it represents a template or analytic model. Each data point in an SED is the observer-frame flux density measured over a defined wavelength range. Therefore, to determine the model flux densities we first redshifted the full rest-frame model SED into the observer frame using the known redshifts of all of our sources. This observer-frame SED was then convolved with each instrument filter transmission curve to produce model flux densities that can be accurately compared to the observed ones.
 
-For each template in a model set, Equation~\ref{eq:log_like} was minimized to determine the best fit normalization. We then chose the normalized template with the lowest $-\log\mathcal{L}$ as the best fitting model for a source. For the DecompIR set, this meant first simultaneously optimizing over a normalization for the AGN component and each host galaxy component, then choosing the combined template that resulted in the minimum $-\log\mathcal{L}$. For D14, this meant calculating $-\log\mathcal{L}$ over the entire set of $\alpha$ and $f_{AGN}$ templates.
-
-Uncertainties using the maximum likelihood method were determined by generating 1000 simulated SEDs for each source. These data points in the simulated SEDs were calculated by assuming each detected point followed a Gaussian distribution with mean equal to the observed flux density and a standard deviation equal to the measured error. Each of the simulated SEDs were re-fit using the same method. The standard deviation on the set of best fit parameters from the simulated SEDs then was used as the uncertainty. In this way both statistical and systematic errors can be taken into account in assessing the reliability of our best fit parameters. 
-
-\subsubsection{Bayesian MCMC Analysis}
+\subsection{Bayesian MCMC Analysis}
 Within the Bayesian framework, the important probability is the probability of the model given the data at hand, i.e. the most probable SED model given the observed fluxes. This probability can be determined using Bayes theorem:
 
 \begin{equation}\label{eq:bayes}
@@ -544,7 +570,7 @@ P(M|F) = \frac{P(F|M)P(M)}{P(F)}
 
 The reader may notice that assuming a flat prior, $P(M) \propto 1$, reduces Equation~\ref{eq:bayes} to $P(M|F) \propto \mathcal{L}$ verifying our use of maximum likelihood in determining the best template models.
 
-For the single MBB and C12 models, we used flat priors for the dust temperature and dust mass. We placed conservative limits on both the dust temperature and $\log M_{\mathrm dust}$ to be between 1 and 100 K and 1 and 10 \msun respectively. Within the powerlaw component for the C12 model, we also used flat priors for the powerlaw slope between -5 and 5 and the log of the normalization between -10 and 10. Based on previous work attempting to measure the intrinsic AGN SED and modeling the dusty torus, we expect the SED to turnover anywhere in the range between 20-70 \micron. Therefore we imposed a Gaussian prior centered at 45 \micron{} with a standard deviation of 20 \micron. We found that imposing this prior resulted in better and more realistic fits to the SEDs.
+For the C12 model, we used flat priors for the dust temperature and dust mass. We placed conservative limits on both the dust temperature and $\log M_{\mathrm dust}$ to be between 1 and 100 K and 1 and 10 \msun respectively. Within the powerlaw component for the C12 model, we also used flat priors for the powerlaw slope between -5 and 5 and the log of the normalization between -10 and 10. Based on previous work attempting to measure the intrinsic AGN SED and modeling the dusty torus, we expect the SED to turnover anywhere in the range between 20-70 \micron. Therefore we imposed a Gaussian prior centered at 45 \micron{} with a standard deviation of 20 \micron. We found that imposing this prior resulted in better and more realistic fits to the SEDs.
 
 We used the \textsc{PYTHON} package \textsc{emcee} \citep{Foreman-Mackey:2013lr} to perform MCMC and sample the posterior probability distribution function (Equation~\ref{eq:bayes}). \textsc{emcee} runs an implementation of the Affine-Invariant MCMC sampler from Goodman \& Weare 2010. Instead of one single MCMC chain, it samples the posterior PDF with multiple ``walkers'', each with their own chain. For our analysis, we used 50 walkers that each produced a 1000 step chain. To allow for each chain to stabilize and move away from the initial guesses for the parameters, we imposed a 200 step ``burn-in''. In total, this resulted in 40000 steps to define the full posterior PDF. 
 
@@ -552,7 +578,29 @@ To determine the best fit parameters, we first marginalized the posterior PDF ov
 
 For sources with less than four detections in their SED, we fixed the dust temperature to 25 K since the peak of the FIR bump is no longer constrained. In these cases, we only obtained upper limits on the dust mass by calculating the upper 95th percentile of the marginalized PDF.
 
-\subsection{Comparison between models}
+\section{Comparison between different models}
+In this section we compare the results for the total luminosity, IR AGN luminosity, and star forming luminosity between the C12 model and two other models to decompose the SED. 
+
+\subsection{DecompIR model}
+Besides analytic models, another popular method is the use of template SEDs. Templates are constructed based on well-sampled SEDs of large samples of galaxies and usually parameterized according to a known property such as infrared luminosity.
+
+For galaxies known to host an AGN, recent studies have turned to the \textsc{DecompIR} \citep{Mullaney:2011yq} templates. \textsc{DecompIR} consists of five host galaxy templates that span the IR color and luminosity range of the original \citet{Brandl:2006kx} starburst galaxy templates. \citet{Mullaney:2011yq} constructed the AGN templates based on a subsample of the \swift/BAT AGN which had AGN dominated \textit{Spitzer}/IRS spectra determined by the equivalent width of the 11.3 \micron{} feature being $<0.03$ \micron. The \textit{Spitzer}/IRS spectra were combined with \textit{IRAS} photometry at 60 and 100 \micron to define the ``intrinsic'' AGN SED from 6--100 \micron. 
+
+\citet{Mullaney:2011yq} created three different AGN templates: one based only on high AGN luminosity objects, low AGN luminosity objects, and a median of the entire sample. For this work, we only consider the median AGN template given our SEDs only contain two points in the MIR where AGN-related emission is expected to dominate. 
+
+\subsection{Dale et al 2014 model}
+The third model we chose to test on our sample is the semi-empirical templates from \citet[][hereafter D14]{Dale:2014yq}. These templates also contain two components, one for dust emission in the host galaxy and one for the AGN. The host galaxy components were built from an updated version of the \citet{Dale:2002ty} model. Each component represents an SED produced using a different value of $\alpha_{\mathrm SF}$, which is the powerlaw slope of the intensity distribution for the interstellar radiation field that is heating the dust. These SEDs contain a mixture of emission from PAHs, small stochastically heated grains, and thermally radiating large grains.
+
+For the AGN component, D14 chose the median SED of the Palomar-Green quasars from \citet{Shi:2013vn} citing the care with which any star-forming component was removed and the prominence of several AGN related MIR features such as the [OIV] fine structure line and the broad 10 and 18 \micron{} silicate emission bumps. At long wavelengths the AGN template falls as a blackbody.
+
+Instead of two separate templates for the AGN and host galaxy, D14 provided a single set of templates based on different combinations of $\alpha_{\mathrm SF}$ and $f_{\mathrm AGN}$, the fractional contribution of the AGN to the 5--20 \micron{} emission. In total there are 1365 templates that range in $\alpha_{\mathrm SF}=0.0625-4.0$ in 0.0625 intervals and $f_{\mathrm AGN} = 0-1$ in 0.05 intervals.
+
+\subsection{SED Fitting for the template models}
+For each template in a model set, Equation~\ref{eq:log_like} was minimized to determine the best fit normalization. We then chose the normalized template with the lowest $-\log\mathcal{L}$ as the best fitting model for a source. For the DecompIR set, this meant first simultaneously optimizing over a normalization for the AGN component and each host galaxy component, then choosing the combined template that resulted in the minimum $-\log\mathcal{L}$. For D14, this meant calculating $-\log\mathcal{L}$ over the entire set of $\alpha$ and $f_{AGN}$ templates.
+
+Uncertainties using the maximum likelihood method were determined by generating 1000 simulated SEDs for each source. These data points in the simulated SEDs were calculated by assuming each detected point followed a Gaussian distribution with mean equal to the observed flux density and a standard deviation equal to the measured error. Each of the simulated SEDs were re-fit using the same method. The standard deviation on the set of best fit parameters from the simulated SEDs then was used as the uncertainty. In this way both statistical and systematic errors can be taken into account in assessing the reliability of our best fit parameters. 
+
+\subsection{$L_{\rm IR}$ Comparison}
 The measured property that should be most model independent is the total infrared luminosity, $L_{\rm IR}$. Assuming each model was able to fit well the broadband SEDs and reproduce the observed photometry, $L_{\rm IR}$ is simply the total integrated energy underneath the SED, irregardless of how the SED is decomposed. In Figure~\ref{fig:lir_total_comp}, we plot the correlations between each of the $L_{\rm IR}$ in the off-diagonal subplots as well as the single distributions for each one. 
 
 The median $\log\,L_{\rm IR}$ for the C12, DecompIR, and D14 models are 10.43, 10.44, and 10.63 \lsun respectively and each model showing a spread of 0.5 dex. Based on the medians as well as Figure~\ref{fig:lir_total_comp}, the C12 and DecompIR models best agree. The average logarithmic difference between them is only -0.02 dex while the average difference between the D14 and C12 and DecompIR models is 0.2 dex, indicating a factor of 1.6 increase in $L_{\rm IR}$ between D14 and the other two models. This is due to the shape of the template SEDs for D14. D14's AGN template is flatter at shorter wavelengths causing the increased luminosity. 
@@ -568,7 +616,8 @@ Despite these differences, overall there is great agreement, as expected, betwee
 \end{figure*}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Where the models begin to disagree more, is in the actual decomposition of the SED. In particular, we compare $f_{\rm AGN}$, the fraction of the 8--1000 \micron{} luminosity due to AGN-heated dust. In the previous section we outlined how this value was calculated for each model. For the template-based models (DecompIR and D14), this was simply the ratio of the luminosity from the AGN component template to the $L_{\rm IR}$ while for the C12 model, we needed to make a correction to account for MIR emission due to the host galaxy. 
+\subsection{$f_{\rm AGN}$ Comparison}
+Where the models begin to disagree more, is in the actual decomposition of the SED. In particular, we compare $f_{\rm AGN}$, the fraction of the 8--1000 \micron{} luminosity due to AGN-heated dust. Calculating $f_{\rm AGN}$ for the template models is relatively easy compared to corrections we had to make for the C12 model. For the DecompIR template set, $L_{\rm IR}$, $L_{\rm SF}$, and $L_{\rm AGN, IR}$ were simply calculated from the best fit total, host galaxy, and AGN SEDs. For the D14 model set, $L_{\rm IR}$ was measured from the best fitting template and $L_{\rm SF}$ and $L_{\rm AGN, IR}$ were calculated based on the best fit $f_{\rm AGN}$.\footnote{\citet{Dale:2014yq} only provides $f_{\rm AGN}$ calculated between 5--15 \micron, however D. Dale graciously provided the authors with $f_{\rm AGN}$ calculated between 8--1000 \micron{} through private communication in August 2015.} Uncertainties on all of these luminosities were determined using the same Monte Carlo method used to determine the uncertainties on the best fitting parameters.
 
 Figure~\ref{fig:agn_frac_comp} displays the relationship between each model's $f_{\rm AGN}$ in the off-diagonal plots as well as the distribution of $f_{\rm AGN}$ in the diagonal plots. All three models are in rough agreement of $f_{\rm AGN}$. The three off-diagonal plots show a strong correlation between the models, albeit with large scatter. We find Pearson correlation coefficients of 0.81, 0.83, and 0.92 for C12 vs. DecompIR, C12 vs. D14, and DecompIR vs. D14 respectively. The two template based models agree the best between each other. This is likely due to the fixed shape of the AGN component SED for these models and the correction factor we had to use to calculate the C12 based $f_{\rm AGN}$. 
 
@@ -576,7 +625,7 @@ Overall all three models agree on $f_{\rm AGN}$ within a scatter of 0.15. The sc
 
 The 15 per cent uncertainty between the three models represents our general lack of knowledge about the details of decomposing broadband SEDs of AGN host galaxies. The estimated $f_{\rm AGN}$ is highly dependent on the assumed models of both the host galaxy and AGN, and currently at best we can only constrain to within 15 per cent. This influences then the calculations of both the SFR (based on $L_{\rm SF}$) and the IR portion of AGN luminosity ($L_{\rm AGN, IR}$). Studies relying on calculating the SFR of AGN host galaxies using the infrared need to take these discrepancies into account or else risk over-interpreting results based on broad SED decomposition.
 
-For our AGN population, we find almost a uniform distribution of $f_{\rm AGN}$ independent of the model used. Most AGN have between 20 and 80 per cent of their IR emission coming from AGN heated dust. This means that the IR SED of an AGN host galaxy can wildly vary from being completely dominated by star formation related emission to being completely dominated by AGN related emission. The next question then becomes: Which process is changing from AGN to AGN? Is star formation or AGN activity the main driver behind the differing $f_{\rm AGN}$ or perhaps a connection between the two causing one to decrease while the other increases? We explore this issue in a later section.
+For our AGN population, we find almost a uniform distribution of $f_{\rm AGN}$ independent of the model used. Most AGN have between 20 and 80 per cent of their IR emission coming from AGN heated dust. This means that the IR SED of an AGN host galaxy can wildly vary from being completely dominated by star formation related emission to being completely dominated by AGN related emission. 
 
 %%%%%%%%%%%%%%%%%%%%%%%% FIGURE: AGN FRACTION COMPARISON %%%%%%%%%%%
 \begin{figure*}
@@ -585,32 +634,7 @@ For our AGN population, we find almost a uniform distribution of $f_{\rm AGN}$ i
 \end{figure*}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Luminosities and AGN Fractions}
-In addition to the parameters associated for each model, we also calculated luminosities and AGN fractions. For the this work, we define three luminosities: 1) $L_{\rm IR}$ will represent the total infrared luminosity determined by integrating the SED from 8--1000 \micron. 2) $L_{\rm SF}$ will represent the 8--1000 \micron{} luminosity due to star formation in the host galaxy. 3) $L_{\rm AGN, IR}$ will represent the 8--1000 \micron luminosity due to the AGN-heated dust. 
-
-For the DecompIR template set, $L_{\rm IR}$, $L_{\rm SF}$, and $L_{\rm AGN, IR}$ were simply calculated from the best fit total, host galaxy, and AGN SEDs. For the D14 model set, $L_{\rm IR}$ was measured from the best fitting template and $L_{\rm SF}$ and $L_{\rm AGN, IR}$ were calculated based on the best fit $f_{\rm AGN}$.\footnote{\citet{Dale:2014yq} only provides $f_{\rm AGN}$ calculated between 5--15 \micron, however D. Dale graciously provided the authors with $f_{\rm AGN}$ calculated between 8--1000 \micron{} through private communication in August 2015.} Uncertainties on all of these luminosities were determined using the same Monte Carlo method used to determine the uncertainties on the best fitting parameters.
-
-For the C12 model, we also measured $L_{\rm IR}$ by integrating the best fit total SED from 8--1000 \micron. However, we have decomposed the SED into two components: the powerlaw (PL) and MBB component. If we assumed the MIR powerlaw component is completely dominated by the AGN for all sources then we could just take the ratio of the luminosities as we did for the template models. This is not the case though as some sources have much of their MIR emission originating in the host galaxy. Therefore we must correct for host galaxy MIR emission associated with star formation.
-
-We make this correction using the results of the C12 modeling for the HRS and KINGFISH samples. Since all of the galaxies in these samples have either no or low-luminosity AGN, the MIR emission is primarily the result of stochastically heated grains near star-forming regions. In Figure~\ref{fig:lmbb_lpl_ratio}, we show the distribution of $L_{\rm MBB}/L_{\rm PL}$, the ratio of the MBB component luminosity to the MIR powerlaw component. The ratios for the HRS and KINGFISH samples are both narrowly distributed around a single value, indicating that for non-AGN galaxies the energy contained in the PL and MBB components are tightly connected. Combining both the HRS and KINGFISH samples, we find a median $\log(L_{\rm MBB}/L_{\rm PL})=0.48 \pm 0.11$, which transforms to $L_{\rm PL,SF} \approx \frac{1}{3}L_{\rm MBB}$ where we now indicate the contribution to the PL component from star formation as  $L_{\rm PL,SF}$. We can calculate the AGN contribution for the BAT AGN then by assuming the star-forming emission follows the same ratio.
-
-\begin{align}
-L_{\rm AGN,\,IR} &= L_{\rm PL} - L_{\rm PL, SF} = L_{\rm PL} - \frac{1}{3}L_{\rm MBB} \label{eq:c12_lagnIR} \\
-f_{\rm AGN, C12} &= L_{\rm AGN, \, IR}/L_{\rm IR} \label{eq:c12_fagn} \\
-L_{\rm SF, C12} &= L_{\rm MBB} + L_{\rm PL,SF} =  \frac{4}{3}L_{\rm MBB} \label{eq:c12_lsf}
-\end{align}
-
-By using these relatively simple corrections we can accurately compare luminosities and AGN fractions from the three different models. The uncertainty on the correction factor leads to an uncertainty on $f_{\rm AGN}$ using this method which we estimate by measuring $f_{\rm AGN}$ for the combined HRS and KINGFISH sample. Figure~\ref{fig:fagn_nonAGN} shows the distribution of $f_{\rm AGN}$ for our non-AGN sample. As expected the distribution is centered around 0. We estimate the spread of the distribution by calculating the standard deviation, finding an uncertainty of 0.1. We apply 0.1 as the minimum error on $f_{\rm AGN}$  as well as the minimum $f_{\rm AGN}$ we can measure. Any $f_{\rm AGN}$ below 0.1 are converted to upper limits with a value of 0.1. Further we also assume that 0.9 is the maximum $f_{\rm AGN}$ able to be detected so any measured $f_{\rm AGN}$ above 0.9 are converted to lower limits. 
-
-\begin{figure}
-\includegraphics[width=\columnwidth]{figures/lmbb-lpl-ratio}
-\caption{Histograms and Kernel Density Estimates (KDE) of the $L_{\rm MBB}/L_{\rm PL}$, distribution for the BAT AGN (blue), HRS (green), and KINGFISH (red) samples. The non-AGN samples have a narrowly distributed ratio whereas the BAT AGN span a wide range due to the AGN contribution. A color version of this figure is available in the online publication. \label{fig:lmbb_lpl_ratio}}
-\end{figure}
-
-\begin{figure}
-\includegraphics[width=\columnwidth]{figures/fagn_nonAGN}
-\caption{$f_{\rm AGN}$ distribution for the HRS and KINGFISH galaxies. The standard deviation of this distribution quantifies the uncertainty on $f_{\rm AGN}$ associated with the correction factor used to calculate $f_{\rm AGN}$. A color version of this figure is available in the online publication. \label{fig:fagn_nonAGN}}
-\end{figure}
+\
 
 %\section{Tables of Best Fit Parameters}
 %%%%%%%%%%%%%%%%%%%%%% TABLE OF DECOMPIR PARAMETERS %%%%%%%%%%%%%%%%%%%%%%%%%%
