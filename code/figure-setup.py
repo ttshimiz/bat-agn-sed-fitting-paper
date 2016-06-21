@@ -12,7 +12,8 @@ mpl.rcParams['text.usetex'] = True
 mpl.rcParams['font.family'] = 'serif'
 mpl.rcParams['font.serif'] = 'Computer Modern Roman'
 mpl.rcParams['mathtext.fontset'] = 'cm'
-mpl.rcParams['ps.fonttype'] = 42                         # Make sure fonts are T1
+
+mpl.rcParams['ps.fonttype'] = 42    # Make sure fonts are T1
 mpl.rcParams['pdf.fonttype'] = 42
 
 # Define the optimum widths of figures depending if they will be in a column or 

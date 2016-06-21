@@ -247,12 +247,12 @@ But, after early tests using this initial setup, we found that fixing $N_{\mathr
 
 We describe in detail within Appendix~\ref{sec:sed_bayes} the exact fitting method used to estimate each parameter. In short we use a Bayesian framework with a Monte Carlo Markov Chain (MCMC) to probe the posterior probability distribution function (PDF). We marginalize the resulting posterior PDF for each parameter and use the median as our best-fit value and the 16th and 84th percentiles to define our lower and upper uncertainties, respectively. 
 
-We fit all 313 of the \herschel-BAT AGN using the C12 model and report the best fitting parameters in Table~\ref{tab:c12_params}. We also fit the both the HRS and KINGFISH galaxies using the exact same model so we can accurately compare the star-forming properties between non-AGN and AGN host galaxies. 
+We fit all 313 of the \herschel-BAT AGN using the C12 model and report the best fitting parameters in Table~\ref{tab:c12_params}. Best-fit model SEDs are shown along with the observed SEDs in Figure~\ref{fig:seds}. We also fit the both the HRS and KINGFISH galaxies using the exact same model so we can accurately compare the star-forming properties between non-AGN and AGN host galaxies. 
 
 \subsection{Luminosities and AGN Fractions}
-In addition to the parameters associated with the model, we also calculated several luminosities and an AGN fractions. For the this work, we define three luminosities: 1) $L_{\rm IR}$ will represent the total infrared luminosity determined by integrating the full SED from 8--1000 \micron. 2) $L_{\rm SF}$ will represent the 8--1000 \micron{} luminosity due to star formation in the host galaxy. 3) $L_{\rm AGN, IR}$ will represent the 8--1000 \micron luminosity due to the AGN-heated dust. 
+In addition to the parameters associated with the model, we also calculated several luminosities and an AGN fraction. For this work, we define three luminosities: 1) $L_{\rm IR}$ will represent the total infrared luminosity determined by integrating the full SED from 8--1000 \micron. 2) $L_{\rm SF}$ will represent the 8--1000 \micron{} luminosity due to star formation in the host galaxy. 3) $L_{\rm AGN, IR}$ will represent the 8--1000 \micron luminosity due to AGN-heated dust. 
 
-For the C12 model, we also measured $L_{\rm IR}$ by integrating the best fit total SED from 8--1000 \micron. However, we have decomposed the SED into two components: the powerlaw (PL) and MBB component. If we assumed the MIR powerlaw component is completely dominated by the AGN for all sources then we could just take the ratio of the luminosities. This is not the case though as some sources have much of their MIR emission originating in the host galaxy. Therefore we must correct for a host galaxy MIR PL component associated with star formation.
+ $L_{\rm IR}$ for each source was calculated by integrating the best fit model SED from 8--1000 \micron. To determine$L_{\rm SF}$ and $L_{\rm AGN, IR}$ we first start with $L_{\rm PL}$ and $L_{\rm MBB}$, the 8--1000 \micron{} luminosities of the separate PL and MBB components from our SED decomposition. If we made the assumption that the PL component is completely dominated by the AGN in all sources then we could simply represent $L_{\rm PL}$ as the $L_{\rm AGN, IR}$ and $L_{\rm MBB}$ as $L_{\rm SF}$. However, we quickly recognized the PL component for some AGN host galaxies can have a strong contribution from dust heated by stars. Therefore a correction factor must be applied to convert $L_{\rm PL}$ and $L_{\rm MBB}$ into $L_{\rm AGN, IR}$ and $L_{\rm SF}$.
 
 We make this correction using the results of the C12 modeling for the HRS and KINGFISH samples. Since all of the galaxies in these samples have either no or low-luminosity AGN, the MIR emission is primarily the result of stochastically heated grains near star-forming regions. In Figure~\ref{fig:lmbb_lpl_ratio}, we show the distribution of $L_{\rm MBB}/L_{\rm PL}$, the ratio of the MBB component luminosity to the MIR powerlaw component. The ratios for the HRS and KINGFISH samples are both narrowly distributed around a single value, indicating that for non-AGN galaxies the energy contained in the PL and MBB components are tightly connected. Combining both the HRS and KINGFISH samples, we find a median $\log(L_{\rm MBB}/L_{\rm PL})=0.48 \pm 0.11$, which transforms to $L_{\rm PL,SF} \approx \frac{1}{3}L_{\rm MBB}$ where we now indicate the contribution to the PL component from star formation as  $L_{\rm PL,SF}$. We can calculate the AGN contribution for the \herschel-BAT AGN then by assuming the star-forming emission follows the same ratio.
 
@@ -262,11 +262,15 @@ f_{\rm AGN} &= L_{\rm AGN, \, IR}/L_{\rm IR} \label{eq:c12_fagn} \\
 L_{\rm SF} &= L_{\rm MBB} + L_{\rm PL,SF} =  \frac{4}{3}L_{\rm MBB} \label{eq:c12_lsf}
 \end{align}
 
- The uncertainty on the correction factor leads to an uncertainty on $f_{\rm AGN}$ using this method which we estimate by measuring $f_{\rm AGN}$ for the combined HRS and KINGFISH sample. Figure~\ref{fig:fagn_nonAGN} shows the distribution of $f_{\rm AGN}$ for our non-AGN sample. As expected the distribution is centered around 0. We estimate the spread of the distribution by calculating the standard deviation, finding an uncertainty of 0.1. We apply 0.1 as the minimum error on $f_{\rm AGN}$  as well as the minimum $f_{\rm AGN}$ we can measure. Any $f_{\rm AGN}$ below 0.1 are converted to upper limits with a value of 0.1. Further we also assume that 0.9 is the maximum $f_{\rm AGN}$ able to be detected so any measured $f_{\rm AGN}$ above 0.9 are converted to lower limits. 
+ The uncertainty on the correction factor leads to an uncertainty on $f_{\rm AGN}$ using this method which we estimate by measuring $f_{\rm AGN}$ for the combined HRS and KINGFISH sample. Figure~\ref{fig:fagn_nonAGN} shows the distribution of $f_{\rm AGN}$ for our non-AGN sample. As expected the distribution is centered around 0. We estimate the spread of the distribution by calculating the standard deviation, finding an uncertainty of 0.1. We apply 0.1 as the minimum error on $f_{\rm AGN}$  as well as the minimum $f_{\rm AGN}$ we can measure. Any $f_{\rm AGN}$ below 0.1 are converted to upper limits with a value of 0.1. 
+ 
+ %This uncertainty on $f_{\rm AGN}$ also places a strict upper limit on the maximum $f_{\rm AGN}$ we are able to measure. With an uncertainty of 0.1, any measured $f_{\rm AGN}$ above 0.9 is converted to a lower limit 
+ 
+ %Further we also assume that 0.9 is the maximum $f_{\rm AGN}$ able to be detected so any measured $f_{\rm AGN}$ above 0.9 are converted to lower limits. 
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{figures/lmbb-lpl-ratio}
-\caption{Histograms and Kernel Density Estimates (KDE) of the $L_{\rm MBB}/L_{\rm PL}$, distribution for the BAT AGN (blue), HRS (green), and KINGFISH (red) samples. The non-AGN samples have a narrowly distributed ratio whereas the BAT AGN span a wide range due to the AGN contribution. A color version of this figure is available in the online publication. \label{fig:lmbb_lpl_ratio}}
+\caption{Histograms and Kernel Density Estimates (KDE) of the $L_{\rm MBB}/L_{\rm PL}$ distribution for the BAT AGN (blue), HRS (green), and KINGFISH (red) samples. The non-AGN samples have a narrowly distributed ratio whereas the BAT AGN span a wide range due to the AGN contribution. A color version of this figure is available in the online publication. \label{fig:lmbb_lpl_ratio}}
 \end{figure}
 
 \begin{figure}
@@ -274,8 +278,128 @@ L_{\rm SF} &= L_{\rm MBB} + L_{\rm PL,SF} =  \frac{4}{3}L_{\rm MBB} \label{eq:c1
 \caption{$f_{\rm AGN}$ distribution for the HRS and KINGFISH galaxies. The standard deviation of this distribution quantifies the uncertainty on $f_{\rm AGN}$ associated with the correction factor used to calculate $f_{\rm AGN}$. A color version of this figure is available in the online publication. \label{fig:fagn_nonAGN}}
 \end{figure}
 
+\section{Comparison between different models}
+In this section we compare the results for the total luminosity, IR AGN luminosity, and star forming luminosity between the C12 model and two other models to decompose the SED. 
+
+\subsection{DecompIR model}
+Besides analytic models, another popular method is the use of template SEDs. Templates are constructed based on well-sampled SEDs of large samples of galaxies and usually parameterized according to a known property such as infrared luminosity.
+
+For galaxies known to host an AGN, recent studies have turned to the \textsc{DecompIR} \citep{Mullaney:2011yq} templates. \textsc{DecompIR} consists of five host galaxy templates that span the IR color and luminosity range of the original \citet{Brandl:2006kx} starburst galaxy templates. \citet{Mullaney:2011yq} constructed the AGN templates based on a subsample of the \swift/BAT AGN which had AGN dominated \textit{Spitzer}/IRS spectra determined by the equivalent width of the 11.3 \micron{} feature being $<0.03$ \micron. The \textit{Spitzer}/IRS spectra were combined with \textit{IRAS} photometry at 60 and 100 \micron to define the ``intrinsic'' AGN SED from 6--100 \micron. 
+
+\citet{Mullaney:2011yq} created three different AGN templates: one based only on high AGN luminosity objects, low AGN luminosity objects, and a median of the entire sample. For this work, we only consider the median AGN template given our SEDs only contain two points in the MIR where AGN-related emission is expected to dominate. 
+
+\subsection{Dale et al 2014 model}
+The third model we chose to test on our sample is the semi-empirical templates from \citet[][hereafter D14]{Dale:2014yq}. These templates also contain two components, one for dust emission in the host galaxy and one for the AGN. The host galaxy components were built from an updated version of the \citet{Dale:2002ty} model. Each component represents an SED produced using a different value of $\alpha_{\mathrm SF}$, which is the powerlaw slope of the intensity distribution for the interstellar radiation field that is heating the dust. These SEDs contain a mixture of emission from PAHs, small stochastically heated grains, and thermally radiating large grains.
+
+For the AGN component, D14 chose the median SED of the Palomar-Green quasars from \citet{Shi:2013vn} citing the care with which any star-forming component was removed and the prominence of several AGN related MIR features such as the [OIV] fine structure line and the broad 10 and 18 \micron{} silicate emission bumps. At long wavelengths the AGN template falls as a blackbody.
+
+Instead of two separate templates for the AGN and host galaxy, D14 provided a single set of templates based on different combinations of $\alpha_{\mathrm SF}$ and $f_{\mathrm AGN}$, the fractional contribution of the AGN to the 5--20 \micron{} emission. In total there are 1365 templates that range in $\alpha_{\mathrm SF}=0.0625-4.0$ in 0.0625 intervals and $f_{\mathrm AGN} = 0-1$ in 0.05 intervals.
+
+\subsection{SED Fitting for the template models}
+For each template in a model set, Equation~\ref{eq:log_like} was minimized to determine the best fit normalization. We then chose the normalized template with the lowest $-\log\mathcal{L}$ as the best fitting model for a source. For the DecompIR set, this meant first simultaneously optimizing over a normalization for the AGN component and each host galaxy component, then choosing the combined template that resulted in the minimum $-\log\mathcal{L}$. For D14, this meant calculating $-\log\mathcal{L}$ over the entire set of $\alpha$ and $f_{AGN}$ templates.
+
+Uncertainties using the maximum likelihood method were determined by generating 1000 simulated SEDs for each source. These data points in the simulated SEDs were calculated by assuming each detected point followed a Gaussian distribution with mean equal to the observed flux density and a standard deviation equal to the measured error. Each of the simulated SEDs were re-fit using the same method. The standard deviation on the set of best fit parameters from the simulated SEDs then was used as the uncertainty. In this way both statistical and systematic errors can be taken into account in assessing the reliability of our best fit parameters. 
+
+\subsection{$L_{\rm IR}$ Comparison}
+The measured property that should be most model independent is the total infrared luminosity, $L_{\rm IR}$. Assuming each model was able to fit well the broadband SEDs and reproduce the observed photometry, $L_{\rm IR}$ is simply the total integrated energy underneath the SED, irregardless of how the SED is decomposed. In Figure~\ref{fig:lir_total_comp}, we plot the correlations between each of the $L_{\rm IR}$ in the off-diagonal subplots as well as the single distributions for each one. 
+
+The median $\log\,L_{\rm IR}$ for the C12, DecompIR, and D14 models are 10.43, 10.44, and 10.63 \lsun respectively and each model showing a spread of 0.5 dex. Based on the medians as well as Figure~\ref{fig:lir_total_comp}, the C12 and DecompIR models best agree. The average logarithmic difference between them is only -0.02 dex while the average difference between the D14 and C12 and DecompIR models is 0.2 dex, indicating a factor of 1.6 increase in $L_{\rm IR}$ between D14 and the other two models. This is due to the shape of the template SEDs for D14. D14's AGN template is flatter at shorter wavelengths causing the increased luminosity. 
+
+The strict set of templates available in the D14 model also likely causes the increased scatter between D14 and the two others. Whereas DecompIR is composed of two templates that can freely float to match the observed SED and the C12 model is analytical allowing for large flexibility, the D14 model just contains a fixed set of templates which might not be able to match the observed SED as well as the other two models.
+
+Despite these differences, overall there is great agreement, as expected, between the measurement of $L_{\rm IR}$ for the three models. Given the 0.2 dex difference between D14 and the C12 and DecompIR models, we can conservatively assign this value as the total uncertainty on all $L_{\rm IR}$. This uncertainty overwhelms the individual statistical uncertainties which are $\sim0.03$ dex.
+
+%%%%%%%%%%%%%%%%%%%%%%%% FIGURE: LIR COMPARISON %%%%%%%%%%%
+\begin{figure*}
+\includegraphics[width=0.8\textwidth]{figures/lir_total-comparison}
+\caption{Correlations and KDEs of $L_{\rm IR}$ from the three SED models.  A color version of this figure is available in the online publication. \label{fig:lir_total_comp}}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{$f_{\rm AGN}$ Comparison}
+Where the models begin to disagree more, is in the actual decomposition of the SED. In particular, we compare $f_{\rm AGN}$, the fraction of the 8--1000 \micron{} luminosity due to AGN-heated dust. Calculating $f_{\rm AGN}$ for the template models is relatively easy compared to corrections we had to make for the C12 model. For the DecompIR template set, $L_{\rm IR}$, $L_{\rm SF}$, and $L_{\rm AGN, IR}$ were simply calculated from the best fit total, host galaxy, and AGN SEDs. For the D14 model set, $L_{\rm IR}$ was measured from the best fitting template and $L_{\rm SF}$ and $L_{\rm AGN, IR}$ were calculated based on the best fit $f_{\rm AGN}$.\footnote{\citet{Dale:2014yq} only provides $f_{\rm AGN}$ calculated between 5--15 \micron, however D. Dale graciously provided the authors with $f_{\rm AGN}$ calculated between 8--1000 \micron{} through private communication in August 2015.} Uncertainties on all of these luminosities were determined using the same Monte Carlo method used to determine the uncertainties on the best fitting parameters.
+
+Figure~\ref{fig:agn_frac_comp} displays the relationship between each model's $f_{\rm AGN}$ in the off-diagonal plots as well as the distribution of $f_{\rm AGN}$ in the diagonal plots. All three models are in rough agreement of $f_{\rm AGN}$. The three off-diagonal plots show a strong correlation between the models, albeit with large scatter. We find Pearson correlation coefficients of 0.81, 0.83, and 0.92 for C12 vs. DecompIR, C12 vs. D14, and DecompIR vs. D14 respectively. The two template based models agree the best between each other. This is likely due to the fixed shape of the AGN component SED for these models and the correction factor we had to use to calculate the C12 based $f_{\rm AGN}$. 
+
+Overall all three models agree on $f_{\rm AGN}$ within a scatter of 0.15. The scatter around a 1--1 correlation (shown by the dashed black line) between each model is 0.15, 0.13, and 0.10 for C12 vs. DecompIR, C12 vs. D14, and DecompIR vs. D14 respectively. Interestingly in terms of following a 1--1 correlation, C12 and DecompIR compare the best even though between these two models the scatter is largest. We suspect this is due to the broad agreement in the shape of the AGN SED where both models have the AGN rising as a powerlaw with a slope $\sim2$ and peaking around 40 \micron{}. The D14 model has a flatter MIR slope that peaks closer to 20 \micron leading to the systematic offset seen in Figure~\ref{fig:agn_frac_comp}. The offset between D14 and the other two models is $\sim$0.1. 
+
+The 15 per cent uncertainty between the three models represents our general lack of knowledge about the details of decomposing broadband SEDs of AGN host galaxies. The estimated $f_{\rm AGN}$ is highly dependent on the assumed models of both the host galaxy and AGN, and currently at best we can only constrain to within 15 per cent. This influences then the calculations of both the SFR (based on $L_{\rm SF}$) and the IR portion of AGN luminosity ($L_{\rm AGN, IR}$). Studies relying on calculating the SFR of AGN host galaxies using the infrared need to take these discrepancies into account or else risk over-interpreting results based on broad SED decomposition.. 
+
+%%%%%%%%%%%%%%%%%%%%%%%% FIGURE: AGN FRACTION COMPARISON %%%%%%%%%%%%%%%
+\begin{figure*}
+\includegraphics[width=0.8\textwidth]{figures/agn_frac-comparison}
+\caption{Correlations and KDEs of $f_{\rm AGN}$ from the three SED models.  A color version of this figure is available in the online publication. \label{fig:agn_frac_comp}}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Results and Discussion}
-\subsection{$M_{\rm dust}$, $T_{\rm dust}$, and SFR of local AGN host galaxies}
+Before comparing the \herschel-BAT sample to our comparison non-AGN samples, we test our SED decomposition and measurements of $L_{\rm AGN,IR}$ and $L_{\rm SF}$ with other indicators of the AGN luminosity and star-formation. Specifically, we compare $L_{\rm AGN,IR}$ with the 14--195 keV luminosity and $L_{\rm SF}$ with the 11.3 and 7.7 polycyclic aromatic hydrocarbon (PAH) luminosity.
+
+\subsection{Correlation between $L_{\rm AGN, IR}$ and $L_{\rm 14-195\,keV}$}\label{sec:lagnIR_lbat_correlation}
+
+\begin{figure}
+\includegraphics{figures/lagnIR_lbat_correlation}
+\caption{Correlation between $L_{\rm AGN, IR}$ and $L_{\rm 14-195\,keV}$ for the \herschel-BAT sample (blue points). The solid black line shows the result of Bayesian linear regression with the grey shaded region indicating the 95 per cent confidence interval. The strong correlation between the two luminosities provides evidence our SED decomposition performed well in measuring the IR luminosity associated with AGN heated dust.\label{fig:lagnIR_lbat}}
+\end{figure}
+
+In Figure~\ref{fig:lagnIR_lbat}, we plot the relationship between the 14--195 keV luminosity and $L_{\rm AGN,IR}$. As expected, we find a strong correlation between the two luminosities indicating we have measured $L_{\rm AGN,IR}$ accurately from the C12 model and our correction factor. To quantify the relationship, we performed linear regression using a \textsc{python} implementation of \textsc{linmix\_err}\footnote{\url{https://github.com/jmeyers314/linmix}} \citep{Kelly:2007lr}, a Bayesian method for linear regression that incorporates errors in both independent and dependent variables as well as non-detections. \citet{Kelly:2007lr} showed through simulations that \textsc{linmix\_err} outperforms other popular linear regression methods such as ordinary least squares and \textsc{fit\_exy}. \textsc{linmix\_err} outputs marginalized posterior probability distributions for the slope, intercept, and intrinsic scatter between the two variables as well as the correlation coefficient, $\rho$. Our reported best fit parameters here and throughout the rest of the Paper will be the median of the marginalized posterior probability distribution with an uncertainty equal to the standard deviation. The linear model assumed is of the form:
+
+\begin{equation}\label{eqn:lin_mod}
+Y = mX + b + \epsilon_{\rm int}
+\end{equation}
+
+\noindent where $Y$ and $X$ are the dependent and independent variables, $m$ is the slope, $b$ is intercept, and $\epsilon_{\rm int}$ represents intrinsic scatter in the relationship beyond that related to measurement error. $\epsilon_{\rm int}$ is modeled as a Gaussian random variable with mean 0 and a variance of $\sigma^2$. 
+
+We plot the best fit linear regression for the whole sample in Figure~\ref{fig:lagnIR_lbat} as a black line with grey shading to indicate the 95 per cent confidence interval. The best-fit line corresponds to the following relationship:
+
+\begin{equation}\label{eqn:lagnIR_lbat}
+\log(L_{\rm AGN,IR} =  (0.75\pm0.05)\log(L_{\rm 14-195\,keV}) + (11.1\pm2.3)
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%% TABLE: 14-195 keV vs LAGN_IR%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{table}
+%\begin{threeparttable}
+%\captionsetup{font=small,labelfont=bf,labelsep=period}
+%\caption{Linear Regression Between $L_{\rm14-195\,keV}$ and  $L_{\rm AGN,IR}$ \label{tab:lbat_lagnIR_correlation}}
+%\begin{tabular}{lcccc}
+%\toprule 
+% Sample & $m$ & $b$  & $\sigma_{\rm int}$ & $\rho$  \\
+%\midrule
+%All        & $0.75\pm0.05$ & $-22.5\pm2.3$ & $0.13\pm0.02$ & $0.76\pm0.03$ \\
+%Type 1 &  $0.83\pm0.07$ & $-26.0\pm3.0$ & $0.11\pm0.02$ & $0.80\pm0.05$ \\ 
+%Type 2 &  $0.65\pm0.08$ & $-18.2\pm3.5$ & $0.15\pm0.03$ & $0.69\pm0.06$ \\
+%\bottomrule
+%\end{tabular}
+%\end{threeparttable}
+%\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+The correlation coefficient from \textsc{linmix\_err} is $0.76\pm0.03$ and the intrinsic scatter is 0.13 dex. Our measured slope of 0.75 is significantly flatter than the slope measured in \citet{Gandhi:2009kx} ($m=1.1$) using sub-arcsecond 12 \micron{} imaging for 16 nearby Seyferts. However, given our very simple method for determining the AGN MIR luminosity from broadband SED decomposition, a slope near 1.0 and high correlation coefficient provides confidence that the decomposition has performed reasonably well. Further, Equation~\ref{eqn:lagnIR_lbat} will provide future studies with estimates of the full 8--1000 \micron{} AGN contribution and allow better estimates of IR-based SFRs for AGN.
+
+\subsection{Comparison of $L_{\rm SF}$ with PAH measurements}
+To test our estimates of the star-forming luminosity ($L_{\rm SF}$), we compare them with estimates of the star-forming luminosity calculated from the PAH 11.3 and 7.7 \micron{} luminosity. PAH features are thought to caused by the vibrations of complex hydrocarbons \citep{Draine:1984fk, Puget:1989lr} and have been shown to be reliable tracers of the SFR \citep{Roussel:2001kx, Sargsyan:2009fj, Treyer:2010uq, Shipley:2016qy} even for AGN \citep{Diamond-Stanic:2010kl}. Therefore, comparing our $L_{\rm SF}$ with the 11.3 and 7.7 \micron{} PAH luminosity provides a further check on our SED decomposition. 
+
+To measure the 7.7 and 11.3 \micron{} luminosities we first searched the Cornell Atlas of Spitzer IRS Sources \citep[CASSIS;]{Lebouteiller:2011dk} for low-resolution Spitzer/IRS spectra of the \herschel-BAT AGN. We found 120/313 AGN on CASSIS and downloaded their reduced spectra using the default extraction method. Due to the different sizes of the Short-Low (SL) slit and Long-Low (LL) slit, the continuum of each can be offset mainly from extended emission not captured by the SL slit. Therefore spectral orders were stitched together by fitting a line to the ends of each order and scaling to match the overlapping regions. SL2 and LL2 were first matched and scaled to SL1 and LL1 respectively. Then the combined SL1/SL2 spectra was matched to the combined LL1/LL2 spectra to produce the final full Spitzer/IRS low resolution spectra. 
+
+We fit each spectra using small spectral windows centered on 7.7 and 11.3 \micron. Following \citet{Smith:2007lr} and the popular spectral fitting software package, PAHFIT, we modeled the PAH features using a Drude profile and any emission lines contained in the spectral windows as narrow Gaussians. The full-width-at-half-maximum (FWHM) and central wavelength of the emission lines were kept fixed at the values in Table 2 of \citet{Smith:2007lr}. The 7.7 and 11.3 \micron{} features are actually complexes with multiple subfeatures. PAHFIT models these with multiple Drude profiles chosen to reproduce the observed features and we follow this method using the values for the fractional contribution and FWHM as given in Table 3 of \citet{Smith:2007lr}. We model the continuum as a simple third-order polynomial. This allows the continuum to take on many shapes that is more necessary for AGN spectra which can show broad silicate absorption and emission and varying continuum slopes \citep{Baum:2010kh, Spoon:2007oq, Wu:2009pt}. While silicate absorption is included within PAHFIT, silicate emission is absent prompting the need for own modeling. Finally, to determine the best-fit model, we again use the Bayesian methodology and MCMC described in Appendix~\ref{sec:sed_bayes}. This allows us to treat the continuum and other nearby features as nuisance parameters and robustly determine uncertainties on the 7.7 and 11.3 \micron{} luminosities.
+
+Figure~\ref{fig:lsf_lpah} shows the correlation between $L_{\rm SF}$ and $L_{\rm PAH}$ for both the 7.7 (right) and 11.3 \micron{} complexes. We include as well the the measurements for the KINGFISH galaxies (red squares) where $L_{\rm SF}$ is from this work and $L_{\rm PAH}$ is from \citet{Smith:2007lr}. The $L_{\rm PAH}$ for KINGFISH were measured using PAHFIT, but given the large similarity with our method, we do not expect large differences.
+
+We find good agreement between the relationship of $L_{\rm SF}$ and $L_{\rm PAH}$. Both the KINGFISH and \herschel-BAT samples follow broadly the same correlation indicating we are neither over nor under estimating $L_{\rm SF}$ from our SED decomposition for the \herschel-BAT AGN. For reference we also display the SFR-$L_{\rm PAH}$ relationship from \citet{Shipley:2016qy} where we have converted their SFR to $L_{\rm SF}$ using the following equation from \citet{Murphy:2011rt}:
+
+\begin{equation}\label{eq:sfr_ir}
+\rm{SFR} = \frac{L_{\rm SF}}{2.57\times10^{43}}
+\end{equation}
+
+The \citet{Shipley:2016qy} relationship follows approximately the same slope however has an offset towards high $L_{\rm PAH}$. This is likely due to the SFR indicator used in their work which was based on the combined H$\alpha$ and 24 \micron{} luminosity. These indicators are more sensitive to recent star-formation within the last 10 Myr whereas our $L_{\rm SF}$ based primarily on FIR emission extends to star-formation as long ago as 100 Myr \citep{Kennicutt:2012it} which would explain why most of our points, both KINGFISH and \herschel-BAT, lie below the \citet{Shipley:2016qy} line. Nevertheless, Figure~\ref{fig:lsf_lpah} shows that our derived $L_{\rm SF}$ will give consistent estimates of the SFR necessary for comparing non-AGN and AGN host galaxies without any threat of systematic bias.
+
+\begin{figure*}
+\includegraphics{figures/lsf-vs-lpah}
+\caption{Correlation between $L_{\rm SF}$ and the 11.3 (left) and 7.7 \micron{} (right) luminosity. Blue points correspond to the \herschel-BAT AGN and red squares correspond to the KINGFISH galaxies. Sources with upper limits on $L_{\rm PAH}$ are shown as open triangles while sources with upper limits on both $L_{\rm SF}$ and $L_{\rm PAH}$ are shown as open circles. The black line draws the SFR-$L_{PAH}$ relationships from \citet{Shipley:2016qy}. The consistency of the correlation for both the KINGFISH and \herschel-BAT samples shows that SFRs determined from $L_{\rm SF}$ will be comparable without any systematic bias. \label{fig:lsf_lpah}}
+\end{figure*}
+
+\subsection{$M_{\rm dust}$, $T_{\rm dust}$, and SFR of local AGN host galaxies}\label{sec:agn_sf_comparison}
 
 %%%%%%%%%%%%%%%%%%%%%%%% FIGURE: Mdust, Tdust, SFR COMPARISON %%%%%%%%%%%
 \begin{figure*}
@@ -307,11 +431,7 @@ KINGFISH & 6.80$\pm$0.10 & 21.7$\pm$0.5 & -0.40$\pm$0.10 & -2.60$\pm$0.10 & 2.25
 \end{table*}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Figure~\ref{fig:mdust_tdust_sfr_comp} compares the distribution of \mdust, \tdust, and SFR for our three samples of galaxies. Table~\ref{tab:mean_mdust_tdust_sfr} displays the mean and standard error on the mean for these three properties and each sample. We calculated the SFR using the conversion from 8--1000 \micron{} star-forming luminosity provided in  \citet{Murphy:2011rt}:
-
-\begin{equation}\label{eq:sfr_ir}
-\rm{SFR} = \frac{L_{\rm SF}}{2.57\times10^{43}}
-\end{equation}
+Figure~\ref{fig:mdust_tdust_sfr_comp} compares the distribution of \mdust, \tdust, and SFR for our three samples of galaxies. Table~\ref{tab:mean_mdust_tdust_sfr} displays the mean and standard error on the mean for these three properties and each sample. We calculated the SFR using the conversion from 8--1000 \micron{} star-forming luminosity given in Equation~\ref{eq:sfr_ir}.
 
 While sources with only upper limits are not shown in Figure~\ref{fig:mdust_tdust_sfr_comp}, we incorporate them into our calculation of the mean. 
 
@@ -331,11 +451,11 @@ A probability of 0.20 between the sSFR distributions of the HRS and \herschel-BA
 
 Our survival analysis two-sample tests confirm what our previous visual and basic statistical analysis suggested. The \mdust/\mstar{} and sSFR distributions of AGN host galaxies are significantly different than those of normal star-forming galaxies while the \tdust{} distributions are identical after accounting for \mstar. 
 
-\subsection{IR colors as a predictor of $f_{\rm AGN}$}
+\subsection{IR colors as a predictor of $f_{\rm AGN}$ and selecting AGN}
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figures/agnfrac_vs_flux_ratio}
-\caption{\label{fig:agnfrac_vs_flux_ratio}}
+\caption{Relationship between different IR colors and the $f_{\rm AGN}$, the fraction of the 8--1000 \micron{} luminosity attributed to AGN heated dust. The IR colors (x-axis) are in logarithmic units. We find that the colors involving the 160 \micron{} flux show the strongest correlation coefficients and are the best predictor for $f_{\rm AGN}$. We also display the 25th, 50th, and 75th percentile color for the \herschel-BAT AGN as dashed and solid lines.\label{fig:agnfrac_vs_flux_ratio}}
 \end{figure*}
 
 We utilize our broad coverage of the IR SED for AGN host galaxies to test the viability of different IR colors for predicting the AGN IR luminosity fraction (i.e. $f_{\rm AGN}$). For large surveys and/or high redshift studies, coverage from 12--500 \micron{} might not be available or possible.
@@ -346,34 +466,39 @@ In Figure~\ref{fig:agnfrac_vs_flux_ratio}, we plot six MIR/FIR flux ratios (12/7
 f_{\rm AGN} = m\log(F_{1}/F_{2}) + b + \epsilon_{\rm int}
 \end{equation}
 
-\noindent where $F_{1}/F_{2}$ represents each flux ratio. To calculate the best fitting parameters, we used a \textsc{python} implementation of \textsc{linmix\_err}\footnote{\url{https://github.com/jmeyers314/linmix}} \citep{Kelly:2007lr}, a Bayesian method for linear regression that incorporates errors in both independent and dependent variables as well as non-detections. \citet{Kelly:2007lr} showed through simulations that \textsc{linmix\_err} outperforms other popular linear regression methods such as ordinary least squares and \textsc{fit\_exy}. \textsc{linmix\_err} outputs marginalized posterior probability distributions for the slope, intercept, and intrinsic scatter between the two variables as well as the correlation coefficient. Our reported best fit parameters will be the median of the marginalized posterior probability distribution with an uncertainty equal to the standard deviation.
+\noindent where $F_{1}/F_{2}$ represents each flux ratio. To calculate the best fitting parameters, we again used \textsc{linmix\_err}. 
 
 Table~\ref{tab:flux_ratio_fagn_linreg} outlines the best fit parameters for each relationship. While each flux ratio is highly correlated with $f_{\rm AGN}$ (all $\rho > 0.75$), the best predictor of $f_{\rm AGN}$ is the 22/160 ratio with, $\rho = 0.97$. However, both flux ratios involving the 160 \micron{} flux seem to perform equally well with similar slopes, small intrinsic scatter and high $\rho$. The worst predictors are the flux ratios involving the 250 \micron{} flux with $\rho$ only equal to 0.75. 
 
 The ratios involving the 160 \micron{} flux work better as a predictor because the AGN component of the IR SED rarely contributes any emission to the total flux of the galaxy compared to the star-forming component. While this is also true of the 250 \micron{} flux, the 160 \micron{} flux is nearer to the peak of the MBB component, thus, more closely related to the total luminosity. The 250 \micron{} flux is located on the Rayleigh Jeans side of the blackbody and varies much more strongly as a function of the dust temperature due to the rapidly declining shape of the SED long-ward of the peak. Even though the total 70 \micron{} emission can have a large fraction of its emission contributed by the AGN (see next section), it still remains a decent predictor of $f_{\rm AGN}$ with $\rho = 0.82$ and $\rho=0.89$ for the 12/70 and 22/70 \micron{} ratios. 
 
 %%%%%%%%%%%%%%%%%% TABLE OF LINEAR REGRESSION B/W FLUX RATIOS AND FAGN %%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}
+\begin{table*}
 \begin{threeparttable}
 \captionsetup{font=small,labelfont=bf,labelsep=period}
 \caption{Linear Regression Between Flux Ratios and $f_{\rm AGN}$\label{tab:flux_ratio_fagn_linreg}}
-\begin{tabular}{lcccc}
+\begin{tabular}{lccccccc}
 \toprule 
-$F_{1}/F_{2}$ & $m$ & $b$  & $\sigma_{\rm int}$ & $\rho$  \\
+$F_{1}/F_{2}$ & $m$ & $b$  & $\sigma_{\rm int}$ & $\rho$ & 75th \%tile  & 50th \%tile  & 25th \%tile\\
+&&&&&(\%tile for HRS)&(\%tile for HRS)&(\%tile for HRS)\\
 \midrule
-12/70      & $0.51\pm0.03$ & $0.96\pm0.03$ & $0.017\pm0.002$ & $0.82\pm0.03$ \\
-12/160    & $0.46\pm0.02$ & $0.97\pm0.02$ & $0.004\pm0.002$ & $0.95\pm0.02$ \\
-12/250    & $0.33\pm0.03$ & $0.77\pm0.02$ & $0.017\pm0.003$ & $0.75\pm0.04$ \\
-22/70      & $0.64\pm0.03$ & $0.82\pm0.02$ & $0.011\pm0.002$ & $0.89\pm0.02$ \\
-22/160    & $0.46\pm0.02$ & $0.80\pm0.02$ & $0.002\pm0.001$ & $0.97\pm0.02$ \\
-22/250    & $0.32\pm0.03$ & $0.64\pm0.02$ & $0.017\pm0.003$ & $0.75\pm0.05$ \\
+12/70      & $0.51\pm0.03$ & $0.96\pm0.03$ & $0.017\pm0.002$ & $0.82\pm0.03$ & -1.23 (90) & -0.97 (50) & -0.66 (21)\\
+12/160    & $0.46\pm0.02$ & $0.97\pm0.02$ & $0.004\pm0.002$ & $0.95\pm0.02$ & -1.51 (31) & -1.21 (5.2) & -0.85 (2.2)\\
+12/250    & $0.33\pm0.03$ & $0.77\pm0.02$ & $0.017\pm0.003$ & $0.75\pm0.04$ & -1.22 (28) &  -0.91 (5.2) & -0.57 (1.5)\\
+22/70      & $0.64\pm0.03$ & $0.82\pm0.02$ & $0.011\pm0.002$ & $0.89\pm0.02$ & -0.89 (32) & -0.60 (16) & -0.32 (12)\\
+22/160    & $0.46\pm0.02$ & $0.80\pm0.02$ & $0.002\pm0.001$ & $0.97\pm0.02$ & -1.14 (5.6) & 0.83 (1.2) & -0.45 (0)\\
+22/250    & $0.32\pm0.03$ & $0.64\pm0.02$ & $0.017\pm0.003$ & $0.75\pm0.05$ & 0.87 (6.8) & -0.51 (0.02) & -0.18 (0) \\
 \bottomrule
 \end{tabular}
 \end{threeparttable}
-\end{table}
+\end{table*}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{The AGN contribution to the 70 \micron{} emission}
+We further test how well each IR color exclusively selects AGN host galaxies. In Figure~\ref{fig:agnfrac_vs_flux_ratio} we plot the 75th, 50th, and 25th percentile color for the \herschel-BAT sample as blue dashed (for the 25th and 75th percentiles) and blue solid (for the 50th percentile) vertical lines. In Table~\ref{tab:flux_ratio_fagn_linreg}, the last three columns list the colors in logarithmic units for the 75th, 50th, and 25th percentiles. These colors mean that by selecting galaxies with a color above this one, the sample will be 75, 50, and 25 per cent complete based on the \herschel-BAT sample. In parentheses, we also list the percentile of the HRS sample that would be included by using the specific color.
+
+Based on the values in Table~\ref{tab:flux_ratio_fagn_linreg}, we find that the best color to use in selecting an AGN-only sample would be the 22/160 color. Using the 75th percentile color (-1.14), we would only select 5.6 per cent of the HRS sample. To get only around 1 per cent of the HRS sample, we would have to use the 50th percentile 22/160 or 22/250 color, however this would only select half of a complete AGN sample. To select no non-AGN galaxies would require pushing to the 25th percentile colors and risk severe incompleteness. 
+
+\subsection{The AGN contribution to the 70 \micron{} emission}\label{sec:agn_70_contribution}
 Many studies examining the relationship between nuclear activity and star formation rely on single monochromatic luminosities as an indicator of star formation \cite[e.g.][]{Netzer:2007ve, Netzer:2009lr, Rosario:2012fr}. The most widely used indicator has been the 60 \micron{} luminosity given its availability from the all-sky \textit{IRAS} survey. 
 
 With our \herschel-BAT sample and SED modeling we can test how often and at what level AGN emission contributes to different wavelength bands. We test the AGN contribution to the 70 \micron{} emission. Based on visual inspection of all of the SED fits, we found this waveband is the only \herschel{} band with a noticeable AGN contribution. All other longer wavelength bands were dominated by the MBB component. Further this band is very close to the \textit{IRAS} 60 \micron{} band that is used often as an indicator of star-formation in AGN host galaxies.
@@ -382,13 +507,13 @@ To determine the AGN contribution to the 70 \micron{} emission, we first estimat
 
 Figure~\ref{fig:70um_agn_contribution}, \textit{left} shows the distribution of $f_{\rm AGN, 70}$. We find that for 45 per cent of the sample,  $f_{\rm AGN, 70} < 0.2$ but for 30 per cent of the sample $f_{\rm AGN, 70} > 0.5$. Using the 70 \micron{} luminosity as a single SFR indicator would overestimate values by at least a factor of 2 for almost one-third of an AGN sample. 
 
-In the right panel of Figure~\ref{fig:70um_agn_contribution} we show $f_{\rm AGN, 70}$ as a function of the 14--195 keV luminosity. The grey points indicate the individual points while the blue points with error bars are binned averages with a 68 per cent confidence interval. At low AGN luminosity, it is clear we suffer from incompleteness indicated by the low number of grey points and large uncertainties on the binned points. At high AGN luminosity ($\log\,L_{\rm 14-195\,keV} > 43.0$), $f_{\rm AGN, 70}$ increases monotonically as expected. As the X-ray luminosity increases, the AGN IR component should increase such that more of the 70 \micron{} emission is due to the AGN. However, there is an incredible amount of scatter especially at high AGN luminosity where $f_{\rm AGN, 70}$ ranges almost uniformly between 0 and 1. $f_{\rm AGN, 70}$ is a function of not only the AGN IR component but also the star-forming component and while at high AGN luminosity it is more likely to find galaxies with high $f_{\rm AGN, 70}$, its still just as likely to find a galaxy with enough star formation to overwhelm any AGN contribution.
+In the right panel of Figure~\ref{fig:70um_agn_contribution} we show $f_{\rm AGN, 70}$ as a function of the 14--195 keV luminosity. The grey points indicate the individual points while the blue points with error bars are binned averages with a 68 per cent confidence interval. At low AGN luminosity, it is clear we suffer from incompleteness indicated by the low number of grey points and large uncertainties on the binned points. At high AGN luminosity ($\log\,L_{\rm 14-195\,keV} > 43.0$), $f_{\rm AGN, 70}$ increases monotonically as expected. As the X-ray luminosity increases, the AGN IR component should increase such that more of the 70 \micron{} emission is due to the AGN unless the star-forming component is intrinsically linked to the AGN luminosity. However, there is an incredible amount of scatter especially at high AGN luminosity where $f_{\rm AGN, 70}$ ranges almost uniformly between 0 and 1. $f_{\rm AGN, 70}$ is a function of not only the AGN IR component but also the star-forming component and while at high AGN luminosity it is more likely to find galaxies with high $f_{\rm AGN, 70}$, it is still just as likely to find a galaxy with enough star formation to overwhelm any AGN contribution.
 
 Our main conclusion from this section, though, is to be careful when using monochromatic luminosities as an indicator of the SFR, especially near 70 \micron. At longer wavelengths, we find single luminosities are quite reliable in regards to the AGN contribution.
 
 \begin{figure*}
 \includegraphics{figures/pacs_AGN_contribution}
-\caption{\textit{left:} Histogram of the estimated 70 \micron{} contribution by AGN-heated dust. Each bar is a bin with a width of 0.1 and a height equal to the fraction of the total sample. \textit{right:} Relationship between the 14--195 keV luminosity and 70 \micron{} AGN contribution. Grey dots represent each individual source while the blue dots with error bars are averages within bins according to 14--195 keV luminosity. Error bars indicate the 95 percent confidence interval determined using bootstrap analysis.\label{fig:70um_agn_contribution}}
+\caption{\textit{left:} Histogram of the estimated 70 \micron{} contribution by AGN-heated dust. Each bar is a bin with a width of 0.1 and a height equal to the fraction of the total sample. \textit{right:} Relationship between the 14--195 keV luminosity and 70 \micron{} AGN contribution. Grey dots represent each individual source while the blue dots with error bars are averages within bins according to 14--195 keV luminosity. Error bars indicate the 68 percent confidence interval determined using bootstrap analysis.\label{fig:70um_agn_contribution}}
 \end{figure*}
 
 
@@ -442,38 +567,42 @@ Regarding the AGN related properties of the IR SED, we see differences between T
 
 Steeper power-law slopes for Type 2 AGN has been observed previously in studies of AGN using low resolution \textit{Spitzer}/IRS spectra. Both \citet{Buchanan:2006cq} and \citet{Wu:2009pt} reported flatter MIR spectral indices for Type 1 AGN. Explanations for the differences included a greater contribution of a starburst component for Type 2 AGN which show red MIR spectra \citet{Brandl:2006kx}. The difference in slopes can also be explained by a changing opacity from shorter to longer wavelengths. If the optical depth increases with wavelength and shorter wavelength emission originates near the inner edge of the ``torus'', then Type 2 AGN would also show steeper MIR slopes. At the present time we cannot make strong conclusions as to which is the correct explanation. We plan to analyze this more closely in a future publication which will combine the \herschel{} photometry with \textit{Spitzer}/IRS spectra to better constrain the starburst component of MIR spectra. 
 
-The difference in $\log\,L_{\rm AGN,IR}$ between Type 1 and Type 2 AGN can be explained by the different X-ray luminosity distribution of Type 1 and Type 2 \herschel-BAT AGN. It's been well documented  \citep[e.g.][]{Burlon:2011pi, Melendez:2014yu} that within the \swift/BAT AGN sample, Type 2 AGN are more prevalent at lower luminosities compared to Type 1 AGN. Given the strong correlation between the X-ray and IR luminosity of AGN, Type 2s should exhibit lower $\log\,L_{\rm AGN,IR}$.
+The difference in $\log\,L_{\rm AGN,IR}$ between Type 1 and Type 2 AGN can be explained by the different X-ray luminosity distributions of Type 1 and Type 2 \herschel-BAT AGN. It has been well documented  \citep[e.g.][]{Burlon:2011pi, Melendez:2014yu} that within the \swift/BAT AGN sample, Type 2 AGN are more prevalent at lower luminosities compared to Type 1 AGN. Given the strong correlation between the X-ray and IR luminosity of AGN (see Section~\ref{sec:lagnIR_lbat_correlation}), Type 2s should exhibit lower $\log\,L_{\rm AGN,IR}$.
 
-The combination of lower $L_{\rm AGN,IR}$ and relatively similar SFR distributions produces a strong difference in the $f_{\rm AGN}$ distribution for Type 2s and Type 1s as shown in Figure~\ref{fig:frac_agn_seyferts}. Type 2s have much lower $f_{\rm AGN}$ compared to Type 1 AGN which agrees with \citet{Melendez:2008pd} who found that Type 2s have colder 25/60 \micron{} colors. Our main finding, though, is that the lower $f_{\rm AGN}$ is not indicative of larger SFRs in Type 2 AGN but rather lower AGN luminosities. 
+The combination of lower $L_{\rm AGN,IR}$ and relatively similar SFR distributions produces a strong difference in the $f_{\rm AGN}$ distribution for Type 2s and Type 1s as shown in Figure~\ref{fig:frac_agn_seyferts}. Type 2s have much lower $f_{\rm AGN}$ compared to Type 1 AGN which agrees with \citet{Melendez:2008pd} who found that Type 2s have colder 25/60 \micron{} colors. Our interpretation however is that the lower $f_{\rm AGN}$ is not indicative of larger SFRs in Type 2 AGN but rather lower AGN luminosities. 
 
-\subsection{The correlation between nuclear activity and star formation}
-Our main goal in this Paper is to assess the observational evidence for a connection between AGN and star formation in their host galaxy. To accomplish this, we analyze the relationship between the AGN strength and SFR. We assume the 14--195 keV luminosity ($L_{\rm 14--195 keV}$) linearly probes the bolometric AGN luminosity as shown by \citet{Winter:2012yq}. The 8--1000 \micron{} luminosity, after subtracting the contribution from AGN heated dust, measures the SFR using Equation~\ref{eq:sfr_ir}.
+\newpage These results are in agreement with \citet{Diamond-Stanic:2012rw}~who found no statistically significant differences between the SFRs of Type 1 and Type 2 AGN on all physical scales using the 11.3 \micron{} PAH feature and 24 \micron{} continuum emission. Moreover, \citet{Imanishi:2004sf}, using the 3.3 \micron{} PAH feature as a measure of star-forming activity found no differences between Type 1 and Type 2 AGN; and \citet{Pereira-Santaella:2010zl}, using the [NeIII] emission line, determined Type 1 and Type 2 AGN exhibit the same star-forming activity. Thus, nearly all measures of SFR in the infrared (FIR, PAH features, ionization lines) seem to confirm that moderate luminosity Type 1 and Type 2 AGN are actively star-forming at the same level.
 
-Figure~\ref{fig:sfr_lbat_correlation} plots the correlation between the SFR and $L_{\rm 14-195 keV}$ for the \herschel-BAT AGN. As before, blue colors indicate Type 1 AGN and red colors indicate Type 2 AGN.  The explicit model we assume is 
+Previous studies that indicated Type 2 AGN have enhanced star formation occurring in their host galaxies, such as \citet{Maiolino:1995nr} and \citet{Mouri:2002fk} reached these conclusions based on analysis of the colors and luminosity ratios which we have shown to be more indicative of the different luminosity distributions of Type 1 and Type 2 AGN rather than a difference in their SFRs. What this means is that apart from the interesting subsample of Type 1 AGN that exhibit extremely low SFRs and dust masses, studies which rely mainly on Type 2 AGN will not result in selection effects associated with their absolute star-forming activity, but will result in biases based on the host-galaxy dominance, especially in the IR.
+ 
+\subsection{The connection between nuclear activity and global star formation}
+Our main goal in this Paper is to assess the observational evidence for a connection between AGN and star formation in their host galaxy. To accomplish this, we analyze the relationship between the AGN strength and SFR. We assume the 14--195 keV luminosity ($L_{\rm 14-195 keV}$) linearly probes the bolometric AGN luminosity as shown by \citet{Winter:2012yq}. $L_{\rm SF}$ measures the SFR using Equation~\ref{eq:sfr_ir}.
+
+Figure~\ref{fig:sfr_lbat_correlation} plots the correlation between the SFR and $L_{\rm 14-195 keV}$ for the \herschel-BAT AGN. As before, blue colors indicate Type 1 AGN and red colors indicate Type 2 AGN.  We overplot several relationships from the literature for $z\sim0$ AGN including the expected relationship based on the variability model from \citet{Hickox:2014yq} (black dashed line), the observed relationship from \citet{Rosario:2012fr} based on \textit{IRAS} data of the BAT AGN (green solid line), and the observed relationship from \citet{Netzer:2009lr} (green dashed line) based primarily on AGN-dominated Type 2s from SDSS and their \textit{IRAS} 60 \micron{} luminosity.
+
+For the \herschel-BAT sample, we fit the SFRs and 14--195 keV luminosity with the following linear model:
 
 \begin{equation}
 \log {\rm SFR} = m\log L_{\rm 14-195\,keV} + b + \epsilon_{\rm int}
 \end{equation}
 
-\noindent where $m$ is slope, $b$ is the intercept and $\epsilon_{\rm int}$ represents an intrinsic scatter between the two variables and is assumed to be a Gaussian random variable with mean 0 and standard deviation of $\sigma_{\rm int}$. 
+\noindent using \textsc{LINMIX} as before.  To see if there are differences in the relationship between Type 1s and Type 2s, we tested the correlation using the whole \herschel-BAT sample, only Type 1s, and only Type 2s. In Figure~\ref{fig:sfr_lbat_correlation}, the black line and shaded region represents the best-fit line and 95 percent confidence interval for the whole sample while the blue and red lines and shaded regions represent the relationship for Type 1s and Type 2s respectively. In Table~\ref{tab:lbat_sfr_correlation}, we outline the best fit slope, intrinsic scatter, and correlation coefficient and their uncertainties, determined by calculating the median and standard deviation of the posterior probability distributions. 
 
 %%%%%%%%%%%%%%%%%%%%%%% FIGURE: Correlation Between LBAT and SFR %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
 \includegraphics{figures/sfr_lbat_correlation}
-\caption{Correlation between AGN luminosity as probed by $L_{\rm 14-195\,keV}$ and SFR. Error bars on $L_{\rm14-195\,keV}$ correspond to the 90 percentile confidence interval from the 58 month BAT catalog. Error bars on SFR correspond to the 68 percentile confidence interval from our SED fitting. Downward pointing triangles plot 95 percent confidence upper limits on the SFR. Blue colors represent Type 1 AGN while red colors represent Type 2 AGN. The solid lines with shading plot the best fit lines and 95 percentile confidence interval from \textsc{linmix\_err}. No strong relationship exists between the AGN strength and global star formation. A color version of this figure is available in the online publication.\label{fig:sfr_lbat_correlation}}
+\caption{Correlation between AGN luminosity as probed by $L_{\rm 14-195\,keV}$ and SFR. Error bars on $L_{\rm14-195\,keV}$ correspond to the 90 percentile confidence interval from the 58 month BAT catalog. Error bars on the SFR correspond to the 68 percentile confidence interval from our SED fitting. Downward pointing triangles plot 95 percent confidence upper limits on the SFR. Blue colors represent Type 1 AGN while red colors represent Type 2 AGN. The solid lines with shading plot the best fit lines and 95 percentile confidence interval from \textsc{linmix\_err}. No strong relationship exists between the AGN strength and global star formation. A color version of this figure is available in the online publication.\label{fig:sfr_lbat_correlation}}
 \end{figure*}
 
-\begin{figure*}
-\includegraphics{figures/sfr_lbat_correlation_split_main_seqeunce}
-\caption{\label{fig:sfr_lbat_correlation_ms}}
-\end{figure*}
+%\begin{figure*}
+%\includegraphics{figures/sfr_lbat_correlation_split_main_seqeunce}
+%\caption{\label{fig:sfr_lbat_correlation_ms}}
+%\end{figure*}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-To see if there are differences in the relationship between Type 1s and Type 2s, we tested the correlation using the whole \herschel-BAT sample, only Type 1s, and only Type 2s. The black line and shaded region represents the best-fit line and 95 percent confidence interval for the whole sample while the blue and red lines and shaded regions represent the relationship for Type 1s and Type 2s respectively. In Table~\ref{tab:lbat_sfr_correlation}, we outline the best fit slope, intrinsic scatter, and correlation coefficient and their uncertainties, determined by calculating the median and standard deviation of the posterior probability distributions. 
+None of the three samples show a strong correlation between the SFR and 14--195 keV luminosity. With slopes between 0.25--0.34 and correlation coefficients between 0.27 and 0.35, even though they are inconsistent with 0, the evidence for a connection between the strength of the AGN and global star formation is quite weak. The best-fit correlations also do not seem to follow any of the literature relationship. We attempted to fit the \herschel-BAT sample with a curving relationship such as the one found by \citet{Rosario:2012fr}, however all attempts ended up favoring a single slope relationship.
 
-None of the three samples show a strong correlation between the SFR and 14--195 keV luminosity. With slopes between 0.25--0.34 and correlation coefficients between 0.27 and 0.35, even though they are inconsistent with 0, the evidence for a connection between the strength of the AGN and global star formation is quite weak. 
-
-Type 1 AGN do show a slightly stronger correlation than the whole sample and Type 2 AGN which is consistent with our findings in \citet{Melendez:2014yu} and \citet{Shimizu:2016qy} using the monochromatic \herschel{} luminosities. However, the significance of the differences are not more than 2$\sigma$ therefore we must conclude that Type 1 AGN show a similar relationship between SFR and 14--195 keV luminosity.
+Type 1 AGN do show a slightly stronger correlation than the whole sample and Type 2 AGN which is consistent with our findings in \citet{Melendez:2014yu} and \citet{Shimizu:2016qy} using the monochromatic \herschel{} luminosities. However, the significance of the differences are not more than 2$\sigma$ therefore we must conclude that Type 1 AGN show a similar relationship between their SFR and 14--195 keV luminosity.
 
 %%%%%%%%%%%%%%%%%%%%%%% TABLE: AGN-SFR Connection%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}
@@ -484,28 +613,38 @@ Type 1 AGN do show a slightly stronger correlation than the whole sample and Typ
 \toprule 
  Sample & $m$ & $b$  & $\sigma_{\rm int}$ & $\rho$  \\
 \midrule
-All        & $0.25\pm0.05$ & $-10.7\pm2.3$ & $0.25\pm0.02$ & $0.28\pm0.06$ \\
-Type 1 &  $0.34\pm0.09$ & $-14.7\pm3.9$ & $0.24\pm0.04$ & $0.35\pm0.09$ \\ 
-Type 2 &  $0.25\pm0.07$ & $-10.4\pm3.1$ & $0.26\pm0.03$ & $0.27\pm0.08$ \\
-NMS      & $0.27\pm0.09$ & $-11.3\pm3.8$ & $0.16\pm0.03$ & $0.38\pm0.12$\\
-BMS   & $0.43\pm0.11$ & $-18.9\pm5.0$ & $0.19\pm0.05$ & $0.52\pm0.13$ \\
+All        & $0.24\pm0.05$ & $-10.3\pm2.4$ & $0.21\pm0.02$ & $0.29\pm0.07$ \\
+Type 1 &  $0.32\pm0.09$ & $-13.7\pm3.9$ & $0.20\pm0.04$ & $0.35\pm0.10$ \\ 
+Type 2 &  $0.25\pm0.07$ & $-10.7\pm3.1$ & $0.25\pm0.03$ & $0.28\pm0.08$ \\
+%NMS      & $0.27\pm0.09$ & $-11.3\pm3.8$ & $0.16\pm0.03$ & $0.38\pm0.12$\\
+%BMS   & $0.43\pm0.11$ & $-18.9\pm5.0$ & $0.19\pm0.05$ & $0.52\pm0.13$ \\
 \bottomrule
 \end{tabular}
 \end{threeparttable}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-As shown in \citet{Shimizu:2015xo}, the \herschel-BAT AGN span a large range in $\Delta\log$(SFR) which we defined as the logarithmic difference between the observed SFR and the SFR expected if the source lived on the star-forming main sequence with its stellar mass. Since AGN don't exclusively live either on the main sequence or off of it, its possible the large scatter we observe in Figure~\ref{fig:sfr_lbat_correlation} is due to the correlation changing as a function of $\Delta\log$(SFR). 
+%As shown in \citet{Shimizu:2015xo}, the \herschel-BAT AGN span a large range in $\Delta\log$(SFR) which we defined as the logarithmic difference between the observed SFR and the SFR expected if the source lived on the star-forming main sequence with its stellar mass. Since AGN don't exclusively live either on the main sequence or off of it, its possible the large scatter we observe in Figure~\ref{fig:sfr_lbat_correlation} is due to the correlation changing as a function of $\Delta\log$(SFR). 
 
-To investigate this possibility, we split the sample up into galaxies ``Near the Main Sequence'' (NMS) and ``Below the Main Sequence'' (BMS). NMS sources correspond to $|\Delta\log$(SFR)$|< 0.64$ dex. These are galaxies that are within 2$\sigma$ of our measured main sequence in \citet{Shimizu:2015xo}. BMS galaxies have $\Delta\log$(SFR)$< -0.64$ dex and are more than 2$\sigma$ below the main sequence. 
+%To investigate this possibility, we split the sample up into galaxies ``Near the Main Sequence'' (NMS) and ``Below the Main Sequence'' (BMS). NMS sources correspond to $|\Delta\log$(SFR)$|< 0.64$ dex. These are galaxies that are within 2$\sigma$ of our measured main sequence in \citet{Shimizu:2015xo}. BMS galaxies have $\Delta\log$(SFR)$< -0.64$ dex and are more than 2$\sigma$ below the main sequence. 
 
-In Figure~\ref{fig:sfr_lbat_correlation_ms} we plot the split sample with NMS galaxies in blue and BMS galaxies in red. The total number of galaxies in both samples is significantly reduced (119 compared to 313 for the entire sample) because only a subsample of the whole \herschel-BAT AGN sample have reliable stellar masses. Using the same method as before, we calculated a best fit linear relation for both the NMS and BMS subsamples. The parameters are listed in Table~\ref{tab:lbat_sfr_correlation} and we plot the best fit line with a 95 percent confidence interval as blue and red lines with shading in Figure~\ref{fig:sfr_lbat_correlation_ms}. For reference, we also plot the relationship measured using the whole sample as a black line with grey shading. 
+%In Figure~\ref{fig:sfr_lbat_correlation_ms} we plot the split sample with NMS galaxies in blue and BMS galaxies in red. The total number of galaxies in both samples is significantly reduced (119 compared to 313 for the entire sample) because only a subsample of the whole \herschel-BAT AGN sample have reliable stellar masses. Using the same method as before, we calculated a best fit linear relation for both the NMS and BMS subsamples. The parameters are listed in Table~\ref{tab:lbat_sfr_correlation} and we plot the best fit line with a 95 percent confidence interval as blue and red lines with shading in Figure~\ref{fig:sfr_lbat_correlation_ms}. For reference, we also plot the relationship measured using the whole sample as a black line with grey shading. 
 
-The NMS sample doesn't show much change compared to the relationship measured using the entire sample with only a 0.02 change in the slope and 0.1 change in the correlation coefficient. There is a slight increase in the normalization as expected since we are using the upper half of the sample. For the BMS sample however, the slope has increased significantly by 0.18 and the correlation coefficient increased by 0.24. This is a possible indication that the strength of the relationship between AGN activity and star formation increases as galaxies become more quenched. Confirming this intriguing possibility will require more AGN at both low and high luminosity with reliable masses which we are lacking in our sample. At the very least it seems plausible that the large scatter in the overall SFR-$L_{14-195\,keV}$ can be explained by the differing locations in comparison to the star forming main sequence.
+%The NMS sample doesn't show much change compared to the relationship measured using the entire sample with only a 0.02 change in the slope and 0.1 change in the correlation coefficient. There is a slight increase in the normalization as expected since we are using the upper half of the sample. For the BMS sample however, the slope has increased significantly by 0.18 and the correlation coefficient increased by 0.24. This is a possible indication that the strength of the relationship between AGN activity and star formation increases as galaxies become more quenched. Confirming this intriguing possibility will require more AGN with reliable masses which we are lacking in our sample. At the very least it seems plausible that the large scatter in the overall SFR-$L_{14-195\,keV}$ can be explained by the differing locations in comparison to the star forming main sequence.
 
-Our measured AGN-SFR relationship agrees mainly with the previous studies that found a flat or weak relationship \citep{Diamond-Stanic:2012rw, Mullaney:2012gf, Azadi:2015ve, Stanley:2015qy}. The scatter in the relationship is high covering nearly 2 orders of magnitude in SFR for a given AGN luminosity. Two different but not mutually exclusive explanations have been proposed to explain the lack of relationship seen between the strength of the AGN and SFR.0 \citet{Diamond-Stanic:2012rw} suggest that the AGN only influences star formation in the nuclear regions of galaxies and find that when restricting their measurements to only the inner 1kpc, a stronger relationship appears. \citet{Esquej:2014vl}, probing even smaller scales ($r < 100$ pc) using MIR interferometry, also find a nearly linear relationship between the nuclear SFR and SMBH accretion rate. This is  in agreement with numerical simulations \citep{Hopkins:2010kx} that predict an increasingly linear relationship as the star formation size scale decreases. Given our SFRs are measured globally over the whole galaxy, the size scale difference can easily explain our sub-linear relationship. It could also explain the small differences we see when splitting the sample up by the location on the main sequence. If the BMS AGN have reduced star formation only on large scales, while the NMS have larger amounts of extended star formation, then our measurements would naturally be exploring different sizes. The reduced sizes in the BMS AGN would imply a stronger relationship, exactly what we observe in Figure~\ref{fig:sfr_lbat_correlation_ms}. Measurement of the FIR sizes and morphologies will be the subject of a future publication and we will explore the hypothesis that the star-forming region size is dependent on location with respect to the main sequence.
+Our measured AGN-SFR relationship agrees mainly with the previous studies that found a flat or weak relationship \citep{Silverman:2009lq, Diamond-Stanic:2012rw, Mullaney:2012gf, Azadi:2015ve, Stanley:2015qy}. The scatter in the relationship is high covering nearly 2 orders of magnitude in SFR for a given AGN luminosity. Two different but not mutually exclusive explanations have been proposed to explain the lack of relationship seen between the strength of the AGN and SFR. \citet{Diamond-Stanic:2012rw} suggest that the AGN only influences star formation in the nuclear regions of galaxies and find that when restricting their measurements to only the inner 1kpc, a stronger relationship appears. \citet{Esquej:2014vl}, probing even smaller scales ($r < 100$ pc) using MIR interferometry, also found a nearly linear relationship between the nuclear SFR and SMBH accretion rate, and  \citet{LaMassa:2013hb}, cleverly utilizing the fixed aperture of the SDSS fiber, found that only within 1.7 kpc a positive relationship between the SFR and accretion rate occurs (although the slope of their relationship is closer to our sublinear one compared to both \citet{Diamond-Stanic:2012rw} and \citet{Esquej:2014vl}). These are all in agreement with hydrodynamical simulations \citep{Hopkins:2010kx, Thacker:2014pd} that predict an increasingly linear relationship as the star formation size scale decreases. Work is currently ongoing to spatially decompose the SFRs of the \herschel-BAT sample to determine whether the relationship strengthens near the nucleus. %It could also explain the small differences we see when splitting the sample up by the location on the main sequence. If the BMS AGN have reduced star formation only on large scales, while the NMS have larger amounts of extended star formation, then our measurements would naturally be exploring different sizes. The reduced sizes in the BMS AGN would imply a stronger relationship, exactly what we observe in Figure~\ref{fig:sfr_lbat_correlation_ms}. Measurement of the FIR sizes and morphologies will be the subject of a future publication and we will explore the hypothesis that the star-forming region size is dependent on location with respect to the main sequence.
 
 The second explanation involves the varying timescales associated with star formation and accretion onto the SMBH. Measuring the SFR from the IR luminosity results in an average SFR over nearly 100 Myr \citep{Kennicutt:2012it} while the X-ray luminosity is more aligned with the instantaneous AGN luminosity especially given the observations that the X-ray emission likely originates very near to the SMBH \citep[e.g][]{Chen:2011lr}. Therefore, if the AGN luminosity can vary over 100 Myr, while the SFR is relatively stable, this will cause any intrinsic relationship between the two to weaken. \citet{Hickox:2014yq} explored this using a simple model for the Eddington ratio distribution for an AGN and a linear relationship between the AGN luminosity and SFR, finding that a powerlaw Schechter function matches the observed weak AGN-SFR relationship, rather than a lognormal distribution which produces too strong of a relationship. 
+
+But as with the \citet{Rosario:2012fr} relationship which the \citet{Hickox:2014yq} model fits well, the \herschel-BAT data don't seem to follow the expected $z\sim0$ correlation (black dashed line in Figures~\ref{fig:sfr_lbat_correlation}. Instead, we find many AGN with low SFRs several dex below both the \citet{Rosario:2012fr} and \citet{Hickox:2014yq} relationship. This is due to the increased sensitivity realized by \herschel{} allowing measurements of the star-formation rate for nearly all of our sample and hard upper limits for the ones left undetected. Further, we necessarily do not rely on a single monochromatic luminosity as our estimate of the SFR as \citet{Rosario:2012fr} did. As we showed in Section~\ref{sec:agn_70_contribution}, doing so can cause significant overestimates of the SFR due to AGN contamination. This, combined with the low sensitivity of \textit{IRAS} data, could be the reason \citet{Rosario:2012fr} see a significant upturn in their relationship at high luminosities. However, its certainly possible we also have not probed to high enough AGN luminosity to be able to see a distinct upturn in the relationship. \citet{Lutz:2010kx} found the same flattening and upturn as \citet{Rosario:2012fr} in low and high redshift galaxies with the upturn occurring at $L_{\rm AGN} > 10^{45}$ ergs s$^{-1}$. Converting to a 14--195 keV luminosity using the relationship found by \citet{Winter:2012yq} results in $L_{\rm 14-195\,keV} > 10^{44.1}$ ergs s$^{-1}$. In our sample, there are 22 AGN above this threshold but only one above $10^{44.5}$ ergs s$^{-1}$. Therefore, our sample could just be lacking high luminosity AGN to see any significant change in the relationship. 
+
+It is likely both explanations contribute to our measured AGN-SFR relationship. Star-formation on global scales in AGN-host galaxies is clearly not strongly related to the strength of the AGN, but at moderate AGN luminosities, ultra-hard X-ray detected AGN occur in galaxies with SFRs extending over nearly 4 orders of magnitude. Combining our results in Section~\ref{sec:agn_sf_comparison} and \citet{Shimizu:2015xo}, it is clear that AGN host galaxies firmly lie in transition between star-forming and quiescence. The new result we find in this work is that the drop in specific SFR is coincident with a drop in dust mass, suggestive of gas depletion. 
+
+The remaining question then is the cause of the gas depletion. As we discuss in \citet{Shimizu:2015xo}, some form of AGN feedback could be responsible either through physical expulsion by massive AGN-powered outflows \citep[e.g.]{Cicone:2014ty, Tombesi:2015fj} or through heating of the intergalactic medium by AGN jets which causes a shutdown of gas accretion onto the galaxy such as that seen in brightest cluster galaxies \citep[e.g.]{Fabian:2003ek, McNamara:2007qy}. As suggested in the evolutionary scenario by \citet{Netzer:2009lr}, a single galaxy can go through multiple episodes of increased AGN luminosity combined with increased star-formation. This could be induced by mergers and interactions that funnel gas and dust to the nuclear regions, igniting both SMBH accretion and nuclear starbursts. \citet{Netzer:2009lr} proposes a path in the AGN-SFR plane (see his Figure 14) whereby at early times, the SFR increases first moving sources up in the diagram, then after the AGN is triggered movement is to the right increasing in AGN luminosity until feedback kicks in at the peak of AGN activity and star-formation, shutting down both. The decline could either be in parallel or with the AGN fading slower than star-formation. Since we have selected our sample using ultra-hard X-rays, we are likely seeing AGN host galaxies at all of these stages, further obscuring any long-term relationship between the two properties. The green dashed line in Figure~\ref{fig:sfr_lbat_correlation} shows the linear relationship from \citet{Netzer:2009lr} and we can see that the \herschel-BAT AGN straddle the line just as the ``loop'' path in his Figure~14 does. 
+
+The decreased dust masses and specific SFRs does seem to suggest that the majority of time spent by moderate luminosity X-ray detected AGN is in the declining phase. This could explain the lack of high luminosity AGN in our sample if most of them are associated with strong nuclear starbursts that are composed of Compton thick gas rendering them undetectable by \swift/BAT. \citet{Ellison:2016uq} suggested this scenario by looking at the specific SFR distribution for samples of AGN selected by different methods. They found that IR-selected AGN show enhanced star-formation compared to optically and radio-selected AGN and concluded that mergers were likely inducing starbursts as well as powerful, obscured AGN. After AGN feedback clears the galaxy of gas and dust, the AGN is more likely to be selected by X-ray and optical methods. 
+
+Alternatively, it is possible that AGN feedback is not necessary in the evolution of the galaxy. Recent numerical simulations suggest that even at quasar luminosities, the effect of AGN heating and outflows is only marginal, decreasing the SFR by only a few percent \citep{Gabor:2014fj, Roos:2015ty}. This would mean the fact we see AGN host galaxies with decreased dust mass and specific SFR distributions is simply coincidental. Perhaps nuclear activity is just more viable in galaxies with lowered global specific SFRs and dust masses or there is a delay in the triggering of an AGN after star-forming activity begins to shut down as suggested by \citet{Davies:2007kx} and \citet{Sani:2012vn}. Indeed, \citet{Kauffmann:2007kx} find that AGN are almost always associated with a young stellar population in bulge-dominated galaxies and the SMBH accretion rate is strongly anti-correlated with the age of the dominant stellar population in the bulge rather than the disk. The time delay could be caused by the difficulty for secular processes to funnel gas down to the pc-scales necessary for SMBH accretion. \citet{Kauffmann:2007kx} suggest that AGN are only found in galaxies with centrally concentrated gas, in line with our results on the high SFR surface densities of the \herschel-BAT sample presented in \citet{Mushotzky:2014ad}. 
 
 
 \section{Conclusions}
@@ -517,9 +656,8 @@ This publication makes use of data products from the Wide-field Infrared Survey 
 %%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
 
 % The best way to enter references is to use BibTeX:
-
 \bibliographystyle{mnras}
-\bibliography{my_bib} % if your bibtex file is called example.bib
+\bibliography{/Users/ttshimiz/Dropbox/Research/my_bib} % if your bibtex file is called example.bib
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -579,70 +717,14 @@ To determine the best fit parameters, we first marginalized the posterior PDF ov
 
 For sources with less than four detections in their SED, we fixed the dust temperature to 25 K since the peak of the FIR bump is no longer constrained. In these cases, we only obtained upper limits on the dust mass by calculating the upper 95th percentile of the marginalized PDF.
 
-\section{Comparison between different models}
-In this section we compare the results for the total luminosity, IR AGN luminosity, and star forming luminosity between the C12 model and two other models to decompose the SED. 
-
-\subsection{DecompIR model}
-Besides analytic models, another popular method is the use of template SEDs. Templates are constructed based on well-sampled SEDs of large samples of galaxies and usually parameterized according to a known property such as infrared luminosity.
-
-For galaxies known to host an AGN, recent studies have turned to the \textsc{DecompIR} \citep{Mullaney:2011yq} templates. \textsc{DecompIR} consists of five host galaxy templates that span the IR color and luminosity range of the original \citet{Brandl:2006kx} starburst galaxy templates. \citet{Mullaney:2011yq} constructed the AGN templates based on a subsample of the \swift/BAT AGN which had AGN dominated \textit{Spitzer}/IRS spectra determined by the equivalent width of the 11.3 \micron{} feature being $<0.03$ \micron. The \textit{Spitzer}/IRS spectra were combined with \textit{IRAS} photometry at 60 and 100 \micron to define the ``intrinsic'' AGN SED from 6--100 \micron. 
-
-\citet{Mullaney:2011yq} created three different AGN templates: one based only on high AGN luminosity objects, low AGN luminosity objects, and a median of the entire sample. For this work, we only consider the median AGN template given our SEDs only contain two points in the MIR where AGN-related emission is expected to dominate. 
-
-\subsection{Dale et al 2014 model}
-The third model we chose to test on our sample is the semi-empirical templates from \citet[][hereafter D14]{Dale:2014yq}. These templates also contain two components, one for dust emission in the host galaxy and one for the AGN. The host galaxy components were built from an updated version of the \citet{Dale:2002ty} model. Each component represents an SED produced using a different value of $\alpha_{\mathrm SF}$, which is the powerlaw slope of the intensity distribution for the interstellar radiation field that is heating the dust. These SEDs contain a mixture of emission from PAHs, small stochastically heated grains, and thermally radiating large grains.
-
-For the AGN component, D14 chose the median SED of the Palomar-Green quasars from \citet{Shi:2013vn} citing the care with which any star-forming component was removed and the prominence of several AGN related MIR features such as the [OIV] fine structure line and the broad 10 and 18 \micron{} silicate emission bumps. At long wavelengths the AGN template falls as a blackbody.
-
-Instead of two separate templates for the AGN and host galaxy, D14 provided a single set of templates based on different combinations of $\alpha_{\mathrm SF}$ and $f_{\mathrm AGN}$, the fractional contribution of the AGN to the 5--20 \micron{} emission. In total there are 1365 templates that range in $\alpha_{\mathrm SF}=0.0625-4.0$ in 0.0625 intervals and $f_{\mathrm AGN} = 0-1$ in 0.05 intervals.
-
-\subsection{SED Fitting for the template models}
-For each template in a model set, Equation~\ref{eq:log_like} was minimized to determine the best fit normalization. We then chose the normalized template with the lowest $-\log\mathcal{L}$ as the best fitting model for a source. For the DecompIR set, this meant first simultaneously optimizing over a normalization for the AGN component and each host galaxy component, then choosing the combined template that resulted in the minimum $-\log\mathcal{L}$. For D14, this meant calculating $-\log\mathcal{L}$ over the entire set of $\alpha$ and $f_{AGN}$ templates.
-
-Uncertainties using the maximum likelihood method were determined by generating 1000 simulated SEDs for each source. These data points in the simulated SEDs were calculated by assuming each detected point followed a Gaussian distribution with mean equal to the observed flux density and a standard deviation equal to the measured error. Each of the simulated SEDs were re-fit using the same method. The standard deviation on the set of best fit parameters from the simulated SEDs then was used as the uncertainty. In this way both statistical and systematic errors can be taken into account in assessing the reliability of our best fit parameters. 
-
-\subsection{$L_{\rm IR}$ Comparison}
-The measured property that should be most model independent is the total infrared luminosity, $L_{\rm IR}$. Assuming each model was able to fit well the broadband SEDs and reproduce the observed photometry, $L_{\rm IR}$ is simply the total integrated energy underneath the SED, irregardless of how the SED is decomposed. In Figure~\ref{fig:lir_total_comp}, we plot the correlations between each of the $L_{\rm IR}$ in the off-diagonal subplots as well as the single distributions for each one. 
-
-The median $\log\,L_{\rm IR}$ for the C12, DecompIR, and D14 models are 10.43, 10.44, and 10.63 \lsun respectively and each model showing a spread of 0.5 dex. Based on the medians as well as Figure~\ref{fig:lir_total_comp}, the C12 and DecompIR models best agree. The average logarithmic difference between them is only -0.02 dex while the average difference between the D14 and C12 and DecompIR models is 0.2 dex, indicating a factor of 1.6 increase in $L_{\rm IR}$ between D14 and the other two models. This is due to the shape of the template SEDs for D14. D14's AGN template is flatter at shorter wavelengths causing the increased luminosity. 
-
-The strict set of templates available in the D14 model also likely causes the increased scatter between D14 and the two others. Whereas DecompIR is composed of two templates that can freely float to match the observed SED and the C12 model is analytical allowing for large flexibility, the D14 model just contains a fixed set of templates which might not be able to match the observed SED as well as the other two models.
-
-Despite these differences, overall there is great agreement, as expected, between the measurement of $L_{\rm IR}$ for the three models. Given the 0.2 dex difference between D14 and the C12 and DecompIR models, we can conservatively assign this value as the total uncertainty on all $L_{\rm IR}$. This uncertainty overwhelms the individual statistical uncertainties which are $\sim0.03$ dex.
-
-%%%%%%%%%%%%%%%%%%%%%%%% FIGURE: LIR COMPARISON %%%%%%%%%%%
-\begin{figure*}
-\includegraphics[width=\textwidth]{figures/lir_total-comparison}
-\caption{Correlations and KDEs of $L_{\rm IR}$ from the three SED models.  A color version of this figure is available in the online publication. \label{fig:lir_total_comp}}
-\end{figure*}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{$f_{\rm AGN}$ Comparison}
-Where the models begin to disagree more, is in the actual decomposition of the SED. In particular, we compare $f_{\rm AGN}$, the fraction of the 8--1000 \micron{} luminosity due to AGN-heated dust. Calculating $f_{\rm AGN}$ for the template models is relatively easy compared to corrections we had to make for the C12 model. For the DecompIR template set, $L_{\rm IR}$, $L_{\rm SF}$, and $L_{\rm AGN, IR}$ were simply calculated from the best fit total, host galaxy, and AGN SEDs. For the D14 model set, $L_{\rm IR}$ was measured from the best fitting template and $L_{\rm SF}$ and $L_{\rm AGN, IR}$ were calculated based on the best fit $f_{\rm AGN}$.\footnote{\citet{Dale:2014yq} only provides $f_{\rm AGN}$ calculated between 5--15 \micron, however D. Dale graciously provided the authors with $f_{\rm AGN}$ calculated between 8--1000 \micron{} through private communication in August 2015.} Uncertainties on all of these luminosities were determined using the same Monte Carlo method used to determine the uncertainties on the best fitting parameters.
-
-Figure~\ref{fig:agn_frac_comp} displays the relationship between each model's $f_{\rm AGN}$ in the off-diagonal plots as well as the distribution of $f_{\rm AGN}$ in the diagonal plots. All three models are in rough agreement of $f_{\rm AGN}$. The three off-diagonal plots show a strong correlation between the models, albeit with large scatter. We find Pearson correlation coefficients of 0.81, 0.83, and 0.92 for C12 vs. DecompIR, C12 vs. D14, and DecompIR vs. D14 respectively. The two template based models agree the best between each other. This is likely due to the fixed shape of the AGN component SED for these models and the correction factor we had to use to calculate the C12 based $f_{\rm AGN}$. 
-
-Overall all three models agree on $f_{\rm AGN}$ within a scatter of 0.15. The scatter around a 1--1 correlation (shown by the dashed black line) between each model is 0.15, 0.13, and 0.10 for C12 vs. DecompIR, C12 vs. D14, and DecompIR vs. D14 respectively. Because this is comparable to the statistical uncertainty we determined through the individual model-fitting, we add this in quadrature to the uncertainties in Tables~\ref{tab:c12_params},~\ref{tab:decompir_params},~and~\ref{tab:d14_params}. Interestingly in terms of following a 1--1 correlation, C12 and DecompIR compare the best even though between these two models the scatter is largest. We suspect this is due to the broad agreement in the shape of the AGN SED where both models have the AGN rising as a powerlaw with a slope $\sim2$ and peaking around 40 \micron{}. The D14 model has a flatter MIR slope that peaks closer to 20 \micron leading to the systematic offset seen in Figure~\ref{fig:agn_frac_comp}. The offset between D14 and the other two models is $\sim$0.1. 
-
-The 15 per cent uncertainty between the three models represents our general lack of knowledge about the details of decomposing broadband SEDs of AGN host galaxies. The estimated $f_{\rm AGN}$ is highly dependent on the assumed models of both the host galaxy and AGN, and currently at best we can only constrain to within 15 per cent. This influences then the calculations of both the SFR (based on $L_{\rm SF}$) and the IR portion of AGN luminosity ($L_{\rm AGN, IR}$). Studies relying on calculating the SFR of AGN host galaxies using the infrared need to take these discrepancies into account or else risk over-interpreting results based on broad SED decomposition.
-
-For our AGN population, we find almost a uniform distribution of $f_{\rm AGN}$ independent of the model used. Most AGN have between 20 and 80 per cent of their IR emission coming from AGN heated dust. This means that the IR SED of an AGN host galaxy can wildly vary from being completely dominated by star formation related emission to being completely dominated by AGN related emission. 
-
-%%%%%%%%%%%%%%%%%%%%%%%% FIGURE: AGN FRACTION COMPARISON %%%%%%%%%%%
-\begin{figure*}
-\includegraphics{figures/agn_frac-comparison}
-\caption{Correlations and KDEs of $f_{\rm AGN}$ from the three SED models.  A color version of this figure is available in the online publication. \label{fig:agn_frac_comp}}
-\end{figure*}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \section{SED Figures}
 
-%\begin{figure*}
-%\centering
-%\includegraphics[width=\textwidth]{figures/sedfig1}
-%\caption{\label{fig:seds}}
-%\end{figure*}
-\input{sed_figures.tex}
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{figures/sedfig1}
+\caption{12--500 \micron{} SEDs for all of the \herschel-BAT sample. Black points plot the observed flux densities with open red circles indicating 5$\sigma$ upper limits. The solid blue line and shaded region shows the best-fit C12 model with a 95 percent confidence interval. The red squares are the model flux densities after convolving the best-fit model SED with each instrument's transmission curve. The orange and green dashed lines show the best-fit PL and MBB components, respectively. \label{fig:seds}}
+\end{figure*}
+%\input{sed_figures.tex}
 
 %\section{Table of Best Fit Parameters}
 %\input{tables/bat-agn-c12-parameters_full.tex}
