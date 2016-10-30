@@ -45,7 +45,7 @@ def plot_fit(waves, obs_flux, model, model_waves=np.arange(1, 1000),
     #median_model = model(model_waves/zcorr) * zcorr
 
     #ax.loglog(model_waves, median_model, color=blue, label='Best Fit Model')
-
+    undetected = np.isnan(obs_flux)
     if plot_fit_spread:
         dummy = model.copy()
         fixed = np.array([dummy.fixed[n] for n in dummy.param_names])
@@ -69,11 +69,19 @@ def plot_fit(waves, obs_flux, model, model_waves=np.arange(1, 1000),
             comp_colors = sn.color_palette('colorblind',
                                                 n_colors=ncomps+1)[1:]
         comps = model.eval_comps(model_waves/zcorr) * zcorr
-        for i in range(ncomps):
-            ax.loglog(model_waves, comps[i, :], ls='--',
-                      label=model.comp_names[i], color=comp_colors[i])
-
-    undetected = np.isnan(obs_flux)
+        if np.sum(undetected) < 4:
+            for i in range(ncomps):
+                ax.loglog(model_waves, comps[i, :], ls='--',
+                          label=model.comp_names[i], color=comp_colors[i])
+        else:
+            ax.loglog(model_waves, comps[1, :], ls='--',
+                      label=model.comp_names[1], color=comp_colors[1])
+            mdust_95 = np.percentile(model.chain_nb[:,0], 95.0)
+            model.mdust = mdust_95
+            comps = model.eval_comps(model_waves/zcorr) * zcorr
+            ax.loglog(model_waves, comps[0, :], ls='--',
+                      label=model.comp_names[0], color=comp_colors[0])
+    
     if plot_mono_fluxes:
         dummy2 = model.copy()
         filters = Filters()
@@ -103,12 +111,13 @@ def plot_fit(waves, obs_flux, model, model_waves=np.arange(1, 1000),
                     yerr=obs_err[~undetected], marker='o', ls='None',
                     color='k', label='Observed Fluxes')
         if sum(undetected) > 0:
-            #ax.quiver(waves[undetected], obs_err[undetected],
-            #          np.zeros(sum(undetected)),
-            #          -10*np.ones(sum(undetected)),
-            #          width=0.01, color='r')
-            ax.plot(waves[undetected], obs_err[undetected],
-                    marker='o', mec=red, mfc='None', mew=1.5, ls='None')
+            #ax.errorbar(waves[undetected], obs_err[undetected], yerr=0.15/0.434*obs_err[undetected], uplims=np.ones(sum(undetected), dtype=np.bool),
+            #            fmt='o', ls='None', color=red)
+            ax.quiver(waves[undetected], obs_err[undetected], np.zeros(sum(undetected)),
+                      -np.ones(sum(undetected)), scale_units='height', scale=10.,
+                      units='width', color=red, pivot='tail', width=0.01)
+            
+            
     if plot_params:
         fs = mpl.rcParams['legend.fontsize']
         for i, n in enumerate(model.param_names):
@@ -133,39 +142,17 @@ def plot_fit(waves, obs_flux, model, model_waves=np.arange(1, 1000),
     return fig
 
 ######################################### MAIN SCRIPT ####################################
-# Upload the BAT fluxes for Herschel and WISE
-herschel_data = pd.read_csv('/Users/ttshimiz/Github/bat-data/bat_herschel.csv', index_col=0,
-                            na_values=0)
-herschel_data = herschel_data.drop('Mrk3')
-wise_data = pd.read_csv('/Users/ttshimiz/Github/bat-data/bat_wise.csv', index_col=0,
-                        usecols=[0, 1, 2, 4, 5, 7, 8, 10, 11], na_values=0)
-wise_data = wise_data.drop('Mrk3')
-sed = herschel_data.join(wise_data[['W3', 'W3_err', 'W4', 'W4_err']])
-names = sed.index.values
-
-# SPIRE fluxes that are seriously contaminated by a companion should be upper limits
-psw_flag = herschel_data['PSW_flag']
-pmw_flag = herschel_data['PMW_flag']
-plw_flag = herschel_data['PLW_flag']
-
-sed['PSW_err'][psw_flag == 'AD'] = sed['PSW'][psw_flag == 'AD']
-sed['PSW'][psw_flag == 'AD'] = np.nan
-sed['PMW_err'][pmw_flag == 'AD'] = sed['PMW'][pmw_flag == 'AD']
-sed['PMW'][pmw_flag == 'AD'] = np.nan
-sed['PLW_err'][plw_flag == 'AD'] = sed['PLW'][plw_flag == 'AD']
-sed['PLW'][plw_flag == 'AD'] = np.nan
-
-filt_use = np.array(['W3', 'W4', 'PACS70', 'PACS160', 'PSW', 'PMW', 'PLW'])
-filt_err = np.array([s+'_err' for s in filt_use])
-waves = np.array([12., 22., 70., 160., 250., 350., 500.])
-ndetected = np.sum(np.isfinite(sed[filt_use].values), axis=1)
+# Upload the BAT information
+bat_info = pd.read_csv('/Users/ttshimiz/Github/bat-data/bat_info.csv', index_col=0)
+bat_info = bat_info.drop(np.array(['Mrk3']))
+names = bat_info.index.values
 
 fig = plt.figure(figsize=(1.2*textwidth, 1.33*textwidth))
 nseds_per_fig = 12
 nfigs = np.int(np.ceil(np.float(len(names))/nseds_per_fig))
-
+#nfigs = 1
 for i in range(nfigs):
-    
+#for i in [8]:    
     fig.clear()
     fig_names = names[i*nseds_per_fig:i*nseds_per_fig+nseds_per_fig]
     
@@ -180,10 +167,10 @@ for i in range(nfigs):
         fit_results = pickle.load(f)
         model = fit_results['best_fit_model']
     
-        src_sed = sed.loc[n][filt_use]
-        src_err = sed.loc[n][filt_err]
-        flux = np.array(src_sed, dtype=np.float)
-        flux_err = np.array(src_err, dtype=np.float)
+        flux = fit_results['flux']
+        flux_err = fit_results['flux_err']
+        filt_use = fit_results['filters']
+        waves = fit_results['waves']
     
         fig_fit = plot_fit(waves, flux, model, obs_err=flux_err,
                            plot_components=True, plot_mono_fluxes=True,
@@ -198,7 +185,3 @@ for i in range(nfigs):
         
     fig.subplots_adjust(wspace=0.3)
     fig.savefig(figsave_dir+'sedfig'+str(i+1)+'.pdf', bbox_inches='tight')
-    
-    
-    
-

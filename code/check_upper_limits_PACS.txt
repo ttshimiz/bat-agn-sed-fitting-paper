@@ -1,0 +1,34 @@
+# Script to check the upper limits for the 70 and 160 micron photometry
+
+import numpy as np
+import pandas as pd
+import astropy.io.fits as fits
+import astropy.coordinates as coord
+import astropy.wcs as wcs
+import sys
+
+sys.path.append('/Users/ttshimiz/Github/spire-catalog-photometry/')
+
+import run_aperture_photometry as rap
+
+# Upload the current Herschel photometry
+bat_herschel = pd.read_csv('/Users/ttshimiz/Github/bat-data/bat_herschel.csv', index_col=0)
+bat_info = pd.read_csv('/Users/ttshimiz/Github/bat-data/bat_info.csv', index_col=0)
+
+names = bat_herschel[bat_herschel['PACS70'] == 0].index
+f = 'PACS70'
+
+for n in names:
+
+    src_img = fits.open('/Users/ttshimiz/Dropbox/Herschel_Images/PACS/'+n+'_scanamorphos_pacs70_signal.fits')[0]
+    err_img = fits.getdata('/Users/ttshimiz/Dropbox/Herschel_Images/PACS/'+n+'_scanamorphos_pacs70_error.fits')
+    
+    ra_bat = bat_info.loc[n, 'RA_(J2000)']
+    dec_bat = bat_info.loc[n, 'DEC_(J2000)']
+    coord_bat = coord.SkyCoord(ra=ra_bat, dec=dec_bat, frame='fk5')
+    
+    ap, type = create_spire_aperture(None, f, 'P', coord_bat=coord_bat, wcs=wcs.WCS(src_img.header)) 
+    
+    result, apertures = rap.spire_aperture_photometry(ap, src_img, err_img, 'point', f)
+    
+    print n, ':', result['total_err']
