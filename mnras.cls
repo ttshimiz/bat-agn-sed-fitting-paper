@@ -120,7 +120,7 @@
 
 % Include hyperref, so we can have clickable links
 \usepackage{hyperref}	% Hyperlinks
-\hypersetup{draft=false,colorlinks=true,linkcolor=blue,citecolor=blue,filecolor=blue,urlcolor=blue}
+\hypersetup{draft=true,colorlinks=true,linkcolor=blue,citecolor=blue,filecolor=blue,urlcolor=blue}
 
 %
 %  ****************************************
