@@ -7,3 +7,7 @@
 **/.ipynb_checkpoints/*
 main.pdf
 */*.pyc
+src/
+src_ref1/
+src.zip
+src_ref1.zip
